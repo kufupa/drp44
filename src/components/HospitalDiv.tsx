@@ -1,5 +1,6 @@
 // TODO
-// Implement calling google maps and turn + to tick on click
+// Implement calling google maps
+// Tick for only 1 hospital
 
 import React, { useState } from 'react';
 import { HospitalDetails } from './HospitalDetails';
