@@ -8,36 +8,31 @@ const HospitalScreen: React.FC = () => {
         hospitalName: 'Charing Cross Hospital',
         waitTime: 7,
         distance: 2,
-        directions: 'googleMapsLink',
-        ticked: false
+        directions: 'googleMapsLink'
     }
     const hospital2: HospitalDetails = {
         hospitalName: 'Royal London Hospital',
         waitTime: 5,
         distance: 3,
-        directions: 'googleMapsLink',
-        ticked: false
+        directions: 'googleMapsLink'
     }
     const hospital3: HospitalDetails = {
         hospitalName: "Guy's Hospital",
         waitTime: 1,
         distance: 0.5,
-        directions: 'googleMapsLink',
-        ticked: false
+        directions: 'googleMapsLink'
     }
     const hospital4: HospitalDetails = {
         hospitalName: "St Thomas' Hospital",
         waitTime: 3,
         distance: 0.75,
-        directions: 'googleMapsLink',
-        ticked: false
+        directions: 'googleMapsLink'
     }
     const hospital5: HospitalDetails = {
         hospitalName: "King's College Hospital",
         waitTime: 1,
         distance: 3,
-        directions: 'googleMapsLink',
-        ticked: false
+        directions: 'googleMapsLink'
     }
     const hospitals: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5].sort((a, b) => {
         // Calculate the score for each hospital based on waitTime and distance
@@ -62,7 +57,7 @@ const HospitalScreen: React.FC = () => {
             <div className=''>
                 {/* Map through all hospitals */}
                 {hospitals.map((hospital, index) => (
-                    <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={hospital.ticked}/>
+                    <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} />
                 ))}
 
             </div>
