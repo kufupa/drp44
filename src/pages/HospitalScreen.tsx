@@ -34,21 +34,35 @@ const HospitalScreen: React.FC = () => {
         distance: 3,
         directions: 'googleMapsLink'
     }
-    const hospitals: Array<HospitalDetails> = [hospital1, hospital2, hospital3, hospital4, hospital5];
+    const hospitals: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5].sort((a, b) => {
+        // Calculate the score for each hospital based on waitTime and distance
+        const scoreA = a.waitTime + a.distance * 2;
+        const scoreB = b.waitTime + b.distance * 2;
 
-  return (
-    <div>
-      <div className='text-3xl'>Hospital HomeScreen</div>
-      {/* Div containing all Hospitals */}
-      <div className=''>
-        {/* Map through all hospitals */}
-        {hospitals.map((hospital, index) => (
-            <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} />
-        ))}
-        
-      </div>
-    </div>
-  );
+        // Compare the scores
+        if (scoreA < scoreB) {
+            return -1;
+        } else if (scoreA > scoreB) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+
+    return (
+        <div>
+            <div className='text-3xl'>List Of Hospitals</div>
+            {/* Div containing all Hospitals */}
+            <div className=''>
+                {/* Map through all hospitals */}
+                {hospitals.map((hospital, index) => (
+                    <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} />
+                ))}
+
+            </div>
+        </div>
+    );
 };
 
 export default HospitalScreen;
