@@ -3,4 +3,5 @@ export interface HospitalDetails {
     waitTime: number;
     distance: number;
     directions: string;
+    ticked: boolean; // Nurse paged
 }
