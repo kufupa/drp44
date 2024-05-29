@@ -14,11 +14,12 @@ const App: React.FC = () => {
     <Router>
       <div className="App container mx-auto p-4">
         <Routes>
-          {/* <Route path="/" element={<HomeScreen />} /> */}
+          <Route path="/" element={<PresentationForm />} />
           <Route path="/HospitalScreen" element={<HospitalScreen />} />
           <Route path="/FlowChart" element={<FlowChart />} />
           <Route path="/Presentation" element={<PresentationForm />} />
           <Route path="/Confirmation" element={<Confirmation />} />
+          <Route path="*" element={<PresentationForm />} />
         </Routes>
       </div>
     </Router>
