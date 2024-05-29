@@ -14,6 +14,10 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
         }
     };
 
+    const handleDirectionsClick = () => {
+        window.open(`https://www.google.com/maps?q=${directions}`, '_blank');
+    };
+
     return (
         // Maybe have different views for different screens
         <div className="min-h-24 relative p-4 border rounded shadow-md m-4 hover:bg-red-50 grid grid-cols-3 gap-4">
@@ -35,7 +39,8 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
 
             {/* Direction and Inform Hospital */}
             <div className="relative col-span-1 flex items-center justify-center">
-                <div className="absolute text-sm right-10 bottom-0 cursor-pointer">Directions</div>
+                <div className="absolute text-sm right-10 bottom-0 cursor-pointer"
+                    onClick={handleDirectionsClick}>Directions</div>
                 <div className="absolute cursor-pointer right-14 top-0" onClick={handleToggleTicked}>
                     <div className="w-8 h-8 rounded-full bg-green-100 hover:bg-green-300">
                         {isTicked ? (
@@ -56,3 +61,7 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
 };
 
 export default HospitalDiv;
+function useRef<T>(arg0: null) {
+    throw new Error('Function not implemented.');
+}
+
