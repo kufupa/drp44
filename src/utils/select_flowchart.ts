@@ -60,7 +60,7 @@ export const firstButton = (presentation: Presentation) => {
         symptoms: presentation.red(),
         presentation: presentation
     }
-    console.log(first);
+    // console.log(first);
     return first;
 }
 

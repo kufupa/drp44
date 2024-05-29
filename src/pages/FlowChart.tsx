@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import FlowChartQuestionaire from '../components/FlowChartQuestionaire';
-import { Question } from '../utils/question';
-import { nextButtons } from '../utils/select_flowchart';
+import { firstButton, nextButtons, selectFlowchart } from '../utils/select_flowchart';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const FlowChart: React.FC = () => {
     // To add later
-    const buttonsDisplayList: string[] = ["First prompt", "Second Prompt","First prompt", "Second Prompt"];
-    // const firstSetOfButtons: Question = nextButtons();
+    const location = useLocation();
+    const presentation: string = location.state?.presentations || null;
+    const displayButtons: string[] = presentation != null ? firstButton(selectFlowchart(presentation)).symptoms : [];
 
     return (
         <div>
             <div className='text-6xl'>Flowchart</div>
             <div>
                 <div>
-                    <FlowChartQuestionaire buttonsList={buttonsDisplayList} />
+                    <FlowChartQuestionaire buttonsList={displayButtons} />
                 </div>
             </div>
         </div>

@@ -7,9 +7,15 @@ const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const presentations: string = location.state?.presentations || '';
-  console.log( "Input string was:" + presentations);
+  console.log("Input string was:" + presentations);
   const presentation = selectFlowchart(presentations);
+  console.log(presentation)
   const firstQuestion: Question = firstButton(presentation);
+
+  const handleClick = () => {
+    // Pass arguments as an object
+    navigate('/FlowChart', { state: { presentations} });
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -26,7 +32,7 @@ const Confirmation: React.FC = () => {
           </button>
           <button
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={() => navigate('/FlowChart')}
+            onClick = { handleClick }
           >
             Continue
           </button>
