@@ -11,7 +11,7 @@ const Confirmation: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white p-8 rounded shadow">
-        <h1 className="text-2xl font-bold mb-4 text-center">Confirm Your Condition</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center">Confirm Your Condition Please</h1>
         <p className="text-center mb-4">We have diagnosed you as</p>
         <p className="text-3xl font-bold text-center mb-8">{presentation.toString()}</p>
         <div className="flex justify-between">
