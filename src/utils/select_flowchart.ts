@@ -5,8 +5,8 @@ import { Presentation } from "./presentation";
 import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adults";
 
 // mapping between string and Presentation 
-const presentationsMap: { [key: string]: new () => Presentation } = {
-    "Abdominal pain in adults": AbdominalPainAdultsHandler,
+const presentationsMap: { [key: string]: Presentation } = {
+    "1": AbdominalPainAdultsHandler.getInstance(),
     // Add more mappings as needed...
   };
 
@@ -14,7 +14,10 @@ const presentationsMap: { [key: string]: new () => Presentation } = {
 export const selectFlowchart = (symptom: string) => {
     // gets Presentation from presentationsMap and returns implementation
     const presentation = presentationsMap[symptom];
-    return new presentation();
+    if (!presentation) {
+        throw new Error(`No presentation found for symptom: ${symptom}`);
+    }
+    return presentation;
 }
 
 export function nextQuestion(presentation: Presentation, category: CategoryEnum): Question {
@@ -51,11 +54,13 @@ export function nextQuestion(presentation: Presentation, category: CategoryEnum)
 }
 
 export const firstButton = (presentation: Presentation) => {
+    console.log(presentation);
     const first: Question = {
         category: CategoryEnum.RED,
         symptoms: presentation.red(),
         presentation: presentation
     }
+    console.log(first);
     return first;
 }
 

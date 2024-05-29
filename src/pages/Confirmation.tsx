@@ -7,6 +7,7 @@ const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const presentations: string = location.state?.presentations || '';
+  console.log( "Input string was:" + presentations);
   const presentation = selectFlowchart(presentations);
   const firstQuestion: Question = firstButton(presentation);
 
