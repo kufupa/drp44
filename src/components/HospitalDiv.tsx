@@ -20,7 +20,7 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
 
     return (
         // Maybe have different views for different screens
-        <div className="min-h-24 relative p-4 border rounded shadow-md m-4 hover:bg-red-50 grid grid-cols-3 gap-4">
+        <div className="min-h-24 relative p-4 border shadow-md m-4 bg-blue-100 hover:bg-blue-300 grid grid-cols-3 gap-4 rounded-full">
             {/* Hospital Name */}
             <div className="col-span-1 flex items-center justify-center">
                 <h2 className="text-2xl font-bold mb-2 max-w-96">{hospitalName}</h2>
@@ -39,7 +39,7 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
 
             {/* Direction and Inform Hospital */}
             <div className="relative col-span-1 flex items-center justify-center">
-                <div className="absolute text-sm right-10 bottom-0 cursor-pointer"
+                <div className="absolute text-sm right-10 bottom-0 cursor-pointer hover:text-lg hover:-bottom-1"
                     onClick={handleDirectionsClick}>Directions</div>
                 <div className="absolute cursor-pointer right-14 top-0" onClick={handleToggleTicked}>
                     <div className="w-8 h-8 rounded-full bg-green-100 hover:bg-green-300">
@@ -61,7 +61,3 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
 };
 
 export default HospitalDiv;
-function useRef<T>(arg0: null) {
-    throw new Error('Function not implemented.');
-}
-

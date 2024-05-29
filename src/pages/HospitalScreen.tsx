@@ -57,6 +57,7 @@ const HospitalScreen: React.FC = () => {
     return (
         <div>
             <div className='text-3xl'>List Of Hospitals</div>
+            <div className='py-6'>We're presenting the best hospitals for you, based on both the hospital's waiting time and your commute time.</div>
             <div className='grid grid-cols-10'>
                 <div className='lg:col-span-7 col-span-4'></div>
                 <div className='lg:col-span-3 col-span-6'>
