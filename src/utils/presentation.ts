@@ -7,5 +7,5 @@ export abstract class Presentation {
   abstract black(): Array<string>;
   static getInstance(): Presentation {
     throw new Error("Method not implemented.");
-}
+  }
 }
