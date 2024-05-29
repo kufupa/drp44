@@ -54,7 +54,6 @@ const HospitalScreen: React.FC = () => {
         }
     });
 
-
     return (
         <div>
             <div className='text-3xl'>List Of Hospitals</div>
