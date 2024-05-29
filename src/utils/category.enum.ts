@@ -4,4 +4,5 @@ export enum CategoryEnum {
     YELLOW = 'yellow',
     GREEN = 'gree',
     BLACK = 'black',
+    UNDEFINED = 'undefined',
 }
