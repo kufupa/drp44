@@ -5,7 +5,7 @@ import { nextButtons } from '../utils/select_flowchart';
 
 const FlowChart: React.FC = () => {
     // To add later
-    const buttonsDisplayList: string[] = ["First prompt", "Second Prompt"];
+    const buttonsDisplayList: string[] = ["First prompt", "Second Prompt","First prompt", "Second Prompt"];
     // const firstSetOfButtons: Question = nextButtons();
 
     return (

@@ -2,3 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.flowChartButton {
+  background-color: #748CAB;
+}
+
+.flowChartNoneButton {
+  background-color: #A9D3FF;
+}
+
+.flowChartSubmitButton {
+  background-color: #376B2A;
+}
