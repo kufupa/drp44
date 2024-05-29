@@ -14,11 +14,7 @@ const presentationsMap: { [key: string]: new () => Presentation } = {
 export const selectFlowchart = (symptom: string) => {
     // gets Presentation from presentationsMap and returns implementation
     const presentation = presentationsMap[symptom];
-    if (presentation) {
-        return new presentation();
-    } else {
-        return "";
-    }
+    return new presentation();
 }
 
 export function nextQuestion(presentation: Presentation, category: CategoryEnum): Question {
@@ -54,6 +50,14 @@ export function nextQuestion(presentation: Presentation, category: CategoryEnum)
     return answer;
 }
 
+export const firstButton = (presentation: Presentation) => {
+    const first: Question = {
+        category: CategoryEnum.RED,
+        symptoms: presentation.red(),
+        presentation: presentation
+    }
+    return first;
+}
 
 
 export const nextButtons = (buttonsPressed: Question) => {

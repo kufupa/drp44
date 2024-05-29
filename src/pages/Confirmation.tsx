@@ -1,12 +1,14 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { selectFlowchart } from '../utils/select_flowchart';
+import { firstButton, selectFlowchart } from '../utils/select_flowchart';
+import { Question } from '../utils/question';
 
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const presentations: string = location.state?.presentations || '';
   const presentation = selectFlowchart(presentations);
+  const firstQuestion: Question = firstButton(presentation);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
