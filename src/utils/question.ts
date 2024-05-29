@@ -1,4 +1,5 @@
 import { CategoryEnum } from "./category.enum";
+import { Presentation } from "./presentation";
 
 
 export interface Question {

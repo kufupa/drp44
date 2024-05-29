@@ -1,4 +1,6 @@
-class AbdominalPainAdultsHandler implements Presentation {
+import { Presentation } from "../presentation";
+
+export class AbdominalPainAdultsHandler implements Presentation {
 
     toString() {
         return "Abdominal Pain in Adults"

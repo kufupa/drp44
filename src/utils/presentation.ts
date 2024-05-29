@@ -1,4 +1,4 @@
-interface Presentation {
+export interface Presentation {
     toString: () => string;
     red: () => Array<string>;
     orange: () => Array<string>;

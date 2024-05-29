@@ -1,6 +1,8 @@
 import { List } from "postcss/lib/list"
 import { Question } from "./question"
 import { CategoryEnum } from "./category.enum";
+import { Presentation } from "./presentation";
+import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adults";
 
 // mapping between string and Presentation 
 const presentationsMap: { [key: string]: new () => Presentation } = {
