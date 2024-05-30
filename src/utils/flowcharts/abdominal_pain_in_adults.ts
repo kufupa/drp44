@@ -2,6 +2,9 @@ import { Presentation } from "../presentation";
 
 
 export class AbdominalPainAdultsHandler extends Presentation {
+    image(): string {
+        return "RISHI PATEL";
+    }
     
     static getInstance = () => {
       return new AbdominalPainAdultsHandler();

@@ -10,6 +10,7 @@ const FlowChart: React.FC = () => {
     const presentation: string = location.state?.presentations || null;
     const [button, setButton] = useState(presentation != null ? firstButton(selectFlowchart(presentation)) : null);
     const [displayButtons, setDisplayButtons] = useState(button != null ? button.symptoms : []);
+    const navigate = useNavigate();
 
     const handleNoneClick = () => {
         // TODO
@@ -20,12 +21,18 @@ const FlowChart: React.FC = () => {
             symptoms: [],
             presentation: selectFlowchart(presentation)
         }
+        console.log(question)
         setButton(nextButtons(question))
         setDisplayButtons(button != null ? button.symptoms : [])
     };
 
     const handleSubmitClick = () => {
         console.log("Submit clicked in FlowChart");
+        console.log(button)
+        if (button?.category == CategoryEnum.RED) {
+            navigate('/RedPatient');
+        }
+        // Need to submit button
         // Add your logic here
         // Add code to navigate to next which will display your category ... BLACK, RED, ...
         // use navigate

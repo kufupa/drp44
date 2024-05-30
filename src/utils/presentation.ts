@@ -5,6 +5,7 @@ export abstract class Presentation {
   abstract yellow(): Array<string>;
   abstract green(): Array<string>;
   abstract black(): Array<string>;
+  abstract image(): string;
   static getInstance(): Presentation {
     throw new Error("Method not implemented.");
   }
