@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const FlowChart: React.FC = () => {
     // To add later
     const location = useLocation();
-    const presentation: string = location.state?.presentations || null;
+    const presentation: string = location.state?.patientProblem || null;
     const displayButtons: string[] = presentation != null ? firstButton(selectFlowchart(presentation)).symptoms : [];
 
     return (

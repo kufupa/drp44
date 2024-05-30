@@ -6,15 +6,15 @@ import { Question } from '../utils/question';
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const presentations: string = location.state?.presentations || '';
-  console.log("Input string was:" + presentations);
-  const presentation = selectFlowchart(presentations);
+  const patientProblem: string = location.state?.patientProblem || '';
+  console.log("Input string was:" + patientProblem);
+  const presentation = selectFlowchart(patientProblem);
   console.log(presentation)
   const firstQuestion: Question = firstButton(presentation);
 
   const handleClick = () => {
     // Pass arguments as an object
-    navigate('/FlowChart', { state: { presentations} });
+    navigate('/FlowChart', { state: { patientProblem} });
   };
 
   return (

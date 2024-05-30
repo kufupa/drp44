@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src", "src/backend/database", "src/backend/data-models.tsx", "src/backend/db.tsx", "src/backend/firebase.config.js", "src/backend/hospitals.tsx"]
 }

@@ -5,15 +5,15 @@ import { Presentation } from "./presentation";
 import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adults";
 
 // mapping between string and Presentation 
-const presentationsMap: { [key: string]: Presentation } = {
+const patientProblemMap: { [key: string]: Presentation } = {
     "1": AbdominalPainAdultsHandler.getInstance(),
     // Add more mappings as needed...
   };
 
 
 export const selectFlowchart = (symptom: string) => {
-    // gets Presentation from presentationsMap and returns implementation
-    const presentation = presentationsMap[symptom];
+    // gets Presentation from patientProblemMap and returns implementation
+    const presentation = patientProblemMap[symptom];
     if (!presentation) {
         throw new Error(`No presentation found for symptom: ${symptom}`);
     }
