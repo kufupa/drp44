@@ -1,6 +1,10 @@
+// TODO
+// Use button category to determine wait time
+
 import React from 'react';
 import HospitalDiv from '../components/HospitalDiv';
 import { HospitalDetails } from '../components/HospitalDetails';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const HospitalScreen: React.FC = () => {
     // To get data from backend
@@ -53,6 +57,10 @@ const HospitalScreen: React.FC = () => {
             return 0;
         }
     });
+
+    const location = useLocation();
+    const button: string = location.state?.button || null;
+    console.log(button)
 
     return (
         <div>

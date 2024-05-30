@@ -16,14 +16,26 @@ const FlowChart: React.FC = () => {
         // TODO
         // Fix clicking None twice for the first case
         console.log("None clicked in FlowChart");
+        console.log(button)
         const question: Question = {
             category: button != null ? button.category : CategoryEnum.UNDEFINED,
+            // symptoms: button != null ? button?.symptoms : [""],
             symptoms: [],
             presentation: selectFlowchart(presentation)
         }
-        console.log(question)
         setButton(nextButtons(question))
-        setDisplayButtons(button != null ? button.symptoms : [])
+        console.log(button)
+        console.log(nextButtons(question))
+        if (button != null) {
+            if (button.category != CategoryEnum.BLACK) {
+                setDisplayButtons(nextButtons(question).symptoms)
+            } else {
+                // Lowest category
+                navigate('/HospitalScreen', { state: { button } });
+            }
+        } else {
+            setDisplayButtons([])
+        }
     };
 
     const handleSubmitClick = () => {
@@ -31,6 +43,8 @@ const FlowChart: React.FC = () => {
         console.log(button)
         if (button?.category == CategoryEnum.RED) {
             navigate('/RedPatient');
+        } else {
+            navigate('/HospitalScreen', { state: { button } });
         }
         // Need to submit button
         // Add your logic here

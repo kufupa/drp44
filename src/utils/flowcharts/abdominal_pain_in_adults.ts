@@ -54,6 +54,6 @@ export class AbdominalPainAdultsHandler extends Presentation {
     }
 
     black(): Array<string> {
-        return [];
+        return ["Demo data"];
     }
 }
