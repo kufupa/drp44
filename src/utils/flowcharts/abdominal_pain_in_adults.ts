@@ -2,6 +2,9 @@ import { Presentation } from "../presentation";
 
 
 export class AbdominalPainAdultsHandler extends Presentation {
+    image(): string {
+        return "Image";
+    }
     
     static getInstance = () => {
       return new AbdominalPainAdultsHandler();
@@ -51,6 +54,6 @@ export class AbdominalPainAdultsHandler extends Presentation {
     }
 
     black(): Array<string> {
-        return [];
+        return ["Past mild pain"];
     }
 }

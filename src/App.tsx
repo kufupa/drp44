@@ -7,6 +7,10 @@ import PresentationForm from './pages/Presentation';
 import Confirmation from './pages/Confirmation';
 import FlowChart from './pages/FlowChart';
 import { AbdominalPainAdultsHandler } from './utils/flowcharts/abdominal_pain_in_adults';
+import RedPatients from './pages/RedPatients';
+import ErrorPage from './pages/Error';
+import RegisterHospital from './pages/RegisterHospital';
+import SuccessfulHospitalRegistration from './pages/SuccessfulHospitalRegistration';
 
 const App: React.FC = () => {
   const mockFlowChartPres = AbdominalPainAdultsHandler.getInstance();
@@ -19,6 +23,10 @@ const App: React.FC = () => {
           <Route path="/FlowChart" element={<FlowChart />} />
           <Route path="/Presentation" element={<PresentationForm />} />
           <Route path="/Confirmation" element={<Confirmation />} />
+          <Route path="/RedPatient" element={<RedPatients />} />
+          <Route path="/Error" element={<ErrorPage />} />
+          <Route path="/RegisterHospital" element={<RegisterHospital />} />
+          <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
           <Route path="*" element={<PresentationForm />} />
         </Routes>
       </div>

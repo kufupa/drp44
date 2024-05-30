@@ -38,8 +38,11 @@ export function nextQuestion(presentation: Presentation, category: CategoryEnum)
     } else if (category === CategoryEnum.GREEN) {
         nextCategory = CategoryEnum.BLACK;
         symptoms = presentation.black();
-    } else {
+    } else if (CategoryEnum.BLACK) {
         // if currrent category is black, then there are no lower categories
+        nextCategory = CategoryEnum.BLACK;
+        symptoms = [];
+    } else {
         nextCategory = CategoryEnum.BLACK;
         symptoms = [];
     }
