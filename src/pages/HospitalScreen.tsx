@@ -5,6 +5,7 @@ import React from 'react';
 import HospitalDiv from '../components/HospitalDiv';
 import { HospitalDetails } from '../components/HospitalDetails';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { addNewHospitalDetails } from "../backend/hospitals"
 
 const HospitalScreen: React.FC = () => {
     // To get data from backend
@@ -57,6 +58,12 @@ const HospitalScreen: React.FC = () => {
             return 0;
         }
     });
+    async function addAllHospitalDetails(hospitals: HospitalDetails[]): Promise<void> {
+        for (const hospital of hospitals) {
+          await addNewHospitalDetails(hospital);
+        }
+      }
+    addAllHospitalDetails(hospitals)
 
     const location = useLocation();
     const button: string = location.state?.button || null;

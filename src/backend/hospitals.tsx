@@ -2,9 +2,10 @@ import { db } from "./db";
 import {Patient, Hospital} from "./data-models";
 import { collection, addDoc, getDocs, where, query } from "firebase/firestore";
 import {doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
+import { HospitalDetails } from "../components/HospitalDetails";
 
 
-async function getNextHospitalId(): Promise<number> {
+export async function getNextHospitalId(): Promise<number> {
   const counterRef = doc(db, "counters", "hospitalId");
 
   try {
@@ -27,7 +28,7 @@ async function getNextHospitalId(): Promise<number> {
   }
 }
 
-async function registerHospitalInterest(
+export async function registerHospitalInterest(
   receptionistName: string,
   email: string,
   hospitalName: string
@@ -41,6 +42,16 @@ async function registerHospitalInterest(
     };
 
     await addDoc(collection(db, "hospitalInterests"), newInterest);
+  } catch (error) {
+    throw error; // Re-throw the error to handle it in the calling code
+  }
+}
+
+export async function addNewHospitalDetails(
+  newHospitalD:  HospitalDetails
+): Promise<void> {
+  try {
+    await addDoc(collection(db, "hospitalDetails"), newHospitalD);
   } catch (error) {
     throw error; // Re-throw the error to handle it in the calling code
   }
@@ -63,6 +74,8 @@ const newHospital: Hospital =  {
   ],
   throughput: 0.8,
   maxCapacity: 120,
+  waitTime: Math.floor(Math.random() * (10)),
+  distance: Math.floor(Math.random() * (10))
 };
 
 async function addNewHospital(
