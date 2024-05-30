@@ -31,7 +31,7 @@ const RegisterHospital: React.FC = () => {
                 </svg>
             </div>
             <form onSubmit={handleSubmit}>
-                <div className='relative md:mt-20 mt-32'>
+                <div className='relative md:mt-20 mt-64'>
                     <div className='textBlue md:-ml-56 -ml-40'>
                         <label htmlFor="name">Receptionist Name:</label>
                     </div>
