@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const RegisterHospital: React.FC = () => {
     const [receptionistName, setName] = useState('');
     const [email, setEmail] = useState('');
     const [hospitalName, setHospitalName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -13,6 +16,7 @@ const RegisterHospital: React.FC = () => {
         } else {
             // Call your submit function here with the form data
             setErrorMessage('');
+            navigate("/SuccessfulHospitalRegistration");
             console.log(receptionistName + "    " + email + "    " + hospitalName)
         }
     };

@@ -10,6 +10,7 @@ import { AbdominalPainAdultsHandler } from './utils/flowcharts/abdominal_pain_in
 import RedPatients from './pages/RedPatients';
 import ErrorPage from './pages/Error';
 import RegisterHospital from './pages/RegisterHospital';
+import SuccessfulHospitalRegistration from './pages/SuccessfulHospitalRegistration';
 
 const App: React.FC = () => {
   const mockFlowChartPres = AbdominalPainAdultsHandler.getInstance();
@@ -25,6 +26,7 @@ const App: React.FC = () => {
           <Route path="/RedPatient" element={<RedPatients />} />
           <Route path="/Error" element={<ErrorPage />} />
           <Route path="/RegisterHospital" element={<RegisterHospital />} />
+          <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
           <Route path="*" element={<PresentationForm />} />
         </Routes>
       </div>
