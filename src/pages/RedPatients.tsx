@@ -5,12 +5,10 @@ import ambulance from "../components/Ambulance.jpeg"
 
 const RedPatients: React.FC = () => {
     return (
-        <div>
-            <div className='bg-black text-white w-screen'>
-                <div className='text-3xl'>You have been diagnosed as a Critical Patient</div>
-                <img src={ambulance} alt="Ambulance" />
-                <div className=''>Please Call 999 for additional assistance</div>
-            </div>
+        <div className="fixed inset-0 ambulaneBGColor text-white flex flex-col items-center justify-center">
+            <div className="text-5xl mb-20 max-w-2xl">You have been diagnosed as a Critical Patient</div>
+            <img src={ambulance} alt="Ambulance" className="mb-4" />
+            <div className="text-2xl border rounded-3xl max-w-80 p-10 mt-24">Please Call 999 for additional assistance</div>
         </div>
     );
 };
