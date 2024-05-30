@@ -54,6 +54,6 @@ export class AbdominalPainAdultsHandler extends Presentation {
     }
 
     black(): Array<string> {
-        return ["Demo data"];
+        return ["Past mild pain"];
     }
 }
