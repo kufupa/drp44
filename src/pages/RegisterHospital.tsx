@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { registerHospitalInterest } from '../backend/hospitals';
 
 
 const RegisterHospital: React.FC = () => {
@@ -16,8 +17,8 @@ const RegisterHospital: React.FC = () => {
         } else {
             // Call your submit function here with the form data
             setErrorMessage('');
+            registerHospitalInterest(receptionistName, email, hospitalName);
             navigate("/SuccessfulHospitalRegistration");
-            console.log(receptionistName + "    " + email + "    " + hospitalName)
         }
     };
 
