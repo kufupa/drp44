@@ -58,12 +58,6 @@ const HospitalScreen: React.FC = () => {
             return 0;
         }
     });
-    async function addAllHospitalDetails(hospitals: HospitalDetails[]): Promise<void> {
-        for (const hospital of hospitals) {
-          await addNewHospitalDetails(hospital);
-        }
-      }
-    addAllHospitalDetails(hospitals)
 
     const location = useLocation();
     const button: string = location.state?.button || null;

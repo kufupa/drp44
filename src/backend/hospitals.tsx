@@ -51,7 +51,21 @@ export async function addNewHospitalDetails(
   newHospitalD:  HospitalDetails
 ): Promise<void> {
   try {
-    await addDoc(collection(db, "hospitalDetails"), newHospitalD);
+    const hospitalRef = collection(db, "hospitalDetails");
+    const querySnapshot = await getDocs(
+      query(hospitalRef, where("hospitalName", "==", newHospitalD.hospitalName))
+    );
+
+    if (querySnapshot.empty) {
+      // Hospital name not found, add the new hospital details
+      await addDoc(hospitalRef, newHospitalD);
+    } else {
+      // Hospital name already exists, handle the duplicate entry
+      console.warn(
+        `Hospital with name "${newHospitalD.hospitalName}" already exists.`
+      );
+      // You can throw an error, log a message, or take other actions here
+    }
   } catch (error) {
     throw error; // Re-throw the error to handle it in the calling code
   }

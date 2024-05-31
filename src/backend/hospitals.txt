@@ -33,3 +33,26 @@ const hospital1: HospitalDetails = {
         directions: '51.4695394804474, -0.093888722197904',
         ticked: false,
     }
+
+
+    async function addAllHospitalDetails(hospitals: HospitalDetails[]): Promise<void> {
+        for (const hospital of hospitals) {
+          await addNewHospitalDetails(hospital);
+        }
+      }
+    addAllHospitalDetails(hospitals)
+
+        const hospitals: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5].sort((a, b) => {
+        // Calculate the score for each hospital based on waitTime and distance
+        const scoreA = a.waitTime + a.distance * 2;
+        const scoreB = b.waitTime + b.distance * 2;
+
+        // Compare the scores
+        if (scoreA < scoreB) {
+            return -1;
+        } else if (scoreA > scoreB) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
