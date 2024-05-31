@@ -71,6 +71,25 @@ export async function addNewHospitalDetails(
   }
 }
 
+export async function getAllHospitalDetails(): Promise<HospitalDetails[]> {
+  try {
+    const hospitalsSnapshot = await getDocs(collection(db, "hospitalDetails"));
+
+    const hospitalsDetails: HospitalDetails[] = hospitalsSnapshot.docs.map((doc) => {
+      const data = doc.data() as HospitalDetails;
+      return {
+        id: doc.id,
+        ...data,
+      };
+    });
+
+    return hospitalsDetails;
+  } catch (error) {
+    throw error; // Re-throw the error to handle it in the calling code
+  }
+}
+
+
 function getRandomPatientCount(): number {
   return Math.floor(Math.random() * (50));
 }
@@ -102,17 +121,6 @@ async function addNewHospital(
   }
 }
 
-
-
-// Get all hospitals
-getDocs(collection(db, 'hospitals'))
-  .then((hospitalsSnapshot) => {
-    const hospitals: Hospital[] = hospitalsSnapshot.docs.map(doc => doc.data() as Hospital);
-    console.log('Hospitals:', hospitals);
-  })
-  .catch((error) => {
-    console.error('Error getting hospitals:', error);
-  });
 
 // Add a new patient
 const newPatient: Patient = {
