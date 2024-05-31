@@ -19,7 +19,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <div className='fixed inset-0 backgroundPale text-white flex flex-col items-center justify-center'>
-      <div className='text-5xl textClickBlue font-bold max-w-md'>Welcome to quickER</div>
+      <div className='text-5xl textClickBlue font-bold max-w-md'>Welcome to quickER!</div>
       <img src={homeScreenImage} alt="Image" className='h-96'/>
       <div className='bgClickBlue text-white rounded-full py-4 px-20 mt-10' onClick={handleClickPatient}>Patient</div>
       <div className='bgClickBlue text-white rounded-full py-4 px-20 mt-10' onClick={handleClickHospital}>Hospital</div>
