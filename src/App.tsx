@@ -11,6 +11,7 @@ import RedPatients from './pages/RedPatients';
 import ErrorPage from './pages/Error';
 import RegisterHospital from './pages/RegisterHospital';
 import SuccessfulHospitalRegistration from './pages/SuccessfulHospitalRegistration';
+import HomeScreen from './pages/HomeScreen';
 
 const App: React.FC = () => {
   const mockFlowChartPres = AbdominalPainAdultsHandler.getInstance();
@@ -18,7 +19,8 @@ const App: React.FC = () => {
     <Router>
       <div className="App container mx-auto p-4">
         <Routes>
-          <Route path="/" element={<PresentationForm />} />
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/PresentationForm" element={<PresentationForm />} />
           <Route path="/HospitalScreen" element={<HospitalScreen />} />
           <Route path="/FlowChart" element={<FlowChart />} />
           <Route path="/Presentation" element={<PresentationForm />} />
