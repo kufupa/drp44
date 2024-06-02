@@ -19,7 +19,7 @@ const Confirmation: React.FC = () => {
   };
 
   return (
-    <div className='textBlue backgroundPale textBlue flex flex-col fixed inset-0 items-center justify-center font-bold'>
+    <div className='textBlue backgroundPale textBlue flex flex-col fixed inset-0 items-center justify-center'>
       <BackButton />
       <div className='textClickBlue text-3xl font-bold top-10 my-5'>Do you fit into this category?</div>
       <div className='md:top-32 top-40 my-5'>
@@ -29,8 +29,8 @@ const Confirmation: React.FC = () => {
       </div>
       <div className='text-3xl bg-blue-400 text-white px-10 py-10 rounded-2xl md:top-[340px] my-5'>{diagnosis.toString()}</div>
       
-      <button className='bgClickBlue text-2xl text-white rounded-full py-4 px-20 my-4 font-bold' onClick={handleClick}>Yes</button>
-      <button className='textClickBlue text-2xl font-bold rounded-full py-3 px-10 border-4 border-blue-200' onClick={() => navigate(-1)}>No</button>
+      <button className='bgClickBlue text-2xl text-white rounded-full py-4 px-20 my-4' onClick={handleClick}>Yes</button>
+      <button className='textClickBlue text-2xl rounded-full py-3 px-10 border-4 border-blue-200' onClick={() => navigate(-1)}>No</button>
  
     </div>
   );
