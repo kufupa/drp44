@@ -16,23 +16,25 @@ import HomeScreen from './pages/HomeScreen';
 const App: React.FC = () => {
   const mockFlowChartPres = AbdominalPainAdultsHandler.getInstance();
   return (
-    <Router>
-      <div className="App container mx-auto p-4">
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/PresentationForm" element={<PresentationForm />} />
-          <Route path="/HospitalScreen" element={<HospitalScreen />} />
-          <Route path="/FlowChart" element={<FlowChart />} />
-          <Route path="/Presentation" element={<PresentationForm />} />
-          <Route path="/Confirmation" element={<Confirmation />} />
-          <Route path="/RedPatient" element={<RedPatients />} />
-          <Route path="/Error" element={<ErrorPage />} />
-          <Route path="/RegisterHospital" element={<RegisterHospital />} />
-          <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
-          <Route path="*" element={<PresentationForm />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className='backgroundPale'>
+      <Router>
+        <div className="App container mx-auto p-4">
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/PresentationForm" element={<PresentationForm />} />
+            <Route path="/HospitalScreen" element={<HospitalScreen />} />
+            <Route path="/FlowChart" element={<FlowChart />} />
+            <Route path="/Presentation" element={<PresentationForm />} />
+            <Route path="/Confirmation" element={<Confirmation />} />
+            <Route path="/RedPatient" element={<RedPatients />} />
+            <Route path="/Error" element={<ErrorPage />} />
+            <Route path="/RegisterHospital" element={<RegisterHospital />} />
+            <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
+            <Route path="*" element={<PresentationForm />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
   );
 }
 
