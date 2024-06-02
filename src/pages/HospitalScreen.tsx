@@ -47,30 +47,30 @@ const HospitalScreen: React.FC = () => {
     console.log(button)
 
     return (
-        <div>
-            <BackButton />
-            <div className='text-5xl font-black'>List Of Hospitals</div>
-            <div className='py-6'>We're presenting the best hospitals for you, based on both the hospital's waiting time and your commute time.</div>
-            <div className='grid grid-cols-10'>
-                <div className='lg:col-span-7 col-span-4'></div>
-                <div className='lg:col-span-3 col-span-6 mb-6'>
-                    <div className='absolute ml-4'>
-                        <div className="w-8 h-8 rounded-full bg-green-100 hover:bg-green-300">
-                            <div className="absolute z-10 rounded-lg text-2xl left-2 -top-0.5">+</div>
-                        </div>
-                    </div>
-                    <div className='absolute ml-14 mt-1'> - Page the hospital of your arrival</div>
-                </div>
-            </div>
-            {/* Div containing all Hospitals */}
-            <div className='mt-10'>
-                {/* Map through all hospitals */}
-                {hospitals.map((hospital, index) => (
-                    <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={hospital.ticked} />
-                ))}
+      <div className='font-bold'>
+          <BackButton />
+          <div className='text-5xl font-black'>Hospital Reccommendations</div>
+          <div className='py-6'>We're presenting the best hospitals for you, based on both the hospital's waiting time and your commute time.</div>
+          <div className='grid grid-cols-10'>
+              <div className='lg:col-span-7 col-span-4'></div>
+              <div className='lg:col-span-3 col-span-6 mb-6'>
+                  <div className='absolute ml-4'>
+                      <div className="w-8 h-8 rounded-full bg-green-100 hover:bg-green-300">
+                          <div className="absolute z-10 rounded-lg text-2xl left-2 -top-0.5">+</div>
+                      </div>
+                  </div>
+                  <div className='absolute ml-14 mt-1'> - Page the hospital of your arrival</div>
+              </div>
+          </div>
+          {/* Div containing all Hospitals */}
+          <div className='mt-10'>
+              {/* Map through all hospitals */}
+              {hospitals.map((hospital, index) => (
+                  <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={hospital.ticked} />
+              ))}
 
-            </div>
-        </div>
+          </div>
+      </div>
     );
 };
 
