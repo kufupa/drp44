@@ -61,9 +61,7 @@ const PresentationForm: React.FC = () => {
           ></textarea>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Submit
-          </button>
+        <button type="submit" className='bgClickBlue text-white text-xl rounded-full py-4 px-20 my-2'>Submit</button>
         </div>
       </form>
     </div>
