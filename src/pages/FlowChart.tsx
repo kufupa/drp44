@@ -8,7 +8,7 @@ import BackButton from '../components/BackButton';
 
 const FlowChart: React.FC = () => {
     const location = useLocation();
-    const presentation: string = location.state?.presentations || null;
+    const presentation: string = location.state?.patientProblem || null;
     const [button, setButton] = useState(presentation != null ? firstButton(selectFlowchart(presentation)) : null);
     const [displayButtons, setDisplayButtons] = useState(button != null ? button.symptoms : []);
     const navigate = useNavigate();
