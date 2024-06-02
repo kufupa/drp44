@@ -4,6 +4,7 @@ import { firstButton, nextButtons, selectFlowchart } from '../utils/select_flowc
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Question } from '../utils/question';
 import { CategoryEnum } from '../utils/category.enum';
+import BackButton from '../components/BackButton';
 
 const FlowChart: React.FC = () => {
     const location = useLocation();
@@ -54,6 +55,7 @@ const FlowChart: React.FC = () => {
 
     return (
         <div>
+            <BackButton />
             <div className='text-6xl'>Flowchart</div>
             <div>
                 <div>

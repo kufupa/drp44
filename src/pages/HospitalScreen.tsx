@@ -6,6 +6,7 @@ import HospitalDiv from '../components/HospitalDiv';
 import { HospitalDetails } from '../components/HospitalDetails';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAllHospitalDetails } from "../backend/hospitals"
+import BackButton from '../components/BackButton';
 
 const HospitalScreen: React.FC = () => {
   // To get data from backend
@@ -47,6 +48,7 @@ const HospitalScreen: React.FC = () => {
 
     return (
         <div>
+            <BackButton />
             <div className='text-5xl font-black'>List Of Hospitals</div>
             <div className='py-6'>We're presenting the best hospitals for you, based on both the hospital's waiting time and your commute time.</div>
             <div className='grid grid-cols-10'>

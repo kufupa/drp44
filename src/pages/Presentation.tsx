@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from "../backend/db" ;
 import { collection, addDoc} from "firebase/firestore";
+import BackButton from '../components/BackButton';
 
 
 const PresentationForm: React.FC = () => {
@@ -31,6 +32,7 @@ const PresentationForm: React.FC = () => {
 
   return (
     <div className="fixed inset-0 backgroundPale flex flex-col items-center justify-center">
+      <BackButton /> {/* Render the BackButton component */}
       <form onSubmit={handleSubmit} className="w-full max-w-md p-8">
         <h1 className="text-5xl font-bold mb-6 text-center textClickBlue">Describe your problem</h1>
         <div className='relative'>
