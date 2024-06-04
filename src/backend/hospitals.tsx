@@ -1,6 +1,6 @@
 import { db } from "./db";
 import {Patient, Hospital} from "./data-models";
-import { collection, addDoc, getDocs, where, query } from "firebase/firestore";
+import { collection, addDoc, getDocs, where, query, getFirestore } from "firebase/firestore";
 import {doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { HospitalDetails } from "../components/HospitalDetails";
 
@@ -51,7 +51,8 @@ export async function addNewHospitalDetails(
   newHospitalD:  HospitalDetails
 ): Promise<void> {
   try {
-    const hospitalRef = collection(db, "hospitalDetails");
+    const dbSnapshot = getFirestore();
+    const hospitalRef = collection(dbSnapshot, "hospitalDetails");
     const querySnapshot = await getDocs(
       query(hospitalRef, where("hospitalName", "==", newHospitalD.hospitalName))
     );
