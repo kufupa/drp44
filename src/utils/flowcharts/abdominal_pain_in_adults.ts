@@ -1,9 +1,11 @@
 import { Presentation } from "../presentation";
+// @ts-ignore
+import StomachImage from '../../components/StomachImage.png'
 
 
 export class AbdominalPainAdultsHandler extends Presentation {
     image(): string {
-        return "Image";
+        return StomachImage;
     }
     
     static getInstance = () => {

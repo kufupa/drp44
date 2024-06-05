@@ -38,3 +38,12 @@
 .bgClickBlue {
     background-color: #0d5e8c;
 }
+
+.bgLightShadow {
+    background-color: #e3e2d6;
+}
+
+.borderBlueConfirmation {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 137, 185, var(--tw-border-opacity)) 
+}
