@@ -29,13 +29,17 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                     onMouseUp={() => onMouseUp()} // Empty to avoid any default behavior
                     onMouseLeave={() => {}} // Empty to avoid any default behavior
                     onTouchStart={() => onMouseDown(buttonData)} // For touch devices
-                    onTouchEnd={() => {}} // Empty to avoid any default behavior
+                    onTouchEnd={() => onMouseUp()} // Empty to avoid any default behavior
                     onTouchCancel={() => {}} // Empty to avoid any default behavior
                   >{buttonData}</div>
                 )}
             </div>
-            <div className='row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 mb-4 rounded-full text-white text-2xl font-medium cursor-pointer'
-                onClick={onNoneClick}>None</div>
+            <div
+                className="row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 mb-4 rounded-full text-white text-2xl font-medium cursor-pointer"
+                onClick={onNoneClick} // Ensure this calls the correct function
+            >
+                None
+            </div>
             <div className='row-span-1 flowChartSubmitButton lg:mx-96 mx-32 md:mx-56 py-4 my-4 rounded-full text-white text-2xl font-medium cursor-pointer' 
                 onClick={onSubmitClick}>Submit</div>
         </div>
