@@ -42,6 +42,15 @@ export async function registerHospitalInterest(
     };
 
     await addDoc(collection(db, "hospitalInterests"), newInterest);
+    const l1 = 51.49921390992211 + Math.random()/20;
+    const l2 = -0.11885373048485628  + Math.random()/20;
+    await addNewHospitalDetails({
+      hospitalName: hospitalName,
+      waitTime: Math.floor(Math.random() * 8)/2,
+      distance: Math.floor(Math.random() * 16)/4,
+      directions: l1 + ', ' + l2,
+      ticked: false
+    });
   } catch (error) {
     throw error; // Re-throw the error to handle it in the calling code
   }
@@ -65,7 +74,6 @@ export async function addNewHospitalDetails(
       console.warn(
         `Hospital with name "${newHospitalD.hospitalName}" already exists.`
       );
-      // You can throw an error, log a message, or take other actions here
     }
   } catch (error) {
     throw error; // Re-throw the error to handle it in the calling code
