@@ -6,15 +6,14 @@ import HospitalScreen from './pages/HospitalScreen';
 import PresentationForm from './pages/Presentation';
 import Confirmation from './pages/Confirmation';
 import FlowChart from './pages/FlowChart';
-import { AbdominalPainAdultsHandler } from './utils/flowcharts/abdominal_pain_in_adults';
 import RedPatients from './pages/RedPatients';
 import ErrorPage from './pages/Error';
 import RegisterHospital from './pages/RegisterHospital';
 import SuccessfulHospitalRegistration from './pages/SuccessfulHospitalRegistration';
 import HomeScreen from './pages/HomeScreen';
+import InfoPage from './pages/Info';
 
 const App: React.FC = () => {
-  const mockFlowChartPres = AbdominalPainAdultsHandler.getInstance();
   return (
     <div className='backgroundPale'>
       <Router>
@@ -30,6 +29,7 @@ const App: React.FC = () => {
             <Route path="/Error" element={<ErrorPage />} />
             <Route path="/RegisterHospital" element={<RegisterHospital />} />
             <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
+            <Route path="/unique-page/:buttonData" Component={InfoPage} />
             <Route path="*" element={<PresentationForm />} />
           </Routes>
         </div>
