@@ -8,7 +8,7 @@ const InfoPage: React.FC = () => {
 
   useEffect(() => {
     const handleMouseUp = () => {
-      navigate('/flowchart', { state: location.state });
+      navigate(-1);
     };
 
     window.addEventListener('mouseup', handleMouseUp);
