@@ -6,7 +6,7 @@ import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adult
 
 // mapping between string and Presentation 
 const patientProblemMap: { [key: string]: Presentation } = {
-    "1": AbdominalPainAdultsHandler.getInstance(),
+    "pain in stomach": AbdominalPainAdultsHandler.getInstance(),
     // Add more mappings as needed...
   };
 
