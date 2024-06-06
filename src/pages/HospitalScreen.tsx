@@ -12,6 +12,8 @@ import HospitalIcon from '../components/HospitalIcon.png'
 // @ts-ignore
 import ClipboardIcon from '../components/ClipboardIcon.png'
 
+import { addMarker, initMap } from '../components/GoogleMapsLogic';
+
 const HospitalScreen: React.FC = () => {
   // To get data from backend
   const [hospitals, setHospitals] = useState<HospitalDetails[]>([]);
@@ -19,7 +21,7 @@ const HospitalScreen: React.FC = () => {
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
-        const hospitalsDetails = await getAllHospitalDetails();
+        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
 
         // Calculate the score for each hospital based on waitTime and distance
         const sortedHospitals = hospitalsDetails.sort((a, b) => {
@@ -46,29 +48,47 @@ const HospitalScreen: React.FC = () => {
   }, []);
 
 
-    const location = useLocation();
-    const button: string = location.state?.button || null;
-    console.log(button)
+  const location = useLocation();
+  const button: string = location.state?.button || null;
+  console.log(button)
 
-    return (
-      <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
-          <BackButton />
-          <div className='md:text-5xl text-3xl font-black textClickBlue md:mt-10 mt-4 max-w-xl'>Hospital Recommendations</div>
-          <img src={HospitalIcon} alt="" className='w-64'/>
-          <div className='flex flex-row textBlue' >
-            <img src={ClipboardIcon} alt="" className=''/>
-            <div className='mt-8 text-lg'>Below are our recommendations</div>
-          </div>
-          {/* Div containing all Hospitals */}
-          <div className=''>
-              {/* Map through all hospitals */}
-              {hospitals.map((hospital, index) => (
-                  <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={hospital.ticked} />
-              ))}
+  useEffect(() => {
+    initMap('map', { lat: 51.499122900037904, lng: -0.1790965476757596 });
+    (async () => {
+      try {
+        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
+        hospitalsDetails.map((hospital) => {
+          const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
+          console.log(lat + "     " + lng)
+          addMarker({ lat, lng, title: hospital.hospitalName });
+        });
+      } catch (error) {
+        console.error('Error fetching hospital details:', error);
+      }
+    })();
+  }, []);
 
-          </div>
+
+  return (
+    <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
+      <BackButton />
+      <div className='md:text-5xl text-3xl font-black textClickBlue md:mt-10 mt-4 max-w-xl'>Hospital Recommendations</div>
+      <img src={HospitalIcon} alt="" className='w-64' />
+      <div className='flex flex-row textBlue' >
+        <img src={ClipboardIcon} alt="" className='' />
+        <div className='mt-8 text-lg'>Below are our recommendations</div>
       </div>
-    );
+      {/* Div containing all Hospitals */}
+      <div className=''>
+        {/* Map through all hospitals */}
+        {hospitals.map((hospital, index) => (
+          <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={hospital.ticked} />
+        ))}
+
+      </div>
+      <div id="map" className="w-screen h-[300px] mt-4"></div>
+    </div>
+  );
 };
 
 export default HospitalScreen;

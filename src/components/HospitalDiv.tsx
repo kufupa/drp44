@@ -35,7 +35,7 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
                         {waitTime < 1 ? `Wait Time: ${waitTime * 60} Mins` : `Wait Time: ${waitTime} Hours`}
                     </div>
                     <div className='-mt-1.5'>
-                        {distance < 1 ? `Distance: ${distance * 60} Mins` : `Distance: ${distance} Hours`}
+                        {`Distance: ${distance} Miles`}
                     </div>
                 </div>
             </div>
@@ -61,7 +61,6 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
                     </div>
                 </div> */}
             {/* </div> */}
-
         </div>
     );
 };
