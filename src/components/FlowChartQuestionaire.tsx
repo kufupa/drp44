@@ -22,11 +22,11 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
     return (
         <div className='grid gird-row-4 backgroundPale pb-96'>
             <div className='text-4xl row-span-1 pt-20'>Do you have any of these symptoms?</div>
-            <div className='flex flex-row items-center justify-center textBlue' >
+            <div className='flex flex-row items-center justify-center textBlue mt-10' >
               <img src={ClipboardIcon} alt="" className='' />
               <div className='mt-8 text-lg'>Hold options for additional information</div>
             </div>
-            <div className='text-xl row-span-1 pt-10'>
+            <div className='text-xl row-span-1'>
                 {buttonsList.map((buttonData, index) =>
                     <div className={`${selectedButtons.includes(buttonData) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
                     onClick={() => handleClick(buttonData)}
