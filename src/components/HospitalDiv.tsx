@@ -7,7 +7,7 @@ import { HospitalDetails } from './HospitalDetails';
 // @ts-ignore
 import LocationIcon from './LocationIcon.png'
 
-const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distance, directions, ticked }) => {
+const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distance, directions, ticked, mapsFunc }) => {
     const [isTicked, setIsTicked] = useState(ticked);
 
     const handleToggleTicked = () => {
@@ -41,7 +41,7 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
             </div>
 
             {/* Direction and Inform Hospital */}
-            <div className="absolute bottom-[10px] right-[16px] cursor-pointer" onClick={handleDirectionsClick}>
+            <div className="absolute bottom-[10px] right-[16px] cursor-pointer" onClick={() => mapsFunc && mapsFunc(hospitalName, directions)}>
                 <img src={LocationIcon} alt="" className='w-10 rounded-full' />
             </div>
             {/* <div className="relative row-span-1 flex items-center justify-center"> */}

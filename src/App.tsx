@@ -12,6 +12,7 @@ import RegisterHospital from './pages/RegisterHospital';
 import SuccessfulHospitalRegistration from './pages/SuccessfulHospitalRegistration';
 import HomeScreen from './pages/HomeScreen';
 import InfoPage from './pages/Info';
+import DisplayMaps from './pages/DisplayMaps';
 
 const App: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const App: React.FC = () => {
             <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
             <Route path="/unique-page/:buttonData" Component={InfoPage} />
             <Route path="*" element={<HomeScreen />} />
+            <Route path="/DisplayMaps" element={<DisplayMaps />} />
           </Routes>
         </div>
       </Router>

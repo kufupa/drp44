@@ -4,4 +4,5 @@ export interface HospitalDetails {
     distance: number;
     directions: string;
     ticked: boolean;
+    mapsFunc?: (hospitalName: string, directions: string) => void;
 }
