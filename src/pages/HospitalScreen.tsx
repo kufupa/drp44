@@ -140,7 +140,7 @@ const HospitalScreen: React.FC = () => {
         ))}
 
       </div>
-      <div className='mt-8 text-lg'>N.B. The wait times are an estimate and may not be representative of the actual time once you arrive there</div>
+      <div className='mt-8 text-lg'>N.B. The wait times are an estimate and may not be representative of the actual time once you arrive at the hospital</div>
 
     </div>
   );
