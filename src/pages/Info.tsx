@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+// @ts-ignore
+import VomitingBlood from '../components/VomitingBlood.png'
 
 const InfoPage: React.FC = () => {
   const navigate = useNavigate();
@@ -27,17 +29,21 @@ const InfoPage: React.FC = () => {
   const infoData = buttonData.slice(buttonData.indexOf('-') + 1);
   const segments = infoData.split('·');
 
-  return (
-    <div className='backgroundPale items-center justify-center min-h-screen flex flex-col'>
-      <div className='textBlue text-3xl p-10'>Extra Information Page for {symptomName}</div>
-      <div>
-        {segments.map((segment, index) => (
-          <div key={index}>
-            {index === 0 ? segment.trim() : `· ${segment.trim()}`}
+    return (
+      <div className='textBlue backgroundPale textBlue flex flex-col fixed inset-0 items-center justify-center'>
+              <div className='textClickBlue text-4xl font-bold top-10 my-5'>Extra Information Page for {symptomName}</div>
+              <div className='md:top-32 top-40 my-5'>
+                <img src={VomitingBlood} alt="" className='w-64' />
+              </div>
+              {/* <div className='textClickBlue text-3xl'> */}
+              <div className='text-2xl textClickBlue px-4 py-6 font-bold my-5'>
+              {segments.map((segment, index) => (
+                <div key={index}>
+                  {index === 0 ? segment.trim() : `· ${segment.trim()}`}
+                </div>
+              ))}
+              </div>
           </div>
-        ))}
-      </div>
-    </div>
   );
 };
 
