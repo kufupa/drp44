@@ -20,7 +20,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
     console.log(buttonsList)
 
     return (
-        <div className='grid gird-row-4'>
+        <div className='grid gird-row-4 backgroundPale pb-96'>
             <div className='text-4xl row-span-1 pt-20'>Do you have any of these symptoms?</div>
             <div className='flex flex-row items-center justify-center textBlue' >
               <img src={ClipboardIcon} alt="" className='' />
@@ -46,7 +46,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                 None
             </div>
             <div className='row-span-1 flowChartSubmitButton lg:mx-96 mx-32 md:mx-56 py-4 my-4 rounded-full text-white text-2xl font-medium cursor-pointer' 
-                onClick={onSubmitClick}>Submit</div>
+                onClick={onSubmitClick}>One or more</div>
         </div>
     );
 };
