@@ -12,35 +12,40 @@ import HospitalIcon from '../components/HospitalIcon.png'
 // @ts-ignore
 import ClipboardIcon from '../components/ClipboardIcon.png'
 
-import { addMarker, initMap } from '../components/GoogleMapsLogic';
+import { addMarker, displayRouteByPublicTransport, initMap } from '../components/GoogleMapsLogic';
 
 const DisplayMaps: React.FC = () => {
-  const location = useLocation();
-  const button: string = location.state?.hospitals || null;
-  console.log(button)
+    const location = useLocation();
+    const hospital: HospitalDetails = location.state?.hospital || null;
+    console.log(hospital)
 
-  useEffect(() => {
-    initMap('map', { lat: 51.499122900037904, lng: -0.1790965476757596 });
-    (async () => {
-      try {
-        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
-        hospitalsDetails.map((hospital) => {
-          const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-          console.log(lat + "     " + lng)
-          addMarker({ lat, lng, title: hospital.hospitalName });
-        });
-      } catch (error) {
-        console.error('Error fetching hospital details:', error);
-      }
-    })();
-  }, []);
+    useEffect(() => {
+        const initializeMap = async () => {
+            try {
+                const center = { lat: 51.499122900037904, lng: -0.1790965476757596 };
+                await initMap('map', center);
+                // const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
+                const [lat, lng] = [51.487002444902714, -0.21937191239860668]
+                addMarker({ lat: lat, lng: lng, title: hospital.hospitalName });
+                addMarker({ lat: 51.499122900037904, lng: -0.1790965476757596, title: "Huxley Imperial" });
+
+                displayRouteByPublicTransport(center, { lat, lng });
+            } catch (error) {
+                console.error('Error initializing map:', error);
+            }
+        };
+
+        if (hospital) {
+            initializeMap();
+        }
+    }, [hospital]);
 
 
-  return (
-    <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
-      <div id="map" className="w-screen h-[300px] mt-4"></div>
-    </div>
-  );
+    return (
+        <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
+            <div id="map" className="w-screen h-screen mt-4"></div>
+        </div>
+    );
 };
 
 export default DisplayMaps;

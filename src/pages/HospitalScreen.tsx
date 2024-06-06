@@ -54,12 +54,12 @@ const HospitalScreen: React.FC = () => {
 
   // To get data from backend
   const [hospitals, setHospitals] = useState<HospitalDetails[]>([]);
-  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
 
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
-        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
+        // const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
+        const hospitalsDetails: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5]
 
         // Calculate the score for each hospital based on waitTime and distance
         const sortedHospitals = hospitalsDetails.sort((a, b) => {
@@ -90,8 +90,13 @@ const HospitalScreen: React.FC = () => {
   const button: string = location.state?.button || null;
 
   const handleClick = (hospitalName: string, directions: string) => {
-    const [lat, lng] = directions.split(',').map(coord => parseFloat(coord));
-    const marker = addMarker({ lat, lng, title: hospitalName });
+    // const [lat, lng] = directions.split(',').map(coord => parseFloat(coord));
+    // const marker = addMarker({ lat, lng, title: hospitalName });
+    hospitals.map((hospital) => {
+      if (hospital.hospitalName == hospitalName) {
+        navigate("/DisplayMaps", { state: { hospital } })
+      }
+    })
     // if (marker) {
     //   setMarkers([marker]);
     // } else {
@@ -99,23 +104,23 @@ const HospitalScreen: React.FC = () => {
     // }
   };
 
-  useEffect(() => {
-    // Initialize map
-    initMap('map', { lat: 51.499122900037904, lng: -0.1790965476757596 });
-    // Fetch hospitals and add markers
-    (async () => {
-      try {
-        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
-        hospitalsDetails.map((hospital) => {
-          const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-          console.log(lat + "     " + lng)
-          addMarker({ lat, lng, title: hospital.hospitalName });
-        });
-      } catch (error) {
-        console.error('Error fetching hospital details:', error);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   // Initialize map
+  //   initMap('map', { lat: 51.499122900037904, lng: -0.1790965476757596 });
+  //   // Fetch hospitals and add markers
+  //   (async () => {
+  //     try {
+  //       const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
+  //       hospitalsDetails.map((hospital) => {
+  //         const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
+  //         console.log(lat + "     " + lng)
+  //         addMarker({ lat, lng, title: hospital.hospitalName });
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching hospital details:', error);
+  //     }
+  //   })();
+  // }, []);
 
 
   return (
@@ -135,7 +140,6 @@ const HospitalScreen: React.FC = () => {
         ))}
 
       </div>
-      <div id="map" className="w-screen h-[300px] mt-4"></div>
     </div>
   );
 };
