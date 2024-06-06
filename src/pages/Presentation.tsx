@@ -28,6 +28,7 @@ const PresentationForm: React.FC = () => {
       const last = event.results.length - 1;
       const text = event.results[last][0].transcript;
       setTranscript(text);
+      setPatientProblem(text); // Update patientProblem with the transcript value
     };
 
     recognition.onerror = (event: any) => {
@@ -46,7 +47,6 @@ const PresentationForm: React.FC = () => {
     if (recognition) {
       recognition.stop();
       setIsListening(false);
-      setPatientProblem(transcript); // Update patientProblem with the transcript value
     }
   };
 
@@ -56,7 +56,7 @@ const PresentationForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!transcript) {
+    if (!patientProblem) {
       setError('Please describe your problem.');
       return;
     }
@@ -64,10 +64,10 @@ const PresentationForm: React.FC = () => {
     const inputId = Math.floor(Math.random() * (10000));
     addDoc(collection(db, 'inputs'), {
       inputId: inputId,
-      problem: transcript // Use transcript directly here
+      problem: patientProblem // Use patientProblem here
     })
       .then(() => {
-        navigate('/confirmation', { state: { patientProblem: transcript } });
+        navigate('/confirmation', { state: { patientProblem } });
       })
       .catch((error) => {
         console.error('Error adding hospital:', error);
@@ -87,7 +87,7 @@ const PresentationForm: React.FC = () => {
           </div>
           <textarea
             className="w-full h-32 p-2 border border-gray-300 rounded"
-            value={transcript} 
+            value={patientProblem}
             onChange={(e) => setPatientProblem(e.target.value)}
           ></textarea>
         </div>
