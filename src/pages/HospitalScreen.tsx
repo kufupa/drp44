@@ -58,8 +58,8 @@ const HospitalScreen: React.FC = () => {
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
-        // const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
-        const hospitalsDetails: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5]
+        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
+        // const hospitalsDetails: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5]
 
         // Calculate the score for each hospital based on waitTime and distance
         const sortedHospitals = hospitalsDetails.sort((a, b) => {

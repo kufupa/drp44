@@ -5,6 +5,7 @@ const InfoPage: React.FC = () => {
   const navigate = useNavigate();
   const { buttonData } = useParams<{ buttonData: string }>();
   const location = useLocation();
+  console.log(buttonData);
 
   useEffect(() => {
     const handleMouseUp = () => {
@@ -18,11 +19,24 @@ const InfoPage: React.FC = () => {
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('touchend', handleMouseUp);
     };
-  }, [navigate, location.state]);
+  }, [navigate]);
+
+  if (!buttonData) return null;
+  
+  const symptomName = buttonData.slice(0, buttonData.indexOf('-'));
+  const infoData = buttonData.slice(buttonData.indexOf('-') + 1);
+  const segments = infoData.split('·');
 
   return (
     <div>
-      <h1>Extra Information Page for {buttonData}</h1>
+      <h1>Extra Information Page for {symptomName}</h1>
+      <div>
+        {segments.map((segment, index) => (
+          <div key={index}>
+            {index === 0 ? segment.trim() : `· ${segment.trim()}`}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
