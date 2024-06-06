@@ -34,7 +34,6 @@ const App: React.FC = () => {
             <Route path="/unique-page/:buttonData" Component={InfoPage} />
             <Route path="*" element={<HomeScreen />} />
             <Route path="/DisplayMaps" element={<DisplayMaps />} />
-            <Route path="/Dict" element={<SpeechRecognitionComponent />} />
           </Routes>
         </div>
       </Router>
