@@ -17,7 +17,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
         }
     };
 
-    
+    console.log(buttonsList)
 
     return (
         <div className='grid gird-row-4'>
@@ -36,7 +36,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                     onTouchStart={() => onMouseDown(buttonData)} // For touch devices
                     onTouchEnd={() => onMouseUp()} // Empty to avoid any default behavior
                     onTouchCancel={() => {}} // Empty to avoid any default behavior
-                  >{buttonData}</div>
+                  >{buttonData.slice(0, buttonData.indexOf('-'))}</div>
                 )}
             </div>
             <div

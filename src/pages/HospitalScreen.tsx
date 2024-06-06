@@ -19,35 +19,35 @@ const HospitalScreen: React.FC = () => {
   const hospital1: HospitalDetails = {
     hospitalName: 'Charing Cross Hospital',
     waitTime: 7,
-    distance: 2,
+    distance: 2.5,
     directions: '51.48697601826863, -0.21951089239672142',
     ticked: false,
   }
   const hospital2: HospitalDetails = {
     hospitalName: 'Royal London Hospital',
     waitTime: 5,
-    distance: 3,
+    distance: 6.6,
     directions: '51.51885418944482, -0.05774435842324855',
     ticked: false,
   }
   const hospital3: HospitalDetails = {
     hospitalName: "Guy's Hospital",
     waitTime: 1,
-    distance: 0.5,
+    distance: 4.8,
     directions: '51.50392461109935, -0.08734215935546974',
     ticked: false,
   }
   const hospital4: HospitalDetails = {
     hospitalName: "St Thomas' Hospital",
     waitTime: 3,
-    distance: 0.75,
+    distance: 4,
     directions: '51.49921390992211, -0.11885373048485628',
     ticked: false,
   }
   const hospital5: HospitalDetails = {
     hospitalName: "King's College Hospital",
     waitTime: 1,
-    distance: 3,
+    distance: 5.6,
     directions: '51.4695394804474, -0.093888722197904',
     ticked: false,
   }
@@ -58,8 +58,8 @@ const HospitalScreen: React.FC = () => {
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
-        // const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
-        const hospitalsDetails: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5]
+        const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
+        // const hospitalsDetails: HospitalDetails[] = [hospital1, hospital2, hospital3, hospital4, hospital5]
 
         // Calculate the score for each hospital based on waitTime and distance
         const sortedHospitals = hospitalsDetails.sort((a, b) => {

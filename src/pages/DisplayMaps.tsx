@@ -24,8 +24,8 @@ const DisplayMaps: React.FC = () => {
             try {
                 const center = { lat: 51.499122900037904, lng: -0.1790965476757596 };
                 await initMap('map', center);
-                // const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-                const [lat, lng] = [51.487002444902714, -0.21937191239860668]
+                const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
+                // const [lat, lng] = [51.487002444902714, -0.21937191239860668]
                 addMarker({ lat: lat, lng: lng, title: hospital.hospitalName });
                 addMarker({ lat: 51.499122900037904, lng: -0.1790965476757596, title: "Huxley Imperial" });
 
