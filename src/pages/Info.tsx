@@ -28,8 +28,8 @@ const InfoPage: React.FC = () => {
   const segments = infoData.split('·');
 
   return (
-    <div>
-      <h1>Extra Information Page for {symptomName}</h1>
+    <div className='backgroundPale items-center justify-center min-h-screen flex flex-col'>
+      <div className='textBlue text-3xl p-10'>Extra Information Page for {symptomName}</div>
       <div>
         {segments.map((segment, index) => (
           <div key={index}>
