@@ -13,7 +13,7 @@ import SuccessfulHospitalRegistration from './pages/SuccessfulHospitalRegistrati
 import HomeScreen from './pages/HomeScreen';
 import InfoPage from './pages/Info';
 import DisplayMaps from './pages/DisplayMaps';
-import DictationComponent from './components/Dictation';
+import SpeechRecognitionComponent from './components/Dictation';
 
 const App: React.FC = () => {
   return (
@@ -34,7 +34,7 @@ const App: React.FC = () => {
             <Route path="/unique-page/:buttonData" Component={InfoPage} />
             <Route path="*" element={<HomeScreen />} />
             <Route path="/DisplayMaps" element={<DisplayMaps />} />
-            <Route path="/Dict" element={<DictationComponent />} />
+            <Route path="/Dict" element={<SpeechRecognitionComponent />} />
           </Routes>
         </div>
       </Router>

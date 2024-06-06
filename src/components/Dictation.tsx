@@ -1,32 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Dictation: React.FC = () => {
-    const startDictation = () => {
-        if ('SpeechRecognition' in window) {
-            const recognition = new window.SpeechRecognition();
-            recognition.lang = 'en-US';
+const SpeechRecognitionComponent: React.FC = () => {
+  const [transcript, setTranscript] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [isListening, setIsListening] = useState<boolean>(false);
 
-            recognition.onresult = (event: SpeechRecognitionEvent) => {
-                const transcript = event.results[0][0].transcript;
-                console.log('Transcript:', transcript);
-            };
+  let recognition: any;
 
-            recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-                console.error('Speech recognition error:', event.error);
-            };
+  const startListening = () => {
+    const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setError('SpeechRecognition is not supported in this browser.');
+      return;
+    }
 
-            recognition.start();
-        } else {
-            console.error('SpeechRecognition is not supported in this browser.');
-            alert('Sorry, speech recognition is not supported in your browser.');
-        }
+    recognition = new SpeechRecognition();
+
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onresult = (event: any) => {
+      const last = event.results.length - 1;
+      const text = event.results[last][0].transcript;
+      setTranscript(text);
     };
 
-    return (
-        <div>
-            <button onClick={startDictation}>Start Dictation</button>
-        </div>
-    );
+    recognition.onerror = (event: any) => {
+      setError(`Error occurred: ${event.error}`);
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognition.start();
+    setIsListening(true);
+  };
+
+  const stopListening = () => {
+    if (recognition) {
+      recognition.stop();
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={startListening} disabled={isListening}>Start Listening</button>
+      <button onClick={stopListening}>Stop Listening</button>
+      {error && <p>Error: {error}</p>}
+      {transcript && <p>Transcript: {transcript}</p>}
+    </div>
+  );
 };
 
-export default Dictation;
+export default SpeechRecognitionComponent;
