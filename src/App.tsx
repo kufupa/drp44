@@ -14,29 +14,33 @@ import HomeScreen from './pages/HomeScreen';
 import InfoPage from './pages/Info';
 import DisplayMaps from './pages/DisplayMaps';
 import SpeechRecognitionComponent from './components/Dictation';
+import { UserProvider } from './components/UserContext';
 
 const App: React.FC = () => {
   return (
     <div className='backgroundPale'>
-      <Router>
-        <div className="App container mx-auto p-4">
-          <Routes>
-            <Route path="/" element={<HomeScreen />} />
-            <Route path="/PresentationForm" element={<PresentationForm />} />
-            <Route path="/HospitalScreen" element={<HospitalScreen />} />
-            <Route path="/FlowChart" element={<FlowChart />} />
-            <Route path="/Presentation" element={<PresentationForm />} />
-            <Route path="/Confirmation" element={<Confirmation />} />
-            <Route path="/RedPatient" element={<RedPatients />} />
-            <Route path="/Error" element={<ErrorPage />} />
-            <Route path="/RegisterHospital" element={<RegisterHospital />} />
-            <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
-            <Route path="/unique-page/:buttonData" Component={InfoPage} />
-            <Route path="*" element={<HomeScreen />} />
-            <Route path="/DisplayMaps" element={<DisplayMaps />} />
-          </Routes>
-        </div>
-      </Router>
+      <UserProvider>
+        <Router>
+          <div className="App container mx-auto p-4">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/PresentationForm" element={<PresentationForm />} />
+              <Route path="/HospitalScreen" element={<HospitalScreen />} />
+              <Route path="/FlowChart" element={<FlowChart />} />
+              <Route path="/Presentation" element={<PresentationForm />} />
+              <Route path="/Confirmation" element={<Confirmation />} />
+              <Route path="/RedPatient" element={<RedPatients />} />
+              <Route path="/Error" element={<ErrorPage />} />
+              <Route path="/RegisterHospital" element={<RegisterHospital />} />
+              <Route path="/SuccessfulHospitalRegistration" element={<SuccessfulHospitalRegistration />} />
+              <Route path="/unique-page/:buttonData" Component={InfoPage} />
+              <Route path="*" element={<HomeScreen />} />
+              <Route path="/DisplayMaps" element={<DisplayMaps />} />
+            </Routes>
+          </div>
+        </Router>  
+      </UserProvider>
+      
     </div>
   );
 }
