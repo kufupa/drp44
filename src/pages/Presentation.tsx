@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { db } from "../backend/db";
 import { collection, addDoc } from "firebase/firestore";
 import BackButton from '../components/BackButton';
+import { useScreenTimeTracking } from '../backend/metrics'; // Import the custom hook
 
 const PresentationForm: React.FC = () => {
+  useScreenTimeTracking(); 
   const [transcript, setTranscript] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [isListening, setIsListening] = useState<boolean>(false);

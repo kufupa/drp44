@@ -5,11 +5,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Question } from '../utils/question';
 import { CategoryEnum } from '../utils/category.enum';
 import BackButton from '../components/BackButton';
+import { useScreenTimeTracking } from '../backend/metrics';
 
 const HOLD_THRESHOLD = 500; // 500 milliseconds for distinguishing between click and hold
 
 
 const FlowChart: React.FC = () => {
+    useScreenTimeTracking();
     const location = useLocation();
     const presentation: string = location.state?.patientProblem || null;
     const [button, setButton] = useState(presentation != null ? firstButton(selectFlowchart(presentation)) : null);
