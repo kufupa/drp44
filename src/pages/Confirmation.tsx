@@ -15,7 +15,8 @@ const Confirmation: React.FC = () => {
 
   const handleClick = () => {
     // Pass arguments as an object
-    navigate('/FlowChart', { state: { patientProblem} });
+    // navigate('/FlowChart', { state: { patientProblem} });
+    navigate('/FlowChart', { state: "pain in stomach" });
   };
 
   return (
