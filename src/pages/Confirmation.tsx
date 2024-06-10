@@ -9,7 +9,7 @@ const Confirmation: React.FC = () => {
   const navigate = useNavigate();
   const patientProblem: string = location.state?.patientProblem || '';
   console.log("Input string was:" + patientProblem);
-  const diagnosis = selectFlowchart(patientProblem);
+  const diagnosis = selectFlowchart("pain in stomach");
   console.log(diagnosis.image)
   const firstQuestion: Question = firstButton(diagnosis);
 
