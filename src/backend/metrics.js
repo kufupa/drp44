@@ -1,10 +1,9 @@
-// metrics.js
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { db } from './db'; 
 import { useUserId } from '../components/UserContext';
 
-export function useScreenTimeTracking() { // Custom Hook name starts with "use"
+export function useScreenTimeTracking() {
   const location = useLocation();
   const [screenStartTime, setScreenStartTime] = useState(null);
   const userId = useUserId(); 
@@ -36,5 +35,5 @@ export function useScreenTimeTracking() { // Custom Hook name starts with "use"
     }
   }, []); 
 
-  return null; // Custom Hooks often return null or nothing
+  return null; 
 }
