@@ -24,11 +24,17 @@ export function useScreenTimeTracking() {
           const screenEndTime = Date.now();
           const screenName = location.pathname;
 
-          db.collection('screen_views').add({
+          addDoc(collection(db, 'screen-views'), {
             userId,
             screenName,
             startTime: screenStartTime,
             endTime: screenEndTime,
+          })
+          .then(() => {
+            console.log('Screen-view added successfully!');
+          })
+          .catch((error) => {
+            console.error('Error adding screen-view:', error);
           });
         }
       };
