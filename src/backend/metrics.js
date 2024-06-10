@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { db } from './db'; 
 import { useUserId } from '../components/UserContext';
+import { addDoc, collection } from "firebase/firestore"; // Import necessary functions
 
 export function useScreenTimeTracking() {
   const location = useLocation();
