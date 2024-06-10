@@ -141,22 +141,27 @@ const newPatient: Patient = {
   eta: new Date(Date.now() + 60 * 60 * 1000), // 1 hour from now
 };
 
-// Add the new patient to Firestore
-addDoc(collection(db, 'patients'), newPatient)
-  .then(() => {
-    console.log('Patient added successfully!');
-  })
-  .catch((error) => {
-    console.error('Error adding patient:', error);
-  });
+const addNewPatientSyntax = () => {
+  // Add the new patient to Firestore
+  addDoc(collection(db, 'patients'), newPatient)
+    .then(() => {
+      console.log('Patient added successfully!');
+    })
+    .catch((error) => {
+      console.error('Error adding patient:', error);
+    });
+}
+
+const getAllPatientsSyntax = () => {
+  const q = query(collection(db, 'patients'), where('hospitalId', '==', 'hospital-1'));
+  getDocs(q)
+    .then((patientsSnapshot) => {
+      const patients: Patient[] = patientsSnapshot.docs.map(doc => doc.data() as Patient);
+      console.log('Patients:', patients);
+    })
+    .catch((error) => {
+      console.error('Error getting patients:', error);
+    });
+}
 
 // Get all patients for a specific hospital
-const q = query(collection(db, 'patients'), where('hospitalId', '==', 'hospital-1'));
-getDocs(q)
-  .then((patientsSnapshot) => {
-    const patients: Patient[] = patientsSnapshot.docs.map(doc => doc.data() as Patient);
-    console.log('Patients:', patients);
-  })
-  .catch((error) => {
-    console.error('Error getting patients:', error);
-  });
