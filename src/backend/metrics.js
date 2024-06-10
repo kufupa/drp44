@@ -15,32 +15,25 @@ export function useScreenTimeTracking() {
 
     return () => {
       mountedRef.current = false; 
+      if (screenStartTime) {
+        const screenEndTime = Date.now();
+        const screenName = location.pathname;
+
+        addDoc(collection(db, 'screen-views'), {
+          userId,
+          screenName,
+          startTime: screenStartTime,
+          endTime: screenEndTime,
+        })
+        .then(() => {
+          console.log('Screen-view added successfully!');
+        })
+        .catch((error) => {
+          console.error('Error adding screen-view:', error);
+        });
+      }
     };
   }, [location]);
-
-  useEffect(() => {
-    if (screenStartTime) {
-      return () => {
-        if (mountedRef.current) { 
-          const screenEndTime = Date.now();
-          const screenName = location.pathname;
-
-          addDoc(collection(db, 'screen-views'), {
-            userId,
-            screenName,
-            startTime: screenStartTime,
-            endTime: screenEndTime,
-          })
-          .then(() => {
-            console.log('Screen-view added successfully!');
-          })
-          .catch((error) => {
-            console.error('Error adding screen-view:', error);
-          });
-        }
-      };
-    }
-  }, []); 
 
   return null; 
 }
