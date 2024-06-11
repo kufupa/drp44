@@ -101,10 +101,10 @@ const PresentationForm: React.FC = () => {
             <button 
               onClick={handleRecording} 
               disabled={isListening} 
-              className={`p-4 ${isListening ? 'recording' : ''}`}
+              className={`p-4`}
             >
-              {isListening ? 'Stop Recording' : 'Start Recording'}
               {isListening && <span className="recording-dot"></span>}
+              {isListening ? ' Recording...' : 'Start Recording'}
             </button>
           </div>
           <textarea
