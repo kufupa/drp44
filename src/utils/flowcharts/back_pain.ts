@@ -1,17 +1,21 @@
 import { Presentation } from "../presentation";
 // @ts-ignore
+import BackImage from '../../components/imgs/backpain.png'
 
-export class ChestPainHandler extends Presentation {
-    // image(): string {
-    //     return ChestImage;
-    // }
+export class BackPainHandler extends Presentation {
+        black(): string[] {
+                throw new Error("Method not implemented.");
+        }
+        image(): string {
+                return BackImage;
+        }
 
     static getInstance = () => {
-        return new ChestPainHandler();
+        return new BackPainHandler();
     }
 
     toString(): string {
-        return 'Chest Pain'
+        return "Back Pain"
     }
 
     red(): Array<string> {
@@ -125,7 +129,5 @@ export class ChestPainHandler extends Presentation {
         ];
     }
     
-
-
 
 }

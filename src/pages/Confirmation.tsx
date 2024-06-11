@@ -5,16 +5,11 @@ import { Question } from '../utils/question';
 import BackButton from '../components/BackButton';
 import { Presentation } from '../utils/presentation';
 
+
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-<<<<<<< Updated upstream
-  // const patientProblem: string = location.state?.patientProblem || '';
-  const patientProblem: string = "pain in stomach";
-  console.log("Input string was:" + patientProblem);
-  const diagnosis = selectFlowchart(patientProblem);
-  console.log(diagnosis.image)
-=======
+
   const [diagnosis, setDiagnosis] = useState<Presentation | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -54,7 +49,6 @@ const Confirmation: React.FC = () => {
 
   console.log("PRESENATION PASSED TO FIRST BUTTON IS: " + diagnosis.toString());
 
->>>>>>> Stashed changes
   const firstQuestion: Question = firstButton(diagnosis);
 
   console.log("PRESENATION PASSED FROM FIRST BUTTON IS: " + firstQuestion.presentation.toString());

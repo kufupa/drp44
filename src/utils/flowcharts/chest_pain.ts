@@ -1,17 +1,22 @@
 import { Presentation } from "../presentation";
 // @ts-ignore
+import ChestImage from '../../components/imgs/chestpain.png'
+
 
 export class ChestPainHandler extends Presentation {
-    // image(): string {
-    //     return StomachImage;
-    // }
+    black(): string[] {
+        throw new Error("Method not implemented.");
+    }
+    image(): string {
+        return ChestImage;
+    }
 
     static getInstance = () => {
         return new ChestPainHandler();
     }
 
     toString(): string {
-        return `Chest Pain`;
+        return "Chest Pain";
     }
 
 red(): Array<string> {

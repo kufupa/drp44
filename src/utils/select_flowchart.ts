@@ -4,19 +4,21 @@ import { CategoryEnum } from "./category.enum";
 import { Presentation } from "./presentation";
 import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adults";
 import { getPresentation } from "./gemini";
+import { BackPainHandler } from "./flowcharts/back_pain";
+import { ChestPainHandler } from "./flowcharts/chest_pain";
 
 // mapping between string and Presentation 
 const patientProblemMap: { [key: string]: Presentation } = {
     "Abdominal Pain in Adults": AbdominalPainAdultsHandler.getInstance(),
-    
+    "Chest Pain": ChestPainHandler.getInstance(),
+    "Back Pain": BackPainHandler.getInstance()
     // Add more mappings as needed...
   };
 
   export function getFromMap(str: string): Presentation {
+    console.log("GEMINI STRING INPUT IS:"  + str);
     return patientProblemMap[str];
   }
-
-
 
   export const selectFlowchart = async (symptom: string): Promise<Presentation> => {
     try {
@@ -25,7 +27,7 @@ const patientProblemMap: { [key: string]: Presentation } = {
       const presentation: Presentation = getFromMap(geminiPresentation.trim());
   
       if (!presentation) {
-        throw new Error(`No presentation found for category: ${geminiPresentation}`);
+        throw new Error(`No presentation found for category: ${geminiPresentation.trim()}`);
       }
   
       return presentation;
