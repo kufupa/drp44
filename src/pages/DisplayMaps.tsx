@@ -13,16 +13,30 @@ import { addMarker, displayRouteByPublicTransport, initMap } from '../components
 
 const DisplayMaps: React.FC = () => {
     const location = useLocation();
-    const hospital: HospitalDetails = location.state?.hospital || null;
-    console.log(hospital);
+    const hospitalName: string = location.state?.hospitalName || null;
+    const directions: string = location.state?.directions || null;
+    const hospitals: HospitalDetails[] = location.state?.hospitals || null;
+    const hospital: HospitalDetails = hospitals.find(hosp => hosp.hospitalName === hospitalName) || hospitals[0]
+
+    console.log(hospitalName);
+    console.log(directions);
+    console.log(hospitals);
+    console.log(hospital)
 
     const [locationError, setLocationError] = useState<GeolocationPositionError | null>(null);
 
     useEffect(() => {
         const initializeMap = async () => {
             try {
-                const center = await getCurrentLocation(); // Get current location instead of hardcoded center
+                const center = await getCurrentLocation();
                 await initMap('map', center);
+                
+                hospitals.forEach((hospital) => {
+                    const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
+                    addMarker({ lat, lng, title: hospital.hospitalName }, () => {
+                        displayRouteByPublicTransport(center, { lat, lng });
+                    });
+                });
                 const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
                 displayRouteByPublicTransport(center, { lat, lng });
             } catch (error) {
@@ -33,10 +47,10 @@ const DisplayMaps: React.FC = () => {
             }
         };
 
-        if (hospital) {
+        if (hospitals.length) {
             initializeMap();
         }
-    }, [hospital]);
+    }, [hospitals]);
 
     // Function to get current location
     const getCurrentLocation = (): Promise<google.maps.LatLngLiteral> => {
@@ -80,7 +94,7 @@ const DisplayMaps: React.FC = () => {
                     <button onClick={enableLocation}>Enable Location</button>
                 </div>
             ) : (
-                <div id="map" className="w-screen h-screen mt-4"></div>
+                <div id="map" className=" h-screen mt-4"></div>
             )}
         </div>
     );

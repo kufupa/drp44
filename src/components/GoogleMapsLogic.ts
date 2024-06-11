@@ -9,15 +9,18 @@ const loader = new Loader({
 
 let map: google.maps.Map;
 let directionsService: google.maps.DirectionsService;
+let directionsRenderer: google.maps.DirectionsRenderer;
 
 export const initMap = (elementId: string, center: google.maps.LatLngLiteral): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     loader.load().then(() => {
       map = new google.maps.Map(document.getElementById(elementId) as HTMLElement, {
         center: center,
-        zoom: 13,
+        zoom: 10,
       });
       directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
       resolve();
     }).catch(error => {
       reject(error);
@@ -25,53 +28,38 @@ export const initMap = (elementId: string, center: google.maps.LatLngLiteral): P
   });
 };
 
-
-export const addMarker = (location: LocationMap): void => {
+export const addMarker = (location: { lat: number, lng: number, title: string }, onClick: () => void): void => {
   if (map) {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: { lat: location.lat, lng: location.lng },
       map: map,
       title: location.title
     });
+
+    marker.addListener('click', onClick);
   }
 };
 
 export const displayRouteByPublicTransport = (origin: google.maps.LatLngLiteral, destination: google.maps.LatLngLiteral): void => {
-  if (!directionsService) {
-    console.error('Direction service is not initialized');
+  if (!directionsService || !directionsRenderer) {
+    console.error('Direction service or renderer is not initialized');
     return;
   }
+
+  // Clear previous directions
+  directionsRenderer.setDirections(null);
 
   const request: google.maps.DirectionsRequest = {
     origin: origin,
     destination: destination,
-    travelMode: google.maps.TravelMode.TRANSIT, // Use transit mode for public transportation
+    travelMode: google.maps.TravelMode.TRANSIT,
   };
 
   directionsService.route(request, (response, status) => {
-    if (status === 'OK' && response) { // Check if response is not null
-      const route = response.routes[0];
-      if (route) { // Check if route is not null
-        const leg = route.legs[0];
-        if (leg) { // Check if leg is not null
-          const travelTime = leg.duration ? leg.duration.text : 'Unknown'; // Check if duration is not undefined
-          const transitMode = leg.steps[0] ? leg.steps[0].travel_mode : 'Unknown'; // Check if travel_mode is not undefined
-
-          console.log('Estimated travel time:', travelTime);
-          console.log('Transit mode:', transitMode);
-
-          const directionsRenderer = new google.maps.DirectionsRenderer();
-          directionsRenderer.setMap(map); // Assuming 'map' is the Google Map object
-          directionsRenderer.setDirections(response);
-        } else {
-          console.error('Leg is null or undefined');
-        }
-      } else {
-        console.error('Route is null or undefined');
-      }
+    if (status === 'OK' && response) {
+      directionsRenderer.setDirections(response);
     } else {
       console.error('Error:', status);
     }
   });
 };
-

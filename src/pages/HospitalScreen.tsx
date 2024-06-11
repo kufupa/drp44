@@ -92,36 +92,8 @@ const HospitalScreen: React.FC = () => {
   const handleClick = (hospitalName: string, directions: string) => {
     // const [lat, lng] = directions.split(',').map(coord => parseFloat(coord));
     // const marker = addMarker({ lat, lng, title: hospitalName });
-    hospitals.map((hospital) => {
-      if (hospital.hospitalName == hospitalName) {
-        navigate("/DisplayMaps", { state: { hospital } })
-      }
-    })
-    // if (marker) {
-    //   setMarkers([marker]);
-    // } else {
-    //   console.error('Failed to add marker');
-    // }
-  };
-
-  // useEffect(() => {
-  //   // Initialize map
-  //   initMap('map', { lat: 51.499122900037904, lng: -0.1790965476757596 });
-  //   // Fetch hospitals and add markers
-  //   (async () => {
-  //     try {
-  //       const hospitalsDetails: HospitalDetails[] = await getAllHospitalDetails();
-  //       hospitalsDetails.map((hospital) => {
-  //         const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-  //         console.log(lat + "     " + lng)
-  //         addMarker({ lat, lng, title: hospital.hospitalName });
-  //       });
-  //     } catch (error) {
-  //       console.error('Error fetching hospital details:', error);
-  //     }
-  //   })();
-  // }, []);
-
+    navigate("/DisplayMaps", { state: { hospitalName, directions, hospitals } })
+  }
 
   return (
     <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
