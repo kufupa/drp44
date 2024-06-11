@@ -7,9 +7,10 @@ import BackButton from '../components/BackButton';
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const patientProblem: string = location.state?.patientProblem || '';
+  // const patientProblem: string = location.state?.patientProblem || '';
+  const patientProblem: string = "pain in stomach";
   console.log("Input string was:" + patientProblem);
-  const diagnosis = selectFlowchart("pain in stomach");
+  const diagnosis = selectFlowchart(patientProblem);
   console.log(diagnosis.image)
   const firstQuestion: Question = firstButton(diagnosis);
 
