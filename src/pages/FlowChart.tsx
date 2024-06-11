@@ -12,11 +12,13 @@ const FlowChart: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const str = location.state?.str;
-  const diagnosis: Presentation = getFromMap(str) 
-  const firstQuestion =  useState(str != null ? firstButton(diagnosis) : null);
+  const diagnosis: Presentation = getFromMap(str)
 
+  const question: Question | null = location.state?.question;
 
-  const [button, setButton] = useState(str != null ? firstButton(diagnosis) : null);
+  console.log(location.state?.question)
+
+  const [button, setButton] = useState(location.state?.question?.link == null ? (str != null ? firstButton(diagnosis) : null) : location.state?.question.link);
   const [displayButtons, setDisplayButtons] = useState(button != null ? button.symptoms : []);
   const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout | null>(null);
   const [isHeld, setIsHeld] = useState(false);
@@ -51,59 +53,63 @@ const FlowChart: React.FC = () => {
     }
   };
 
-    const handleSubmitClick = () => {
-        console.log("Submit clicked in FlowChart");
-        console.log(button)
-        if (button?.category == CategoryEnum.RED) {
-            navigate('/RedPatient');
-        } else {
-            navigate('/HospitalScreen', { state: { button } });
-        }
-        // Need to submit button
-        // Add your logic here
-        // Add code to navigate to next which will display your category ... BLACK, RED, ...
-        // use navigate
-    };
+  const handleSubmitClick = () => {
+    console.log("Submit clicked in FlowChart");
+    console.log(button)
+    if (button?.category == CategoryEnum.RED) {
+      navigate('/RedPatient');
+    } else {
+      navigate('/HospitalScreen', { state: { button } });
+    }
+    // Need to submit button
+    // Add your logic here
+    // Add code to navigate to next which will display your category ... BLACK, RED, ...
+    // use navigate
+  };
 
-    const handleMouseDown = (buttonData: string) => {
-        const timer = setTimeout(() => {
-          setIsHeld(true);
-          console.log("transferring to unique page: " + buttonData);
-          navigate(`/unique-page/${buttonData}`, { state: { displayButtons } });
-        }, 500);
-        setHoldTimer(timer);
-      };
-    
-      const handleMouseUp = () => {
-        if (holdTimer) {
-          clearTimeout(holdTimer);
-          setHoldTimer(null);
-          if (!isHeld) {
-            console.log('Button clicked');
-            // Handle click action here if needed
-          } else {
-            setIsHeld(false); // Reset the hold state
-          }
-        }
-      };
-    
-      useEffect(() => {
-        if (location.state?.displayButtons) {
-          setDisplayButtons(location.state.displayButtons);
-        }
-      }, [location.state]);
+  const handleMouseDown = (buttonData: string) => {
+    const timer = setTimeout(() => {
+      setIsHeld(true);
+      console.log("transferring to unique page: " + buttonData);
+      navigate(`/unique-page/${buttonData}`, { state: { displayButtons } });
+    }, 500);
+    setHoldTimer(timer);
+  };
+  
+  const handleClick = (buttonData: string) => {
+    navigate(`/unique-page/${buttonData}`, { state: { displayButtons, button } });
+  };
 
-    return (
+  const handleMouseUp = () => {
+    if (holdTimer) {
+      clearTimeout(holdTimer);
+      setHoldTimer(null);
+      if (!isHeld) {
+        console.log('Button clicked');
+        // Handle click action here if needed
+      } else {
+        setIsHeld(false); // Reset the hold state
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (location.state?.displayButtons) {
+      setDisplayButtons(location.state.displayButtons);
+    }
+  }, [location.state]);
+
+  return (
+    <div>
+      <BackButton />
+      <div className='text-6xl'>Additional symptoms</div>
+      <div>
         <div>
-            <BackButton />
-            <div className='text-6xl'>Additional symptoms</div>
-            <div>
-                <div>
-                    <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick}  onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-                </div>
-            </div>
+          <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} whenClick={handleClick}/>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default FlowChart;
