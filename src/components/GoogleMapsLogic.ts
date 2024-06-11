@@ -36,6 +36,7 @@ export const addMarker = (name: string, location: { lat: number, lng: number, ti
       title: name
     });
 
+    // TODO
     // Change UI
     // Change phone display of Yes No button flowchart and small screen view
     const contentString = `
