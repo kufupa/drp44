@@ -8,6 +8,8 @@ import BackButton from '../components/BackButton';
 import HospitalIcon from '../components/HospitalIcon.png'
 // @ts-ignore
 import ClipboardIcon from '../components/ClipboardIcon.png'
+// @ts-ignore
+import LocationPin from '../components/LocationPin.webp'
 
 import { addMarker, displayRouteByPublicTransport, initMap } from '../components/GoogleMapsLogic';
 
@@ -30,7 +32,7 @@ const DisplayMaps: React.FC = () => {
             try {
                 const center = await getCurrentLocation();
                 await initMap('map', center);
-                
+
                 hospitals.forEach((hospital) => {
                     const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
                     addMarker({ lat, lng, title: hospital.hospitalName }, () => {
@@ -87,15 +89,23 @@ const DisplayMaps: React.FC = () => {
 
     return (
         <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
-            {locationError ? (
-                <div>
-                    <h1>Location Error</h1>
-                    <p>{locationError.message}</p>
-                    <button onClick={enableLocation}>Enable Location</button>
-                </div>
-            ) : (
-                <div id="map" className="mt-4 w-11/12 h-screen"></div>
-            )}
+            <div>
+                {locationError ? (
+                    <div>
+                        <h1>Location Error</h1>
+                        <p>{locationError.message}</p>
+                        <button onClick={enableLocation}>Enable Location</button>
+                    </div>
+                ) : (
+                    <div className='w-screen h-screen flex justify-center items-center'>
+                        <div className='flex flex-col items-center'>
+                            <img src={LocationPin} alt="" />
+                            <div id="map" className="mt-4 w-screen h-screen"></div>
+                        </div>
+                    </div>
+
+                )}
+            </div>
         </div>
     );
 };

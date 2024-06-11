@@ -101,8 +101,8 @@ const HospitalScreen: React.FC = () => {
       <div className='md:text-5xl text-3xl font-black textClickBlue md:mt-10 mt-4 max-w-xl'>Hospital Recommendations</div>
       <img src={HospitalIcon} alt="" className='w-64' />
       <div className='flex flex-row textBlue' >
-        <img src={ClipboardIcon} alt="" className='' />
-        <div className='mt-8 text-lg'>Below are our recommendations</div>
+        <img src={ClipboardIcon} alt="" className='md:ml-0 ml-10' />
+        <div className='mt-8 text-2xl'>Below are our recommendations</div>
       </div>
       {/* Div containing all Hospitals */}
       <div className=''>
