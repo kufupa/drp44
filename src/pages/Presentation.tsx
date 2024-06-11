@@ -39,12 +39,20 @@ const PresentationForm: React.FC = () => {
       setIsListening(false);
     };
 
+    // Play a beep sound on start
+    const beepStart = new Audio('/beep.mp3'); // Replace 'beep.mp3' with the actual path to your beep sound file
+    beepStart.play();
+
     recognition.start();
     setIsListening(true);
   };
 
   const stopListening = () => {
     if (recognition) {
+      // Play a beep sound on start
+      const beepStop = new Audio('/beep.mp3'); // Replace 'beep.mp3' with the actual path to your beep sound file
+      beepStop.play();
+
       recognition.stop();
       setIsListening(false);
     }
