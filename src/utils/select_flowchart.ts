@@ -20,10 +20,13 @@ const patientProblemMap: { [key: string]: Presentation } = {
     return patientProblemMap[str];
   }
 
-  export const selectFlowchart = async (symptom: string): Promise<Presentation> => {
+  export const selectFlowchart = async (symptom: string, age: string, sex: string): Promise<Presentation> => {
     try {
-      const geminiPresentation = await getPresentation(symptom);
+      const geminiPresentation = await getPresentation(symptom, age, sex);
       console.log(geminiPresentation);
+      if (geminiPresentation === "None of the Above") {
+        throw new Error("None of the Above");
+      }
       const presentation: Presentation = getFromMap(geminiPresentation.trim());
   
       if (!presentation) {

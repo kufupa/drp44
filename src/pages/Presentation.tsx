@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from "../backend/db";
 import { collection, addDoc } from "firebase/firestore";
 import BackButton from '../components/BackButton';
 
 const PresentationForm: React.FC = () => {
+
+  const location = useLocation();
+  const { age, sex } = location.state || {};
+
   const [transcript, setTranscript] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [isListening, setIsListening] = useState<boolean>(false);
@@ -67,7 +71,7 @@ const PresentationForm: React.FC = () => {
       problem: patientProblem // Use patientProblem here
     })
       .then(() => {
-        navigate('/confirmation', { state: { patientProblem } });
+        navigate('/confirmation', { state: { patientProblem, age, sex } });
       })
       .catch((error) => {
         console.error('Error adding hospital:', error);
