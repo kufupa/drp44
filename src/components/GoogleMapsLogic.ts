@@ -1,4 +1,4 @@
-import {} from '../types/global.d';
+import { } from '../types/global.d';
 import { LocationMap } from './GoogleMapsApi';
 import { Loader } from '@googlemaps/js-api-loader';
 
@@ -28,14 +28,30 @@ export const initMap = (elementId: string, center: google.maps.LatLngLiteral): P
   });
 };
 
-export const addMarker = (location: { lat: number, lng: number, title: string }, onClick: () => void): void => {
+export const addMarker = (name: string, location: { lat: number, lng: number, title: string }, onClick: () => void): void => {
   if (map) {
     const marker = new google.maps.Marker({
       position: { lat: location.lat, lng: location.lng },
       map: map,
-      title: location.title
+      title: name
     });
 
+    // Change UI
+    // Change phone display of Yes No button flowchart and small screen view
+    const contentString = `
+      <div style="background-color: white; padding: 1px; border-radius: 1px;">
+        <h3>${name}</h3>
+      </div>
+    `;
+
+    // Create an info window with the custom HTML content
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
+    });
+    
+    infowindow.open(map, marker);
+
+    // Execute the provided onClick function when the marker is clicked
     marker.addListener('click', onClick);
   }
 };
