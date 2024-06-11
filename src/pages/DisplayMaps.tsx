@@ -35,7 +35,7 @@ const DisplayMaps: React.FC = () => {
 
                 hospitals.forEach((hospital) => {
                     const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-                    addMarker({ lat, lng, title: hospital.hospitalName }, () => {
+                    addMarker(hospital.hospitalName, { lat, lng, title: hospital.hospitalName }, () => {
                         displayRouteByPublicTransport(center, { lat, lng });
                     });
                 });
@@ -97,9 +97,12 @@ const DisplayMaps: React.FC = () => {
                         <button onClick={enableLocation}>Enable Location</button>
                     </div>
                 ) : (
-                    <div className='w-screen h-screen flex justify-center items-center'>
+                    <div className='w-screen h-screen flex justify-center items-center pt-20'>
                         <div className='flex flex-col items-center'>
-                            <img src={LocationPin} alt="" />
+                            <div>
+                                <img src={LocationPin} alt="" className='w-10' />
+                                <div></div>
+                            </div>
                             <div id="map" className="mt-4 w-screen h-screen"></div>
                         </div>
                     </div>

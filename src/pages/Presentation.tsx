@@ -15,6 +15,14 @@ const PresentationForm: React.FC = () => {
 
   let recognition: any;
 
+  const handleRecording = () => {
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
+
   const startListening = () => {
     const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
@@ -43,12 +51,20 @@ const PresentationForm: React.FC = () => {
       setIsListening(false);
     };
 
+    // Play a beep sound on start
+    const beepStart = new Audio('/beep.mp3'); // Replace 'beep.mp3' with the actual path to your beep sound file
+    beepStart.play();
+
     recognition.start();
     setIsListening(true);
   };
 
   const stopListening = () => {
     if (recognition) {
+      // Play a beep sound on start
+      const beepStop = new Audio('/beep.mp3'); // Replace 'beep.mp3' with the actual path to your beep sound file
+      beepStop.play();
+
       recognition.stop();
       setIsListening(false);
     }
@@ -86,8 +102,14 @@ const PresentationForm: React.FC = () => {
         <h1 className="text-5xl font-bold mb-6 text-center textClickBlue">Describe your problem</h1>
         <div className="mb-4">
           <div>
-            <button onClick={startListening} disabled={isListening} className='p-4'>Start Recording</button>
-            <button onClick={stopListening} className='p-4'>Stop Recording</button>
+            <button 
+              onClick={handleRecording} 
+              disabled={isListening} 
+              className={`p-4`}
+            >
+              {isListening && <span className="recording-dot"></span>}
+              {isListening ? ' Recording...' : 'Start Recording'}
+            </button>
           </div>
           <textarea
             className="w-full h-32 p-2 border border-gray-300 rounded"

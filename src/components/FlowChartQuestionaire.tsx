@@ -4,9 +4,8 @@ import '../styles.css';
 // @ts-ignore
 import ClipboardIcon from '../components/ClipboardIcon.png'
 
-const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, onMouseDown, onMouseUp }) => {
+const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, onMouseDown, onMouseUp, whenClick }) => {
     const [selectedButtons, setSelectedButtons] = useState<string[]>([]);
-    console.log("ButtonsList: " + buttonsList)
     const handleClick = (buttonData: string) => {
         if (selectedButtons.includes(buttonData)) {
             // If the button is already selected, remove it from the selectedButtons array
@@ -24,12 +23,12 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
             <div className='text-4xl row-span-1 pt-20'>Do you have any of these symptoms?</div>
             <div className='flex flex-row items-center justify-center textBlue mt-10' >
               <img src={ClipboardIcon} alt="" className='' />
-              <div className='mt-8 text-lg'>Hold options for additional information</div>
+              <div className='mt-8 text-2xl'>Hold or click options for additional information</div>
             </div>
             <div className='text-xl row-span-1'>
                 {buttonsList.map((buttonData, index) =>
                     <div className={`${selectedButtons.includes(buttonData) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
-                    onClick={() => handleClick(buttonData)}
+                    onClick={() => whenClick(buttonData)}
                     onMouseDown={() => onMouseDown(buttonData)}
                     onMouseUp={() => onMouseUp()} // Empty to avoid any default behavior
                     onMouseLeave={() => {}} // Empty to avoid any default behavior
@@ -43,10 +42,10 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                 className="row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 mb-4 rounded-full text-white text-2xl font-medium cursor-pointer"
                 onClick={onNoneClick} // Ensure this calls the correct function
             >
-                None
+                No
             </div>
             <div className='row-span-1 flowChartSubmitButton lg:mx-96 mx-32 md:mx-56 py-4 my-4 rounded-full text-white text-2xl font-medium cursor-pointer' 
-                onClick={onSubmitClick}>One or more</div>
+                onClick={onSubmitClick}>Yes</div>
         </div>
     );
 };
