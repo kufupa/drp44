@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { db } from "../backend/db";
 import { collection, addDoc } from "firebase/firestore";
 import BackButton from '../components/BackButton';
-import { useScreenTimeTracking } from '../backend/metrics'; // Import the custom hook
+import { HospitalDetails } from '../components/HospitalDetails';
+import { addNewHospitalDetails } from '../backend/hospitals';
 
 const PresentationForm: React.FC = () => {
-  useScreenTimeTracking(); 
   const [transcript, setTranscript] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [isListening, setIsListening] = useState<boolean>(false);
@@ -57,6 +57,51 @@ const PresentationForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const hospital1: HospitalDetails = {
+      hospitalName: 'Charing Cross Hospital',
+      waitTime: 7,
+      distance: 2,
+      directions: '51.48697601826863, -0.21951089239672142',
+      ticked: false,
+    }
+    const hospital2: HospitalDetails = {
+      hospitalName: 'Royal London Hospital',
+      waitTime: 5,
+      distance: 3,
+      directions: '51.51885418944482, -0.05774435842324855',
+      ticked: false,
+    }
+    const hospital3: HospitalDetails = {
+      hospitalName: "Guy's Hospital",
+      waitTime: 1,
+      distance: 0.5,
+      directions: '51.50392461109935, -0.08734215935546974',
+      ticked: false,
+    }
+    const hospital4: HospitalDetails = {
+      hospitalName: "St Thomas' Hospital",
+      waitTime: 3,
+      distance: 0.75,
+      directions: '51.49921390992211, -0.11885373048485628',
+      ticked: false,
+    }
+    const hospital5: HospitalDetails = {
+      hospitalName: "King's College Hospital",
+      waitTime: 1,
+      distance: 3,
+      directions: '51.4695394804474, -0.093888722197904',
+      ticked: false,
+    }
+    
+    
+    async function addAllHospitalDetails(hospitals: HospitalDetails[]): Promise<void> {
+      for (const hospital of hospitals) {
+        await addNewHospitalDetails(hospital);
+      }
+    }
+    
+    addAllHospitalDetails([hospital1, hospital2, hospital3, hospital4, hospital5])
 
     if (!patientProblem) {
       setError('Please describe your problem.');

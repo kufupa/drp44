@@ -15,7 +15,7 @@ export function useScreenTimeTracking() {
 
     return () => {
       mountedRef.current = false; 
-      if (screenStartTime) {
+      if (screenStartTime && mountedRef.current) { // Check mountedRef before adding data
         const screenEndTime = Date.now();
         const screenName = location.pathname;
 
