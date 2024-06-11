@@ -9,7 +9,6 @@ import { Presentation } from '../utils/presentation';
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
   const [diagnosis, setDiagnosis] = useState<Presentation | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
