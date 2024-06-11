@@ -94,7 +94,7 @@ const DisplayMaps: React.FC = () => {
                     <button onClick={enableLocation}>Enable Location</button>
                 </div>
             ) : (
-                <div id="map" className=" h-screen mt-4"></div>
+                <div id="map" className="mt-4 w-11/12 h-screen"></div>
             )}
         </div>
     );
