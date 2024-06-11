@@ -7,7 +7,7 @@ export async function getPresentation(patientProblem: string): Promise<string> {
   // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 
-  const prompt = "Repeat back to me the words exactly as they are in the quotes but without the quotes and without any extra whitespace: 'Abdominal Pain in Adults'"
+  const prompt = "From this user input: " + patientProblem + " pick which of these 3 categories in quotes fits the symptoms best. give only the words in the quotes, but do not include the single speech marks: 'Abdominal Pain in Adults' or 'Chest Pain' or 'Back Pain'"
 
   const result = await model.generateContent(prompt);
   const response = await result.response;

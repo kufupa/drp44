@@ -5,6 +5,7 @@ import { Question } from '../utils/question';
 import BackButton from '../components/BackButton';
 import { Presentation } from '../utils/presentation';
 
+
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
