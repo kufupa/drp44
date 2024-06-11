@@ -47,3 +47,18 @@
     --tw-border-opacity: 1;
     border-color: rgba(0, 137, 185, var(--tw-border-opacity)) 
 }
+
+.recording {
+    /* Add any styles you want for the button when recording */
+    /* Example: */
+    background-color: #f00; /* Red background */
+}
+  
+.recording-dot {
+display: inline-block;
+width: 10px;
+height: 10px;
+background-color: red;
+border-radius: 50%;
+margin-left: 5px; /* Adjust spacing as needed */
+}
