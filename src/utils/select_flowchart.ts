@@ -3,28 +3,42 @@ import { Question } from "./question"
 import { CategoryEnum } from "./category.enum";
 import { Presentation } from "./presentation";
 import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adults";
+import { getPresentation } from "./gemini";
 
 // mapping between string and Presentation 
 const patientProblemMap: { [key: string]: Presentation } = {
-    "pain in stomach": AbdominalPainAdultsHandler.getInstance(),
+    "Abdominal Pain in Adults": AbdominalPainAdultsHandler.getInstance(),
     
     // Add more mappings as needed...
   };
 
+  export function getFromMap(str: string): Presentation {
+    return patientProblemMap[str];
+  }
 
-export const selectFlowchart = (symptom: string) => {
-    // gets Presentation from patientProblemMap and returns implementation
-    const presentation = patientProblemMap[symptom];
-    if (!presentation) {
-        throw new Error(`No presentation found for symptom: ${symptom}`);
+
+
+  export const selectFlowchart = async (symptom: string): Promise<Presentation> => {
+    try {
+      const geminiPresentation = await getPresentation(symptom);
+      console.log(geminiPresentation);
+      const presentation: Presentation = getFromMap(geminiPresentation.trim());
+  
+      if (!presentation) {
+        throw new Error(`No presentation found for category: ${geminiPresentation}`);
+      }
+  
+      return presentation;
+    } catch (error) {
+      console.error('Error in selectFlowchart:', error);
+      throw new Error(`Failed to get presentation for symptom: ${symptom}`);
     }
-    return presentation;
-}
+  };
 
 export function nextQuestion(presentation: Presentation, category: CategoryEnum): Question {
     var nextCategory: CategoryEnum;
     var symptoms: Array<string>;
-    
+
     // next question will have the next lowest category 
     // and symptoms are given by calling the relevant function to access them
     if (category === CategoryEnum.RED) {
@@ -58,7 +72,6 @@ export function nextQuestion(presentation: Presentation, category: CategoryEnum)
 }
 
 export const firstButton = (presentation: Presentation) => {
-    console.log(presentation);
     const first: Question = {
         category: CategoryEnum.RED,
         symptoms: presentation.red(),

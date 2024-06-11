@@ -1,22 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { firstButton, selectFlowchart } from '../utils/select_flowchart';
 import { Question } from '../utils/question';
 import BackButton from '../components/BackButton';
+import { Presentation } from '../utils/presentation';
 
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+<<<<<<< Updated upstream
   // const patientProblem: string = location.state?.patientProblem || '';
   const patientProblem: string = "pain in stomach";
   console.log("Input string was:" + patientProblem);
   const diagnosis = selectFlowchart(patientProblem);
   console.log(diagnosis.image)
+=======
+  const [diagnosis, setDiagnosis] = useState<Presentation | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const patientProblem: string = location.state?.patientProblem || '';
+  console.log("Input string was:" + patientProblem);
+
+  useEffect(() => {
+    const fetchDiagnosis = async () => {
+      try {
+        console.log("Input string was:" + patientProblem);
+        const result = await selectFlowchart(patientProblem);
+        setDiagnosis(result);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unexpected error occurred');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDiagnosis();
+  }, [patientProblem]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!diagnosis) {
+    return <div>No diagnosis available</div>;
+  }
+
+  console.log("PRESENATION PASSED TO FIRST BUTTON IS: " + diagnosis.toString());
+
+>>>>>>> Stashed changes
   const firstQuestion: Question = firstButton(diagnosis);
+
+  console.log("PRESENATION PASSED FROM FIRST BUTTON IS: " + firstQuestion.presentation.toString());
 
   const handleClick = () => {
     // Pass arguments as an object
-    navigate('/FlowChart', { state: { patientProblem} });
+    console.log("PRESENATION PASSED TO NAVIGATE IS: " + diagnosis.toString());
+    const str = diagnosis.toString()
+
+    navigate('/FlowChart', { state: { str } });
   };
 
   return (
