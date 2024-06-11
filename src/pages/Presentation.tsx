@@ -82,8 +82,8 @@ const PresentationForm: React.FC = () => {
         <h1 className="text-5xl font-bold mb-6 text-center textClickBlue">Describe your problem</h1>
         <div className="mb-4">
           <div>
-            <button onClick={startListening} disabled={isListening} className='p-4'>Start Listening</button>
-            <button onClick={stopListening} className='p-4'>Stop Listening</button>
+            <button onClick={startListening} disabled={isListening} className='p-4'>Start Recording</button>
+            <button onClick={stopListening} className='p-4'>Stop Recording</button>
           </div>
           <textarea
             className="w-full h-32 p-2 border border-gray-300 rounded"
