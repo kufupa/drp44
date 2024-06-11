@@ -1,49 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import FlowChartQuestionaire from '../components/FlowChartQuestionaire';
-import { firstButton, nextButtons, selectFlowchart } from '../utils/select_flowchart';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { firstButton, getFromMap, nextButtons } from '../utils/select_flowchart';
 import { Question } from '../utils/question';
-import { CategoryEnum } from '../utils/category.enum';
 import BackButton from '../components/BackButton';
-
-const HOLD_THRESHOLD = 500; // 500 milliseconds for distinguishing between click and hold
-
+import { Presentation } from '../utils/presentation'; // Ensure this import is correct
+import { CategoryEnum } from '../utils/category.enum';
+import FlowChartQuestionaire from '../components/FlowChartQuestionaire';
+import { fireEvent } from '@testing-library/react';
 
 const FlowChart: React.FC = () => {
-    const location = useLocation();
-    const presentation: string = location.state?.patientProblem || null;
-    const [button, setButton] = useState(presentation != null ? firstButton(selectFlowchart(presentation)) : null);
-    const [displayButtons, setDisplayButtons] = useState(button != null ? button.symptoms : []);
-    const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout | null>(null);
-    const [isHeld, setIsHeld] = useState(false); // To track if the button was held
+  const location = useLocation();
+  const navigate = useNavigate();
+  const str = location.state?.str;
+  const diagnosis: Presentation = getFromMap(str) 
+  const firstQuestion =  useState(str != null ? firstButton(diagnosis) : null);
 
-    const navigate = useNavigate();
 
-    const handleNoneClick = () => {
-        // TODO
-        // Fix clicking None twice for the first case
-        console.log("None clicked in FlowChart");
-        console.log(button)
-        const question: Question = {
-            category: button != null ? button.category : CategoryEnum.UNDEFINED,
-            // symptoms: button != null ? button?.symptoms : [""],
-            symptoms: [],
-            presentation: selectFlowchart(presentation)
-        }
-        setButton(nextButtons(question))
-        console.log(button)
-        console.log(nextButtons(question))
-        if (button != null) {
-            if (button.category != CategoryEnum.BLACK) {
-                setDisplayButtons(nextButtons(question).symptoms)
-            } else {
-                // Lowest category
-                navigate('/HospitalScreen', { state: { button } });
-            }
-        } else {
-            setDisplayButtons([])
-        }
+  const [button, setButton] = useState(str != null ? firstButton(diagnosis) : null);
+  const [displayButtons, setDisplayButtons] = useState(button != null ? button.symptoms : []);
+  const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout | null>(null);
+  const [isHeld, setIsHeld] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleNoneClick = () => {
+    console.log("None clicked in FlowChart");
+    console.log(button);
+
+    if (!diagnosis) {
+      setError('Diagnosis is not available');
+      return;
+    }
+
+    const question: Question = {
+      category: button != null ? button.category : CategoryEnum.UNDEFINED,
+      symptoms: [],
+      presentation: diagnosis,
     };
+
+    setButton(nextButtons(question));
+    console.log(question);
+    if (button != null) {
+      if (button.category !== CategoryEnum.BLACK) {
+        setDisplayButtons(nextButtons(question).symptoms);
+      } else {
+        // Lowest category
+        navigate('/HospitalScreen', { state: { button } });
+      }
+    } else {
+      setDisplayButtons([]);
+    }
+  };
 
     const handleSubmitClick = () => {
         console.log("Submit clicked in FlowChart");
@@ -62,8 +68,9 @@ const FlowChart: React.FC = () => {
     const handleMouseDown = (buttonData: string) => {
         const timer = setTimeout(() => {
           setIsHeld(true);
+          console.log("transferring to unique page: " + buttonData);
           navigate(`/unique-page/${buttonData}`, { state: { displayButtons } });
-        }, HOLD_THRESHOLD);
+        }, 500);
         setHoldTimer(timer);
       };
     

@@ -13,7 +13,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
     }
 
     toString(): string {
-        return `Abdominal Pain in Adults`;
+        return "Abdominal Pain in Adults";
     }
 
     red(): Array<string> {
