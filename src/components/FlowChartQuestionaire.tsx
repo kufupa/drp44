@@ -23,7 +23,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
             <div className='text-4xl row-span-1 pt-20'>Do you have any of these symptoms?</div>
             <div className='flex flex-row items-center justify-center textBlue mt-10' >
               <img src={ClipboardIcon} alt="" className='' />
-              <div className='mt-8 text-lg'>Hold options for additional information</div>
+              <div className='mt-8 text-2xl'>Hold or click options for additional information</div>
             </div>
             <div className='text-xl row-span-1'>
                 {buttonsList.map((buttonData, index) =>

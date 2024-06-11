@@ -38,7 +38,7 @@ const InfoPage: React.FC = () => {
     <div className='textBlue backgroundPale textBlue flex flex-col fixed inset-0 items-center justify-center'>
       {/* TODO */}
       <BackButtonInfo link={question} />
-      <div className='textClickBlue text-4xl font-bold top-10 my-5'>Extra Information Page for {symptomName}</div>
+      <div className='textClickBlue text-4xl font-bold top-10 my-5 pt-20 md:pt-5'>Extra Information Page for {symptomName}</div>
       <div className='md:top-32 top-40 my-5'>
         <img src={VomitingBlood} alt="" className='w-64' />
       </div>
