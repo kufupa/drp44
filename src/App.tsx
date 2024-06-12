@@ -16,6 +16,8 @@ import DisplayMaps from './pages/DisplayMaps';
 import SpeechRecognitionComponent from './components/Dictation';
 import { UserProvider } from './components/UserContext';
 import InitialPage from './pages/Details';
+import { NoneOfTheAbovePage } from './pages/NoneOfTheAbove';
+import { OneOneOnePage } from './pages/One';
 
 const App: React.FC = () => {
   return (
@@ -25,9 +27,9 @@ const App: React.FC = () => {
           <div className="App container mx-auto p-4">
             <Routes>
               <Route path="/" element={<HomeScreen />} />
-
+              <Route path="/111" element={<OneOneOnePage />} />
               <Route path="/details" element={<InitialPage />} />
-            
+              <Route path="/NoneOfTheAbove" element={<NoneOfTheAbovePage />} />
               <Route path="/PresentationForm" element={<PresentationForm />} />
               <Route path="/HospitalScreen" element={<HospitalScreen />} />
               <Route path="/FlowChart" element={<FlowChart />} />

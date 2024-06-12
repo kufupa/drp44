@@ -6,12 +6,15 @@ import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adult
 import { getPresentation } from "./gemini";
 import { BackPainHandler } from "./flowcharts/back_pain";
 import { ChestPainHandler } from "./flowcharts/chest_pain";
+import { NoneOfTheAbove } from "./flowcharts/none_of_the_above";
 
 // mapping between string and Presentation 
 const patientProblemMap: { [key: string]: Presentation } = {
     "Abdominal Pain in Adults": AbdominalPainAdultsHandler.getInstance(),
+    "Abdominal Pain in Children": AbdominalPainAdultsHandler.getInstance(),
     "Chest Pain": ChestPainHandler.getInstance(),
-    "Back Pain": BackPainHandler.getInstance()
+    "Back Pain": BackPainHandler.getInstance(),
+    "None of the Above": NoneOfTheAbove.getInstance()
     // Add more mappings as needed...
   };
 
