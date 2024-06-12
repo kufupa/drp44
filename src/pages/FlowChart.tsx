@@ -67,30 +67,8 @@ const FlowChart: React.FC = () => {
     // use navigate
   };
 
-  const handleMouseDown = (buttonData: string) => {
-    const timer = setTimeout(() => {
-      setIsHeld(true);
-      console.log("transferring to unique page: " + buttonData);
-      navigate(`/unique-page/${buttonData}`, { state: { displayButtons } });
-    }, 500);
-    setHoldTimer(timer);
-  };
-  
   const handleClick = (buttonData: string) => {
     navigate(`/unique-page/${buttonData}`, { state: { displayButtons, button } });
-  };
-
-  const handleMouseUp = () => {
-    if (holdTimer) {
-      clearTimeout(holdTimer);
-      setHoldTimer(null);
-      if (!isHeld) {
-        console.log('Button clicked');
-        // Handle click action here if needed
-      } else {
-        setIsHeld(false); // Reset the hold state
-      }
-    }
   };
 
   useEffect(() => {
@@ -105,7 +83,7 @@ const FlowChart: React.FC = () => {
       <div className='text-6xl'>Additional symptoms</div>
       <div>
         <div>
-          <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} whenClick={handleClick}/>
+          <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick} whenClick={handleClick}/>
         </div>
       </div>
     </div>

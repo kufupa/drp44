@@ -4,6 +4,7 @@ import { firstButton, selectFlowchart } from '../utils/select_flowchart';
 import { Question } from '../utils/question';
 import BackButton from '../components/BackButton';
 import { Presentation } from '../utils/presentation';
+import { NoneOfTheAbove } from '../utils/flowcharts/none_of_the_above';
 
 
 const Confirmation: React.FC = () => {
@@ -13,20 +14,21 @@ const Confirmation: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const patientProblem: string = location.state?.patientProblem || '';
+  const age: string = location.state?.age || '';
+  const sex: string = location.state?.sex || '';
   console.log("Input string was:" + patientProblem);
 
   useEffect(() => {
     const fetchDiagnosis = async () => {
       try {
         console.log("Input string was:" + patientProblem);
-        const result = await selectFlowchart(patientProblem);
+        const result = await selectFlowchart(patientProblem, age, sex);
+        if (result instanceof NoneOfTheAbove) {
+          navigate('/NoneOfTheAbove')
+        }
         setDiagnosis(result);
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('An unexpected error occurred');
-        }
+        navigate('/NoneOfTheAbove')
       } finally {
         setLoading(false);
       }

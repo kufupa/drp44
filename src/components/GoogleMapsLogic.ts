@@ -28,7 +28,8 @@ export const initMap = (elementId: string, center: google.maps.LatLngLiteral): P
   });
 };
 
-export const addMarker = (name: string, location: { lat: number, lng: number, title: string }, onClick: () => void): void => {
+// Make another for waiting time
+export const addMarker = (name: string, location: { lat: number, lng: number, title: string, eta: string }, onClick: () => void): void => {
   if (map) {
     const marker = new google.maps.Marker({
       position: { lat: location.lat, lng: location.lng },
@@ -36,12 +37,11 @@ export const addMarker = (name: string, location: { lat: number, lng: number, ti
       title: name
     });
 
-    // TODO
-    // Change UI
-    // Change phone display of Yes No button flowchart and small screen view
+    // Create content for the info window
     const contentString = `
-      <div style="background-color: white; padding: 1px; border-radius: 1px;">
+      <div style="background-color: white; padding: 10px; border-radius: 5px;">
         <h3>${name}</h3>
+        <p>ETA: ${location.eta}</p>
       </div>
     `;
 
@@ -49,13 +49,42 @@ export const addMarker = (name: string, location: { lat: number, lng: number, ti
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
     });
-    
-    infowindow.open(map, marker);
 
-    // Execute the provided onClick function when the marker is clicked
-    marker.addListener('click', onClick);
+    infowindow.open(map, marker);
+    onClick(); // Execute the provided onClick function
   }
 };
+
+export const getEstimatedTime = (origin: google.maps.LatLngLiteral, destination: google.maps.LatLngLiteral): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const directionsService = new google.maps.DirectionsService();
+    const request: google.maps.DirectionsRequest = {
+      origin: origin,
+      destination: destination,
+      travelMode: google.maps.TravelMode.TRANSIT, // Use transit mode for public transportation
+    };
+
+    directionsService.route(request, (response, status) => {
+      if (status === 'OK' && response) {
+        const route = response.routes[0];
+        if (route) {
+          const leg = route.legs[0];
+          if (leg) {
+            const travelTime = leg.duration ? leg.duration.text : 'Unknown';
+            resolve(travelTime);
+          } else {
+            reject(new Error('Leg is null or undefined'));
+          }
+        } else {
+          reject(new Error('Route is null or undefined'));
+        }
+      } else {
+        reject(new Error('Error calculating directions'));
+      }
+    });
+  });
+};
+
 
 export const displayRouteByPublicTransport = (origin: google.maps.LatLngLiteral, destination: google.maps.LatLngLiteral): void => {
   if (!directionsService || !directionsRenderer) {

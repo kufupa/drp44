@@ -9,7 +9,7 @@ const HomeScreen: React.FC = () => {
 
   const handleClickPatient = () => {
     // Pass arguments as an object
-    navigate('/PresentationForm');
+    navigate('/details');
   };
 
   const handleClickHospital = () => {
