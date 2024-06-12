@@ -11,7 +11,7 @@ import ClipboardIcon from '../components/ClipboardIcon.png'
 // @ts-ignore
 import LocationPin from '../components/LocationPin.webp'
 
-import { addMarker, displayRouteByPublicTransport, initMap } from '../components/GoogleMapsLogic';
+import { addMarker, displayRouteByPublicTransport, getEstimatedTime, initMap } from '../components/GoogleMapsLogic';
 
 const DisplayMaps: React.FC = () => {
     const location = useLocation();
@@ -35,10 +35,23 @@ const DisplayMaps: React.FC = () => {
 
                 hospitals.forEach((hospital) => {
                     const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-                    addMarker(hospital.hospitalName, { lat, lng, title: hospital.hospitalName }, () => {
-                        displayRouteByPublicTransport(center, { lat, lng });
-                    });
+                    getEstimatedTime(center, { lat, lng })
+                        .then((eta) => {
+                            addMarker(hospital.hospitalName, {
+                                lat,
+                                lng,
+                                title: hospital.hospitalName,
+                                eta: eta
+                            }, () => {
+                                displayRouteByPublicTransport(center, { lat, lng });
+                            });
+                        })
+                        .catch((error) => {
+                            console.error('Error getting estimated time:', error);
+                            // Handle error if needed
+                        });
                 });
+
                 const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
                 displayRouteByPublicTransport(center, { lat, lng });
             } catch (error) {
