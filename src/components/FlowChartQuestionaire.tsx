@@ -4,7 +4,7 @@ import '../styles.css';
 // @ts-ignore
 import ClipboardIcon from '../components/ClipboardIcon.png'
 
-const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, onMouseDown, onMouseUp, whenClick }) => {
+const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, whenClick }) => {
     const [selectedButtons, setSelectedButtons] = useState<string[]>([]);
     const handleClick = (buttonData: string) => {
         if (selectedButtons.includes(buttonData)) {
@@ -29,11 +29,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                 {buttonsList.map((buttonData, index) =>
                     <div className={`${selectedButtons.includes(buttonData) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
                     onClick={() => whenClick(buttonData)}
-                    onMouseDown={() => onMouseDown(buttonData)}
-                    onMouseUp={() => onMouseUp()} // Empty to avoid any default behavior
                     onMouseLeave={() => {}} // Empty to avoid any default behavior
-                    onTouchStart={() => onMouseDown(buttonData)} // For touch devices
-                    onTouchEnd={() => onMouseUp()} // Empty to avoid any default behavior
                     onTouchCancel={() => {}} // Empty to avoid any default behavior
                   >{buttonData.slice(0, buttonData.indexOf('-'))}</div>
                 )}
