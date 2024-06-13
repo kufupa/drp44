@@ -55,7 +55,7 @@ Common Symptoms are:
 ·  Pain starts mildly but becomes intense over time
 ·  Difficulty moving or bending
 `,
-            `Vomiting blood:
+            `Vomiting blood-
 ·  Vomit is bright red or look dark like coffee grounds.
 ·  Feeling faint / lightheaded
 ·  Pain in stomach area.
@@ -67,7 +67,7 @@ Common Symptoms are:
 ·  Heavier and more frequent periods
 ·  Bleeding that occurs outside of your regular menstrual cycle.
 `,
-            `High body temperature. You might:
+            `High body temperature- You might:
 ·  Sweating
 ·  Cold and shivering
 ·  Weakness or Tiredness
@@ -77,25 +77,25 @@ Common Symptoms are:
 
     yellow(): Array<string> {
         return [
-            `Possibly pregnant.
+            `Possibly pregnant-
 · Late / Missed Period       
 · Nausea or Morning Sickness
 · Tender, swollen, or sore breasts.
 `,
-            `Shoulder tip pain. You might feel:
+            `Shoulder tip pain- You might feel:
 · Pain from another part of the body, such as the abdomen, but is felt in the shoulder.
 · Pain that comes on quickly and can be sharp or aching.
 `,
-            `Black or redcurrant stools. You might have:
+            `Black or redcurrant stools- You might have:
 · Black, Sticky Stools
 · Red colored stools
 `,
-            `Persistent vomiting. Common Symptoms:
+            `Persistent vomiting- Common Symptoms:
 · Continuous Vomiting
 · Dry mouth, dizziness, and reduced urination due to loss of fluids.
 · Nausea
 `,
-            `Adult with high body temperature in an adult. You might have:
+            `Adult with high body temperature in an adult- You might have:
 · Fever
 · Excessive sweating
 · Experiencing chills or shivering
