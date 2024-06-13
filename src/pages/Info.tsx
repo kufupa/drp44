@@ -12,22 +12,6 @@ const InfoPage: React.FC = () => {
   const question: Question | null = location.state.button;
   console.log(question);
 
-  // TODO
-  // Change navigate below as well
-  useEffect(() => {
-    const handleMouseUp = () => {
-      navigate(-1);
-    };
-
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('touchend', handleMouseUp);
-
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchend', handleMouseUp);
-    };
-  }, [navigate]);
-
   if (!buttonData) return null;
 
   const symptomName = buttonData.slice(0, buttonData.indexOf('-'));
