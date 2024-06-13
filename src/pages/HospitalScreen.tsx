@@ -108,7 +108,7 @@ const HospitalScreen: React.FC = () => {
       <div className=''>
         {/* Map through all hospitals */}
         {hospitals.map((hospital, index) => (
-          <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={hospital.ticked} mapsFunc={handleClick} />
+          <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={index==0 ? true : hospital.ticked} mapsFunc={handleClick} />
         ))}
 
       </div>
