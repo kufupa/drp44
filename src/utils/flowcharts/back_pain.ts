@@ -20,59 +20,50 @@ export class BackPainHandler extends Presentation {
 
     red(): Array<string> {
         return [
-            `Airway compromise-Occurs when there is a blockage of the airways due to external objects, swelling, or abnormalities. You might:
-    · find it difficult to breathe
-    · make a wheezing sound
-    · make a harsh, grating sound
-    · have visible swelling
-    · difficulty swallowing`,
-            `Inadequate Breathing-Involves inability to breathe effectively due to lungs or other muscles. You may feel:
-    · shortness of breath
-    · rapid + shallow breathing
-    · tired or weak
-    · pressure or tightness in chest
-    · bluish lips
-    · dizziness`,
-            `Shock-The body isn't getting enough blood flow, so vital organs struggle to get oxygen.
-    Common Symptoms are:
-    · Weakness
-    · Your heart might be racing or pounding
-    · Cold, Clammy and Sweaty Skin
-    · Pale, Bluish skin - especially around lips and fingernails
-    · Nausea
-    · Low Blood Pressure
-    · Feel Disoriented`,
+            `Airway Blockage-Due to objects, swelling or abnormalities. 
+            You might have:
+·        difficulty breathing
+·        wheezing or harsh, grating sound
+·        visible swelling
+·        difficulty swallowing`,
+            `Inadequate Breathing-You may feel:
+·       out of breath
+·        rapid + shallow breathing
+·        tired or weak
+·        pressure or tightness in chest
+·        bluish lips
+·        dizziness`,
+            `Shock-Struggle to get oxygen.
+Common Symptoms are:
+·        Weakness / Disoriented
+·        Racing / Pounding Heart 
+·        Cold, Clammy and Sweaty Skin
+·        Pale, Bluish skin - especially around lips and fingernails
+·        Nausea
+·        Low Blood Pressure`,
         ];
     }
     
     orange(): Array<string> {
         return [
-            `Severe pain-Intense or sharp pain that significantly impairs daily activities. It may cause:
+            `Severe pain-It may cause:
     · Inability to move
     · Sweating
     · High blood pressure
     · Nausea
     · Anxiety`,
-            `Acute neurological deficit-Sudden loss of neurological function due to injury or illness. Signs include:
+            `Issue with Nerve / Spinal Cord-Signs include:
     · Weakness or numbness on one side of the body
     · Trouble speaking or understanding speech
     · Loss of vision or double vision
     · Severe headache`,
-            `Significant mechanism of injury-Refers to an event causing a high risk of severe injury, such as:
-    · Car accidents
-    · Falls from height
-    · Penetrating injuries`,
-            `Hot child-A child with an abnormally high body temperature due to fever or heat exposure. Signs include:
+            `High Temperature-Signs include:
+    · Fever / Heat exposure
     · Flushed skin
     · Sweating
     · Irritability
     · Lethargy`,
-            `Very hot adult-An adult with an abnormally high body temperature due to fever or heat exposure. Signs include:
-    · Flushed skin
-    · Sweating
-    · Confusion
-    · Weakness`,
-            `Abdominal pain-Severe pain in the abdominal region. Symptoms may include:
+            `Abdominal pain-Symptoms may include:
     · Cramping
     · Bloating
     · Nausea
@@ -82,37 +73,30 @@ export class BackPainHandler extends Presentation {
     
     yellow(): Array<string> {
         return [
-            `New neurological deficit-Recent loss of neurological function. Symptoms may include:
+            `Nerve Issues / Spinal Cord-Symptoms may include:
     · Sudden weakness
     · Numbness
     · Confusion`,
-            `Direct trauma to the back-Injury to the back from an external force. Symptoms may include:
-    · Pain
-    · Bruising
+            `Injury to back-Symptoms may include:
+    · Pain / Bruising
     · Difficulty moving`,
-            `Unable to walk-Inability to stand or walk due to pain or weakness. Signs include:
+            `Unable to walk-Signs include:
     · Inability to bear weight
-    · Severe pain on movement`,
-            `Hot adult-An adult with a moderately high body temperature due to fever or heat exposure. Signs include:
+    · Severe pain when moving`,
+            `Adult with high temperature-Signs include:
     · Flushed skin
     · Sweating
     · Mild confusion
     · General discomfort`,
-            `Moderate pain-Pain that is noticeable but not severe. Symptoms may include:
+            `Moderate pain-Symptoms may include:
     · Persistent discomfort
     · Limited movement`,
-            `Colicky pain-Intermittent and cramp-like pain. It may be associated with:
-    · Gastrointestinal issues
-    · Urinary tract problems`,
-            `Inappropriate history-Information provided by the patient that doesn't match the clinical findings. Signs include:
-    · Discrepancies in symptoms
-    · Inconsistent explanations`,
         ];
     }
     
     green(): Array<string> {
         return [
-            `Recent mild pain-Pain that has occurred recently but is not severe. Symptoms may include:
+            `Recent mild pain-Symptoms may include:
     · Minor discomfort
     · No significant impact on daily activities`,
             `Recent problem-A newly occurring issue that is not severe. Symptoms may include:
