@@ -104,7 +104,7 @@ const HospitalScreen: React.FC = () => {
       <div className=''>
         
       <div className="border-t-4 border-blue-900 mt-4" />
-      <div className='flex flex-row textBlue mt-4 text-2xl justify-center'>Our reccommendation:</div>
+      <div className='flex flex-row textBlue mt-4 text-2xl justify-center'>Our recommendation:</div>
         {/* First Hospital Div */}
           {hospitals.length > 0 && (
             <HospitalDiv 
