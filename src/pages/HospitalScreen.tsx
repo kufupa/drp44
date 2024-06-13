@@ -100,15 +100,41 @@ const HospitalScreen: React.FC = () => {
       <BackButton />
       <div className='md:text-5xl text-3xl font-black textClickBlue md:mt-10 mt-4 max-w-xl'>Hospital Recommendations</div>
       <img src={HospitalIcon} alt="" className='w-64' />
-      {/* <div className='flex flex-row textBlue' >
-        <img src={ClipboardIcon} alt="" className='md:ml-0 ml-10' />
-        <div className='mt-8 text-2xl'>Below are our recommendations</div>
-      </div> */}
       {/* Div containing all Hospitals */}
       <div className=''>
-        {/* Map through all hospitals */}
-        {hospitals.map((hospital, index) => (
-          <HospitalDiv hospitalName={hospital.hospitalName} waitTime={hospital.waitTime} distance={hospital.distance} directions={hospital.directions} ticked={index==0 ? true : hospital.ticked} mapsFunc={handleClick} />
+        
+      <div className="border-t-4 border-blue-900 mt-4" />
+      <div className='flex flex-row textBlue mt-4 text-2xl justify-center'>Our reccommendation:</div>
+        {/* First Hospital Div */}
+          {hospitals.length > 0 && (
+            <HospitalDiv 
+              hospitalName={hospitals[0].hospitalName} 
+              waitTime={hospitals[0].waitTime} 
+              distance={hospitals[0].distance} 
+              directions={hospitals[0].directions} 
+              ticked={hospitals[0].ticked} 
+              mapsFunc={handleClick} 
+            />
+          )}
+        <div className="border-b-4 border-blue-900 mb-4" />
+
+
+        {/* "Below are our recommendations" div */}
+        <div className='flex flex-row textBlue' >
+          <img src={ClipboardIcon} alt="" className='md:ml-0 ml-10' />
+          <div className='mt-8 text-2xl'>Below are other recommendations</div>
+        </div>
+
+        {/* Map through remaining hospitals */}
+        {hospitals.slice(1).map((hospital, index) => (
+          <HospitalDiv 
+            hospitalName={hospital.hospitalName} 
+            waitTime={hospital.waitTime} 
+            distance={hospital.distance} 
+            directions={hospital.directions} 
+            ticked={hospital.ticked} 
+            mapsFunc={handleClick} 
+          />
         ))}
 
       </div>
@@ -117,5 +143,4 @@ const HospitalScreen: React.FC = () => {
     </div>
   );
 };
-
 export default HospitalScreen;

@@ -19,8 +19,6 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
     return (
         // Maybe have different views for different screens
     <div>
-        {ticked && <div className="border-t-4 border-blue-900" />}
-        {ticked && <div className='flex flex-row textBlue mt-8 text-2xl justify-center'>Our reccommendation:</div>}
         <div className="min-h-24 relative py-4 pr-20 md:pr-32 pl-4 border shadow-md m-4 bgBlue flex flex-col gap-4 rounded-3xl text-white cursor-pointer"  onClick={() => mapsFunc && mapsFunc(hospitalName, directions)}>
             {/* Hospital Name */}
             <div className="">
@@ -44,7 +42,6 @@ const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distan
                 <img src={LocationIcon} alt="" className='w-10 rounded-full' />
             </div>
         </div>
-        {ticked && <div className="border-b-4 border-blue-900" />}
     </div>
     );
 };
