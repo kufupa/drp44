@@ -48,7 +48,7 @@ Common Symptoms are:
 
 orange(): Array<string> {
     return [
-        `Severe pain. It may cause:
+        `Severe pain-It may cause:
 · Inability to move
 · Sweating
 · High blood pressure
