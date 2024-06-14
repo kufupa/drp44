@@ -20,18 +20,10 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
 
     return (
         <div className='grid gird-row-4 backgroundPale pb-96'>
-            <div className='row-span-1 flowChartSubmitButton lg:mx-96 mx-32 md:mx-56 py-4 my-4 mt-10 rounded-full text-white text-2xl font-medium cursor-pointer' 
-                onClick={onSubmitClick}>Yes</div>
-            <div
-                className="row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 rounded-full text-white text-2xl font-medium cursor-pointer"
-                onClick={onNoneClick} // Ensure this calls the correct function
-            >
-                No
-            </div>
             {/* <div className='text-4xl row-span-1 pt-20'>Do you have any of these symptoms?</div> */}
-            <div className='flex flex-row items-center justify-center textBlue mt-5' >
+            <div className='flex flex-row items-center justify-center textBlue mt-10' >
               <img src={ClipboardIcon} alt="" className='' />
-              <div className='mt-8 font-bold text-3xl mb-5 text-black'>Click symptom for additional information</div>
+              <div className='mt-4 text-4xl mb-5 text-black font-bold'>Click option for additional information</div>
             </div>
             <div className='text-xl row-span-1'>
                 {buttonsList.map((buttonData, index) =>
@@ -42,6 +34,14 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                   >{buttonData.slice(0, buttonData.indexOf('-'))}</div>
                 )}
             </div>
+            <div
+                className="row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 mb-4 rounded-full text-white text-2xl font-medium cursor-pointer"
+                onClick={onNoneClick} // Ensure this calls the correct function
+            >
+                No
+            </div>
+            <div className='row-span-1 flowChartSubmitButton lg:mx-96 mx-32 md:mx-56 py-4 my-4 rounded-full text-white text-2xl font-medium cursor-pointer' 
+                onClick={onSubmitClick}>Yes</div>
         </div>
     );
 };
