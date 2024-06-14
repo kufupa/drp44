@@ -35,7 +35,7 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
                 )}
             </div>
             <div
-                className="row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 mb-4 rounded-full text-white text-2xl font-medium cursor-pointer"
+                className="row-span-1 flowChartNoneButton lg:mx-96 mx-32 md:mx-56 py-4 mt-6 mb-4 rounded-full text-white text-2xl font-medium cursor-pointer border-4 borderBlueConfirmation"
                 onClick={onNoneClick} // Ensure this calls the correct function
             >
                 No
