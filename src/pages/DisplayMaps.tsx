@@ -33,26 +33,27 @@ const DisplayMaps: React.FC = () => {
                 const center = await getCurrentLocation();
                 await initMap('map', center);
 
-                hospitals.forEach((hospital) => {
-                    const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
-                    getEstimatedTime(center, { lat, lng })
-                        .then((eta) => {
-                            addMarker(hospital.hospitalName, {
-                                lat,
-                                lng,
-                                title: hospital.hospitalName,
-                                eta: eta
-                            }, () => {
-                                displayRouteByPublicTransport(center, { lat, lng });
-                            });
-                        })
-                        .catch((error) => {
-                            console.error('Error getting estimated time:', error);
-                            // Handle error if needed
-                        });
-                });
+                // TODO
+                // hospitals.forEach((hosp) => {
+                //     const [lat, lng] = hosp.directions.split(',').map(coord => parseFloat(coord));
+                //     getEstimatedTime(center, { lat, lng })
+                //         .then((eta) => {
+                //             addMarker(hosp.hospitalName, {
+                //                 lat,
+                //                 lng,
+                //                 title: hosp.hospitalName,
+                //                 eta: eta
+                //             }, () => {
+                //                 displayRouteByPublicTransport(center, { lat, lng });
+                //             });
+                //         })
+                //         .catch((error) => {
+                //             console.error('Error getting estimated time:', error);
+                //         });
+                // });
 
-                const [lat, lng] = hospital.directions.split(',').map(coord => parseFloat(coord));
+                const [lat, lng] = directions.split(',').map(coord => parseFloat(coord));
+                console.log(lat + "   " + lng)
                 displayRouteByPublicTransport(center, { lat, lng });
             } catch (error) {
                 console.error('Error initializing map:', error);
@@ -113,10 +114,10 @@ const DisplayMaps: React.FC = () => {
                     <div className='w-screen h-screen flex justify-center items-center pt-20'>
                         <div className='flex flex-col items-center'>
                             <div>
-                                <img src={LocationPin} alt="" className='w-10' />
-                                <div></div>
+                                {/* <img src={LocationPin} alt="" className='w-10' /> */}
                             </div>
                             <div id="map" className="mt-4 w-screen h-screen"></div>
+                            <div></div>
                         </div>
                     </div>
 
