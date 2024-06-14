@@ -80,7 +80,7 @@ const FlowChart: React.FC = () => {
   return (
     <div>
       <BackButton />
-      <div className='text-6xl'>Additional symptoms</div>
+      <div className='text-6xl'>Do you have any of these symptoms?</div>
       <div>
         <div>
           <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick} whenClick={handleClick}/>
