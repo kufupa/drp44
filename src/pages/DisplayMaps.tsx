@@ -33,27 +33,25 @@ const DisplayMaps: React.FC = () => {
                 const center = await getCurrentLocation();
                 await initMap('map', center);
 
-                // TODO
-                // hospitals.forEach((hosp) => {
-                //     const [lat, lng] = hosp.directions.split(',').map(coord => parseFloat(coord));
-                //     getEstimatedTime(center, { lat, lng })
-                //         .then((eta) => {
-                //             addMarker(hosp.hospitalName, {
-                //                 lat,
-                //                 lng,
-                //                 title: hosp.hospitalName,
-                //                 eta: eta
-                //             }, () => {
-                //                 displayRouteByPublicTransport(center, { lat, lng });
-                //             });
-                //         })
-                //         .catch((error) => {
-                //             console.error('Error getting estimated time:', error);
-                //         });
-                // });
+                hospitals.forEach((hosp) => {
+                    const [lat, lng] = hosp.directions.split(',').map(coord => parseFloat(coord));
+                    getEstimatedTime(center, { lat, lng })
+                        .then((eta) => {
+                            addMarker(hosp.hospitalName, {
+                                lat,
+                                lng,
+                                title: hosp.hospitalName,
+                                eta: eta
+                            }, () => {
+                                displayRouteByPublicTransport(center, { lat, lng });
+                            });
+                        })
+                        .catch((error) => {
+                            console.error('Error getting estimated time:', error);
+                        });
+                });
 
                 const [lat, lng] = directions.split(',').map(coord => parseFloat(coord));
-                console.log(lat + "   " + lng)
                 displayRouteByPublicTransport(center, { lat, lng });
             } catch (error) {
                 console.error('Error initializing map:', error);
@@ -67,6 +65,7 @@ const DisplayMaps: React.FC = () => {
             initializeMap();
         }
     }, [hospitals]);
+
 
     // Function to get current location
     const getCurrentLocation = (): Promise<google.maps.LatLngLiteral> => {

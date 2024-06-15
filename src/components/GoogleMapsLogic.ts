@@ -51,9 +51,14 @@ export const addMarker = (name: string, location: { lat: number, lng: number, ti
     });
 
     infowindow.open(map, marker);
-    onClick(); // Execute the provided onClick function
+
+    // Add listener to open info window on marker click
+    marker.addListener('click', () => {
+      onClick(); // Execute the provided onClick function
+    });
   }
 };
+
 
 export const getEstimatedTime = (origin: google.maps.LatLngLiteral, destination: google.maps.LatLngLiteral): Promise<string> => {
   return new Promise((resolve, reject) => {
