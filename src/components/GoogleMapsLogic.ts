@@ -28,6 +28,20 @@ export const initMap = (elementId: string, center: google.maps.LatLngLiteral): P
   });
 };
 
+export const getLatLngFromPostcode = (postcode: string): Promise<google.maps.LatLngLiteral> => {
+  return new Promise((resolve, reject) => {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: postcode }, (results, status) => {
+      if (status === 'OK' && results && results[0]) {
+        const location = results[0].geometry.location;
+        resolve({ lat: location.lat(), lng: location.lng() });
+      } else {
+        reject(new Error(`Geocode was not successful for the following reason: ${status}`));
+      }
+    });
+  });
+};
+
 // Make another for waiting time
 export const addMarker = (name: string, location: { lat: number, lng: number, title: string, eta: string }, onClick: () => void): void => {
   if (map) {

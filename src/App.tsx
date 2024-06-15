@@ -18,6 +18,7 @@ import { UserProvider } from './components/UserContext';
 import InitialPage from './pages/Details';
 import { NoneOfTheAbovePage } from './pages/NoneOfTheAbove';
 import { OneOneOnePage } from './pages/One';
+import DisplayMapsP from './pages/DisplayMapsP';
 
 const App: React.FC = () => {
   return (
@@ -42,11 +43,11 @@ const App: React.FC = () => {
               <Route path="/unique-page/:buttonData" Component={InfoPage} />
               <Route path="*" element={<HomeScreen />} />
               <Route path="/DisplayMaps" element={<DisplayMaps />} />
+              <Route path="/DisplayMapsP" element={<DisplayMapsP />} />
             </Routes>
           </div>
         </Router>  
       </UserProvider>
-      
     </div>
   );
 }

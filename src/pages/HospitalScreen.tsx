@@ -12,7 +12,7 @@ import HospitalIcon from '../components/HospitalIcon.png'
 // @ts-ignore
 import ClipboardIcon from '../components/ClipboardIcon.png'
 
-import { addMarker, initMap } from '../components/GoogleMapsLogic';
+import { addMarker, getLatLngFromPostcode, initMap } from '../components/GoogleMapsLogic';
 import DisplayMaps from './DisplayMaps';
 
 const HospitalScreen: React.FC = () => {
@@ -54,6 +54,7 @@ const HospitalScreen: React.FC = () => {
 
   // To get data from backend
   const [hospitals, setHospitals] = useState<HospitalDetails[]>([]);
+  const [userPostcode, setUserPostcode] = useState<string>("");
 
   useEffect(() => {
     const fetchHospitals = async () => {
@@ -89,33 +90,50 @@ const HospitalScreen: React.FC = () => {
   const location = useLocation();
   const button: string = location.state?.button || null;
 
-  const handleClick = (hospitalName: string, directions: string) => {
-    // const [lat, lng] = directions.split(',').map(coord => parseFloat(coord));
-    // const marker = addMarker({ lat, lng, title: hospitalName });
-    navigate("/DisplayMaps", { state: { hospitalName, directions, hospitals } })
-  }
+  const handleClick = async (hospitalName: string, directions: string) => {
+    if (userPostcode === "") {
+      navigate("/DisplayMaps", { state: { hospitalName, directions, hospitals } });
+    } else {
+      try {
+        // Check if postcode is valid and get lat/lng
+        const { lat, lng } = await getLatLngFromPostcode(userPostcode);
+        navigate("/DisplayMapsP", { state: { hospitalName, directions, hospitals, lat, lng } });
+      } catch (error) {
+        console.error('Error getting location from postcode:', error);
+        console.log(error)
+        // setUserPostcode("Invalid Postcode")
+      }
+    }
+  };
+
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserPostcode(event.target.value);
+  };
 
   return (
     <div className='font-bold backgroundPale items-center justify-center min-h-screen flex flex-col'>
       <BackButton />
       <div className='md:text-5xl text-3xl font-black textClickBlue md:mt-10 mt-4 max-w-xl'>Hospital Recommendations</div>
       <img src={HospitalIcon} alt="" className='w-64' />
+      <input type="text" value={userPostcode} onChange={handleInputChange} placeholder="Patient's current postcode" className="border border-gray-300 p-4 rounded-full" />
+      <div className='textClickBlue'>(leave blank if you wish to use your current location)</div>
       {/* Div containing all Hospitals */}
       <div className=''>
-        
-      <div className="border-t-4 border-blue-900 mt-4" />
-      <div className='flex flex-row textBlue mt-4 text-2xl justify-center'>Our recommendation:</div>
+
+        <div className="border-t-4 border-blue-900 mt-4" />
+        <div className='flex flex-row textBlue mt-4 text-2xl justify-center'>Our recommendation:</div>
         {/* First Hospital Div */}
-          {hospitals.length > 0 && (
-            <HospitalDiv 
-              hospitalName={hospitals[0].hospitalName} 
-              waitTime={hospitals[0].waitTime} 
-              distance={hospitals[0].distance} 
-              directions={hospitals[0].directions} 
-              ticked={hospitals[0].ticked} 
-              mapsFunc={handleClick} 
-            />
-          )}
+        {hospitals.length > 0 && (
+          <HospitalDiv
+            hospitalName={hospitals[0].hospitalName}
+            waitTime={hospitals[0].waitTime}
+            distance={hospitals[0].distance}
+            directions={hospitals[0].directions}
+            ticked={hospitals[0].ticked}
+            mapsFunc={handleClick}
+          />
+        )}
         <div className="border-b-4 border-blue-900 mb-4" />
 
 
@@ -127,13 +145,13 @@ const HospitalScreen: React.FC = () => {
 
         {/* Map through remaining hospitals */}
         {hospitals.slice(1).map((hospital, index) => (
-          <HospitalDiv 
-            hospitalName={hospital.hospitalName} 
-            waitTime={hospital.waitTime} 
-            distance={hospital.distance} 
-            directions={hospital.directions} 
-            ticked={hospital.ticked} 
-            mapsFunc={handleClick} 
+          <HospitalDiv
+            hospitalName={hospital.hospitalName}
+            waitTime={hospital.waitTime}
+            distance={hospital.distance}
+            directions={hospital.directions}
+            ticked={hospital.ticked}
+            mapsFunc={handleClick}
           />
         ))}
 
