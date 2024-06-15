@@ -55,9 +55,9 @@ Common Symptoms are:
 ·  Pain starts mildly but becomes intense over time
 ·  Difficulty moving or bending
 `,
-            `Vomiting blood-
+            `Vomiting blood-It may cause:
 ·  Vomit is bright red or look dark like coffee grounds.
-·  Feeling faint / lightheaded
+·  Feeling faint or lightheaded
 ·  Pain in stomach area.
 ·  Unusually weak or fatigued.
 `,

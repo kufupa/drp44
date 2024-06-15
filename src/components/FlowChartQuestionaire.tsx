@@ -6,15 +6,6 @@ import ClipboardIcon from '../components/ClipboardIcon.png'
 
 const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, whenClick }) => {
     const [selectedButtons, setSelectedButtons] = useState<string[]>([]);
-    const handleClick = (buttonData: string) => {
-        if (selectedButtons.includes(buttonData)) {
-            // If the button is already selected, remove it from the selectedButtons array
-            setSelectedButtons(selectedButtons.filter(btn => btn !== buttonData));
-        } else {
-            // If the button is not selected, add it to the selectedButtons array
-            setSelectedButtons([...selectedButtons, buttonData]);
-        }
-    };
 
     console.log(buttonsList)
 
