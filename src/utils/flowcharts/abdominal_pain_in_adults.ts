@@ -61,13 +61,19 @@ Common Symptoms are:
 ·  Pain in stomach area.
 ·  Unusually weak or fatigued.
 `,
-            `Passing fresh or altered blood:`,
-            `PV blood loss and >20 weeks pregnant-Unexpected bleeding from the vagina:
+            `Passing fresh or altered blood-It may cause:
+·  Bright red blood that is fresh
+·  Dark brown or black blood that indicates it has been in the system longer
+·  Presence of clots in the blood
+·  Blood mixed with stool or urine
+`,
+            `PV blood loss and >20 weeks pregnant-It may cause:
+·  Unexpected bleeding from the vagina
 ·  Unexpected spots or blood stains in underwear 
 ·  Heavier and more frequent periods
 ·  Bleeding that occurs outside of your regular menstrual cycle.
 `,
-            `High body temperature- You might:
+            `High body temperature- You might experience:
 ·  Sweating
 ·  Cold and shivering
 ·  Weakness or Tiredness
