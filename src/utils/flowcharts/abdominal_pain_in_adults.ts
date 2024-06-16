@@ -7,7 +7,6 @@ import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
 import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
 // @ts-ignore
 import Shock from '../../components/imgs/Shock.jpg'
-
 // @ts-ignore
 import Severepain from '../../components/imgs/Severe pain.jpg'
 // @ts-ignore
@@ -16,6 +15,12 @@ import Highbodytemperature from '../../components/imgs/High body temperature.jpg
 import Painradiatingtotheback from '../../components/imgs/Pain radiating to the back.jpg'
 // @ts-ignore
 import Vomitingblood from '../../components/imgs/Vomiting blood.jpg'
+// @ts-ignore
+import Possiblypregnant from '../../components/imgs/Possibly pregnant.jpg'
+// @ts-ignore
+import Shouldertippain from '../../components/imgs/Shoulder tip pain.jpg'
+// @ts-ignore
+import Persistentvomiting from '../../components/imgs/Persistent vomiting.jpg'
 
 import { stringWithImage } from "../../types/stringWithImage";
 
@@ -127,13 +132,13 @@ Common Symptoms are:
 · Late or Missed Period       
 · Nausea or Morning Sickness
 · Tender, swollen, or sore breasts.`,
-                image: ''
+                image: Possiblypregnant
             },
             {
                 text: `Shoulder tip pain- You might feel:
 · Pain from another part of the body, such as the abdomen, but is felt in the shoulder.
 · Pain that comes on quickly and can be sharp or aching.`,
-                image: ''
+                image: Shouldertippain
             },
             {
                 text: `Black or redcurrant stools- You might have:
@@ -146,7 +151,7 @@ Common Symptoms are:
 · Continuous Vomiting
 · Dry mouth, dizziness, and reduced urination due to loss of fluids.
 · Nausea`,
-                image: ''
+                image: Persistentvomiting
             },
             {
                 text: `Adult with high body temperature in an adult- You might have:
@@ -154,7 +159,7 @@ Common Symptoms are:
 · Excessive sweating
 · Experiencing chills or shivering
 · Feeling unusually tired or weak.`,
-                image: ''
+                image: Highbodytemperature
             }
         ];
     }
