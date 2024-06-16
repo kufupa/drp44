@@ -1,10 +1,11 @@
 import { Presentation } from "../presentation";
 // @ts-ignore
 import ChestImage from '../../components/imgs/chestpain.png'
+import { stringWithImage } from "../../types/stringWithImage";
 
 
 export class ChestPainHandler extends Presentation {
-    black(): string[] {
+    black(): stringWithImage[] {
         throw new Error("Method not implemented.");
     }
     image(): string {
@@ -20,95 +21,130 @@ export class ChestPainHandler extends Presentation {
     }
 
 
-    red(): Array<string> {
+    red(): Array<stringWithImage> {
         return [
-            `Airway Blockage-Due to objects, swelling or abnormalities. 
+            {
+                text: `Airway Blockage-Due to objects, swelling or abnormalities. 
             You might have:
 ·        difficulty breathing
 ·        wheezing or harsh, grating sound
 ·        visible swelling
-·        difficulty swallowing`,
-            `Inadequate Breathing-You may feel:
+·        difficulty swallowing`
+            },
+            {
+                text: `Inadequate Breathing-You may feel:
 ·       out of breath
 ·        rapid + shallow breathing
 ·        tired or weak
 ·        pressure or tightness in chest
 ·        bluish lips
-·        dizziness`,
-            `Shock-Struggle to get oxygen.
+·        dizziness`
+            },
+            {
+                text: `Shock-Struggle to get oxygen.
 Common Symptoms are:
 ·        Weakness or Disoriented
 ·        Racing or Pounding Heart 
 ·        Cold, Clammy and Sweaty Skin
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea
-·        Low Blood Pressure`,
+·        Low Blood Pressure`
+            }
         ];
     }
 
-orange(): Array<string> {
-    return [
-        `Severe pain-It may cause:
+
+    orange(): Array<stringWithImage> {
+        return [
+            {
+                text: `Severe pain-It may cause:
 · Inability to move
 · Sweating
 · High blood pressure
 · Nausea
-· Anxiety`,
-        `Cardiac pain-Symptoms may include:
+· Anxiety`
+            },
+            {
+                text: `Cardiac pain-Symptoms may include:
 · Pressure or tightness in the chest
 · Pain spreading to shoulders, neck, or arms
 · Shortness of breath
-· Sweating`,
-        `Acutely short of breath-Symptoms may include:
+· Sweating`
+            },
+            {
+                text: `Acutely short of breath-Symptoms may include:
 · Rapid breathing
 · Gasping for air
 · Chest tightness
-· Anxiety`,
-        `Abnormal pulse-Irregular heartbeats or pulse rate. Symptoms may include:
+· Anxiety`
+            },
+            {
+                text: `Abnormal pulse-Irregular heartbeats or pulse rate. Symptoms may include:
 · Fast or slow pulse
 · Palpitations
-· Dizziness`,
-    ];
-}
+· Dizziness`
+            }
+        ];
+    }
 
-yellow(): Array<string> {
-    return [
-        `Sharp Chest pain-Worsens with breathing or coughing:
+
+    yellow(): Array<stringWithImage> {
+        return [
+            {
+                text: `Sharp Chest pain-Worsens with breathing or coughing:
 · Chest pain
 · Pain with deep breaths
-· Pain with coughing or sneezing`,
-        `Persistent vomiting-Symptoms may include:
+· Pain with coughing or sneezing`
+            },
+            {
+                text: `Persistent vomiting-Symptoms may include:
 · Severe nausea
 · Dehydration
-· Weakness`,
-        `Significant cardiac history-Past heart-related health issues. Symptoms may include:
+· Weakness`
+            },
+            {
+                text: `Significant cardiac history-Past heart-related health issues. Symptoms may include:
 · Previous heart attacks
-· Chronic heart conditions`,
-        `Moderate pain-Symptoms may include:
+· Chronic heart conditions`
+            },
+            {
+                text: `Moderate pain-Symptoms may include:
 · Persistent discomfort
-· Limited movement`,
-    ];
-}
+· Limited movement`
+            }
+        ];
+    }
 
-green(): Array<string> {
-    return [
-        `Vomiting-Symptoms may include:
+
+    green(): Array<stringWithImage> {
+        return [
+            {
+                text: `Vomiting-Symptoms may include:
 · Nausea
-· Discomfort in the stomach`,
-        `Recent mild pain-Symptoms may include:
+· Discomfort in the stomach`
+            },
+            {
+                text: `Recent mild pain-Symptoms may include:
 · Minor discomfort
-· No significant impact on daily activities`,
-        `Recent problem-A newly occurring issue that is not severe. Symptoms may include:
+· No significant impact on daily activities`
+            },
+            {
+                text: `Recent problem-A newly occurring issue that is not severe. Symptoms may include:
 · Minor irritation
-· Mild inconvenience`,
-    ];
-}
+· Mild inconvenience`
+            }
+        ];
+    }
 
-blue(): Array<string> {
-    return [
-        `No urgent condition-Patient does not exhibit any immediate or severe symptoms. Signs include:
+
+    blue(): Array<stringWithImage> {
+        return [
+            {
+                text: `No urgent condition-Patient does not exhibit any immediate or severe symptoms. Signs include:
 · Stable condition
-· No significant pain or distress`,
-    ];
-}
+· No significant pain or distress`
+            }
+        ];
+    }
+
 }

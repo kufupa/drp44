@@ -7,6 +7,7 @@ import { getPresentation } from "./gemini";
 import { BackPainHandler } from "./flowcharts/back_pain";
 import { ChestPainHandler } from "./flowcharts/chest_pain";
 import { NoneOfTheAbove } from "./flowcharts/none_of_the_above";
+import { stringWithImage } from "../types/stringWithImage";
 
 // mapping between string and Presentation 
 const patientProblemMap: { [key: string]: Presentation } = {
@@ -51,16 +52,16 @@ export function nextQuestion(presentation: Presentation, category: CategoryEnum)
     // and symptoms are given by calling the relevant function to access them
     if (category === CategoryEnum.RED) {
         nextCategory = CategoryEnum.ORANGE;
-        symptoms = presentation.orange();
+        symptoms = presentation.orange().map(symptom => symptom.text);;
     } else if (category === CategoryEnum.ORANGE) {
         nextCategory = CategoryEnum.YELLOW;
-        symptoms = presentation.yellow();
+        symptoms = presentation.yellow().map(symptom => symptom.text);;
     } else if (category === CategoryEnum.YELLOW) {
         nextCategory = CategoryEnum.GREEN;
-        symptoms = presentation.green();
+        symptoms = presentation.green().map(symptom => symptom.text);;
     } else if (category === CategoryEnum.GREEN) {
         nextCategory = CategoryEnum.BLACK;
-        symptoms = presentation.black();
+        symptoms = presentation.black().map(symptom => symptom.text);;
     } else if (CategoryEnum.BLACK) {
         // if currrent category is black, then there are no lower categories
         nextCategory = CategoryEnum.BLACK;
@@ -82,7 +83,7 @@ export function nextQuestion(presentation: Presentation, category: CategoryEnum)
 export const firstButton = (presentation: Presentation) => {
     const first: Question = {
         category: CategoryEnum.RED,
-        symptoms: presentation.red(),
+        symptoms: presentation.red().map(symptom => symptom.text),
         presentation: presentation
     }
     // console.log(first);
