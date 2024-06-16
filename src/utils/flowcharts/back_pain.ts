@@ -7,6 +7,16 @@ import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
 import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
 // @ts-ignore
 import Shock from '../../components/imgs/Shock.jpg'
+// @ts-ignore
+import Abdominalpain from '../../components/imgs/Abdominal pain.jpg'
+// @ts-ignore
+import IssuewithNerveorSpinalCord from '../../components/imgs/Issue with Nerve or Spinal Cord.jpg'
+// @ts-ignore
+import Highbodytemperature from '../../components/imgs/High body temperature.jpg'
+// @ts-ignore
+import Painradiatingtotheback from '../../components/imgs/Pain radiating to the back.jpg'
+// @ts-ignore
+import Unabletowalk from '../../components/imgs/Unable to walk.jpg'
 import { stringWithImage } from "../../types/stringWithImage";
 
 export class BackPainHandler extends Presentation {
@@ -76,7 +86,8 @@ Common Symptoms are:
 · Weakness or numbness on one side of the body
 · Trouble speaking or understanding speech
 · Loss of vision or double vision
-· Severe headache`
+· Severe headache`,
+image: IssuewithNerveorSpinalCord
             },
             {
                 text: `High Temperature-Signs include:
@@ -84,14 +95,16 @@ Common Symptoms are:
 · Flushed skin
 · Sweating
 · Irritability
-· Lethargy`
+· Lethargy`,
+image: Highbodytemperature
             },
             {
                 text: `Abdominal pain-Symptoms may include:
 · Cramping
 · Bloating
 · Nausea
-· Vomiting`
+· Vomiting`,
+image: Abdominalpain
             }
         ];
     }
@@ -103,24 +116,28 @@ Common Symptoms are:
                 text: `Nerve Issues or Spinal Cord-Symptoms may include:
     · Sudden weakness
     · Numbness
-    · Confusion`
+    · Confusion`,
+    image: IssuewithNerveorSpinalCord
             },
             {
                 text: `Injury to back-Symptoms may include:
     · Pain or Bruising
-    · Difficulty moving`
+    · Difficulty moving`,
+    image: Painradiatingtotheback
             },
             {
                 text: `Unable to walk-Signs include:
     · Inability to bear weight
-    · Severe pain when moving`
+    · Severe pain when moving`,
+    image: Unabletowalk
             },
             {
                 text: `Adult with high temperature-Signs include:
     · Flushed skin
     · Sweating
     · Mild confusion
-    · General discomfort`
+    · General discomfort`,
+    image: Highbodytemperature
             },
             {
                 text: `Moderate pain-Symptoms may include:

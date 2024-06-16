@@ -6,8 +6,6 @@ import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
 // @ts-ignore
 import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
 // @ts-ignore
-import Shock from '../../components/imgs/Shock.jpg'
-// @ts-ignore
 import Severepain from '../../components/imgs/Severe pain.jpg'
 // @ts-ignore
 import Cardiacpain from '../../components/imgs/Cardiac pain.jpg'
@@ -16,13 +14,7 @@ import Acutelyshortofbreath from '../../components/imgs/Acutely short of breath.
 // @ts-ignore
 import Abnormalpulse from '../../components/imgs/Abnormal pulse.png'
 // @ts-ignore
-import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
-// @ts-ignore
-import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
-// @ts-ignore
 import Shock from '../../components/imgs/Shock.jpg'
-// @ts-ignore
-import Severepain from '../../components/imgs/Severe pain.jpg'
 // @ts-ignore
 import Persistentvomiting from '../../components/imgs/Persistent vomiting.jpg'
 
