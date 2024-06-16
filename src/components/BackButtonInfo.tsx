@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BackInterface } from './BackInterface';
+import { BackInterfaceInfo } from './BackInterfaceInfo';
 
-const BackButtonInfo: React.FC<BackInterface> = (question) => {
+const BackButtonInfo: React.FC<BackInterfaceInfo> = ({link, presName}) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
-    navigate(`/FlowChart`, { state: { question } });
+    console.log(presName)
+    navigate(`/FlowChart`, { state: { link, presName } });
   };
 
   return (

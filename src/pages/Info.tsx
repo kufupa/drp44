@@ -4,13 +4,19 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import VomitingBlood from '../components/VomitingBlood.png'
 import BackButtonInfo from '../components/BackButtonInfo';
 import { Question } from '../utils/question';
+import { Presentation } from '../utils/presentation';
 
 const InfoPage: React.FC = () => {
-  const navigate = useNavigate();
   const { buttonData } = useParams<{ buttonData: string }>();
   const location = useLocation();
   const question: Question | null = location.state.button;
+  const displayButtons = location.state.displayButtons;
+  const diagnosis: Presentation = location.state.diagnosis;
+  const presName: string = location.state.presName;
+  console.log(diagnosis)
   console.log(question);
+  console.log(displayButtons)
+  console.log(presName)
 
   if (!buttonData) return null;
 
@@ -21,7 +27,7 @@ const InfoPage: React.FC = () => {
   return (
     <div className='textBlue backgroundPale textBlue flex flex-col fixed inset-0 items-center justify-center'>
       {/* TODO */}
-      <BackButtonInfo link={question} />
+      <BackButtonInfo link={question} presName={presName} />
       <div className='textClickBlue text-4xl font-bold top-10 my-5 pt-20 md:pt-5'>Extra Information Page for {symptomName}</div>
       <div className='md:top-32 top-40 my-5'>
         <img src={VomitingBlood} alt="" className='w-64' />

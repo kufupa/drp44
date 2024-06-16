@@ -33,8 +33,8 @@ export class AbdominalPainAdultsHandler extends Presentation {
 ·        dizziness`,
             `Shock-Struggle to get oxygen.
 Common Symptoms are:
-·        Weakness / Disoriented
-·        Racing / Pounding Heart 
+·        Weakness or Disoriented
+·        Racing or Pounding Heart 
 ·        Cold, Clammy and Sweaty Skin
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea
@@ -51,7 +51,7 @@ Common Symptoms are:
     · Nausea
     · Anxiety`,
             `Pain radiating to the back-You might feel:
-·  Sharp / Dull Pain
+·  Sharp or Dull Pain
 ·  Pain starts mildly but becomes intense over time
 ·  Difficulty moving or bending
 `,
@@ -78,7 +78,7 @@ Common Symptoms are:
     yellow(): Array<string> {
         return [
             `Possibly pregnant-
-· Late / Missed Period       
+· Late or Missed Period       
 · Nausea or Morning Sickness
 · Tender, swollen, or sore breasts.
 `,

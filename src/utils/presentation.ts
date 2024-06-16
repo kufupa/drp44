@@ -9,4 +9,7 @@ export abstract class Presentation {
   static getInstance(): Presentation {
     throw new Error("Method not implemented.");
   }
+  getClassName(): string {
+    return this.toString();
+  }
 }
