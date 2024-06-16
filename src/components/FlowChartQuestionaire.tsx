@@ -18,11 +18,11 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
             </div>
             <div className='text-xl row-span-1'>
                 {buttonsList.map((buttonData, index) =>
-                    <div className={`${selectedButtons.includes(buttonData) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
+                    <div className={`${selectedButtons.includes(buttonData.text) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
                     onClick={() => whenClick(buttonData)}
                     onMouseLeave={() => {}} // Empty to avoid any default behavior
                     onTouchCancel={() => {}} // Empty to avoid any default behavior
-                  >{buttonData.slice(0, buttonData.indexOf('-'))}</div>
+                  >{buttonData.text.slice(0, buttonData.text.indexOf('-'))}</div>
                 )}
             </div>
             <div

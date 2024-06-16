@@ -1,8 +1,9 @@
 import { Question } from "./question";
+import { stringWithImage } from "./stringWithImage";
 
 export interface FlowChartInterface {
-  buttonsList: string[];
+  buttonsList: stringWithImage[];
   onNoneClick: () => void;
   onSubmitClick: () => void;
-  whenClick: (buttonData: string) => void;
+  whenClick: (buttonData: stringWithImage) => void;
 }

@@ -1,6 +1,12 @@
 import { Presentation } from "../../types/presentation";
 // @ts-ignore
 import BackImage from '../../components/imgs/backpain.png'
+// @ts-ignore
+import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
+// @ts-ignore
+import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
+// @ts-ignore
+import Shock from '../../components/imgs/Shock.jpg'
 import { stringWithImage } from "../../types/stringWithImage";
 
 export class BackPainHandler extends Presentation {
@@ -27,7 +33,8 @@ export class BackPainHandler extends Presentation {
 ·        difficulty breathing
 ·        wheezing or harsh, grating sound
 ·        visible swelling
-·        difficulty swallowing`
+·        difficulty swallowing`,
+                image: AirwayBlockage
             },
             {
                 text: `Inadequate Breathing-You may feel:
@@ -36,7 +43,8 @@ export class BackPainHandler extends Presentation {
 ·        tired or weak
 ·        pressure or tightness in chest
 ·        bluish lips
-·        dizziness`
+·        dizziness`,
+                image: InadequateBreathing
             },
             {
                 text: `Shock-Struggle to get oxygen.
@@ -46,7 +54,8 @@ Common Symptoms are:
 ·        Cold, Clammy and Sweaty Skin
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea
-·        Low Blood Pressure`
+·        Low Blood Pressure`,
+                image: Shock
             }
         ];
     }

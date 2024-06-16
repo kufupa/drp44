@@ -1,6 +1,22 @@
 import { Presentation } from "../../types/presentation";
 // @ts-ignore
 import StomachImage from '../../components/imgs/StomachImage.png'
+// @ts-ignore
+import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
+// @ts-ignore
+import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
+// @ts-ignore
+import Shock from '../../components/imgs/Shock.jpg'
+
+// @ts-ignore
+import Severepain from '../../components/imgs/Severe pain.jpg'
+// @ts-ignore
+import Highbodytemperature from '../../components/imgs/High body temperature.jpg'
+// @ts-ignore
+import Painradiatingtotheback from '../../components/imgs/Pain radiating to the back.jpg'
+// @ts-ignore
+import Vomitingblood from '../../components/imgs/Vomiting blood.jpg'
+
 import { stringWithImage } from "../../types/stringWithImage";
 
 
@@ -26,7 +42,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
 ·        wheezing or harsh, grating sound
 ·        visible swelling
 ·        difficulty swallowing`,
-                image: ''
+                image: AirwayBlockage
             },
             {
                 text: `Inadequate Breathing-You may feel:
@@ -36,7 +52,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
 ·        pressure or tightness in chest
 ·        bluish lips
 ·        dizziness`,
-                image: ''
+                image: InadequateBreathing
             },
             {
                 text: `Shock-Struggle to get oxygen.
@@ -47,7 +63,7 @@ Common Symptoms are:
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea
 ·        Low Blood Pressure`,
-                image: ''
+                image: Shock
             }
         ];
     }
@@ -61,14 +77,14 @@ Common Symptoms are:
 · High blood pressure
 · Nausea
 · Anxiety`,
-                image: ''  
+                image: Severepain
             },
             {
                 text: `Pain radiating to the back-You might feel:
 ·  Sharp or Dull Pain
 ·  Pain starts mildly but becomes intense over time
 ·  Difficulty moving or bending`,
-                image: ''  
+                image: Painradiatingtotheback
             },
             {
                 text: `Vomiting blood-It may cause:
@@ -76,23 +92,21 @@ Common Symptoms are:
 ·  Feeling faint or lightheaded
 ·  Pain in stomach area.
 ·  Unusually weak or fatigued.`,
-                image: ''  
+                image: Vomitingblood
             },
             {
                 text: `Passing fresh or altered blood-It may cause:
 ·  Bright red blood that is fresh
 ·  Dark brown or black blood that indicates it has been in the system longer
 ·  Presence of clots in the blood
-·  Blood mixed with stool or urine`,
-                image: ''  
+·  Blood mixed with stool or urine`
             },
             {
                 text: `PV blood loss and >20 weeks pregnant-It may cause:
 ·  Unexpected bleeding from the vagina
 ·  Unexpected spots or blood stains in underwear 
 ·  Heavier and more frequent periods
-·  Bleeding that occurs outside of your regular menstrual cycle.`,
-                image: ''  
+·  Bleeding that occurs outside of your regular menstrual cycle.`
             },
             {
                 text: `High body temperature- You might experience:
@@ -100,7 +114,7 @@ Common Symptoms are:
 ·  Cold and shivering
 ·  Weakness or Tiredness
 ·  Headaches and Fatigue`,
-                image: ''  
+                image: Highbodytemperature
             }
         ];
     }
@@ -113,26 +127,26 @@ Common Symptoms are:
 · Late or Missed Period       
 · Nausea or Morning Sickness
 · Tender, swollen, or sore breasts.`,
-                image: ''  
+                image: ''
             },
             {
                 text: `Shoulder tip pain- You might feel:
 · Pain from another part of the body, such as the abdomen, but is felt in the shoulder.
 · Pain that comes on quickly and can be sharp or aching.`,
-                image: ''  
+                image: ''
             },
             {
                 text: `Black or redcurrant stools- You might have:
 · Black, Sticky Stools
 · Red colored stools`,
-                image: ''  
+                image: ''
             },
             {
                 text: `Persistent vomiting- Common Symptoms:
 · Continuous Vomiting
 · Dry mouth, dizziness, and reduced urination due to loss of fluids.
 · Nausea`,
-                image: ''  
+                image: ''
             },
             {
                 text: `Adult with high body temperature in an adult- You might have:
@@ -140,7 +154,7 @@ Common Symptoms are:
 · Excessive sweating
 · Experiencing chills or shivering
 · Feeling unusually tired or weak.`,
-                image: ''  
+                image: ''
             }
         ];
     }
@@ -152,19 +166,19 @@ Common Symptoms are:
                 text: `Recent mild pain-Mild chest pain that has occurred recently. Common Symptoms:
 ·  Noticeable Discomfort
 ·  Manageable : Usually relieved with rest or over·the·counter pain medication.`,
-                image: ''  
+                image: ''
             },
             {
                 text: `Vomiting-Recent vomiting episodes. You might:
 ·  One or More Episodes : Vomiting that has occurred recently.
 ·  Nausea : Feeling queasy or sick to your stomach before or after vomiting.
 ·  Other Symptoms : Possible abdominal pain, dizziness, or weakness.`,
-                image: ''  
+                image: ''
             },
             {
                 text: `Recent problem-Any new or recent issue related to chest pain. You might:
 ·  New Symptoms : Any new or recent chest pain or discomfort.`,
-                image: ''  
+                image: ''
             }
         ];
     }

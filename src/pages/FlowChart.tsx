@@ -7,6 +7,7 @@ import { Presentation } from '../types/presentation'; // Ensure this import is c
 import { CategoryEnum } from '../utils/category.enum';
 import FlowChartQuestionaire from '../components/FlowChartQuestionaire';
 import { fireEvent } from '@testing-library/react';
+import { stringWithImage } from '../types/stringWithImage';
 
 const FlowChart: React.FC = () => {
   const location = useLocation();
@@ -83,11 +84,11 @@ const FlowChart: React.FC = () => {
     }
   };
 
-  const handleClick = (buttonData: string) => {
+  const handleClick = (buttonData: stringWithImage) => {
     console.log(button)
     console.log(diagnosis)
     const presName: string = diagnosis.getClassName()
-    navigate(`/unique-page/${buttonData}`, { state: { displayButtons, button, diagnosis, presName } });
+    navigate(`/unique-page/${buttonData.text}`, { state: { displayButtons, button, diagnosis, presName, buttonData } });
   };
 
   useEffect(() => {
