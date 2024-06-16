@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FlowChartInterface } from './FlowChartInterface';
+import { FlowChartInterface } from '../types/FlowChartInterface';
 import '../styles.css';
 // @ts-ignore
-import ClipboardIcon from '../components/ClipboardIcon.png'
+import ClipboardIcon from '../components/imgs/ClipboardIcon.png'
 
 const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, whenClick }) => {
     const [selectedButtons, setSelectedButtons] = useState<string[]>([]);

@@ -1,4 +1,4 @@
-import { Presentation } from "../presentation";
+import { Presentation } from "../../types/presentation";
 // @ts-ignore
 import BackImage from '../../components/imgs/backpain.png'
 import { stringWithImage } from "../../types/stringWithImage";

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BackInterfaceInfo } from './BackInterfaceInfo';
+import { BackInterfaceInfo } from '../types/BackInterfaceInfo';
 
 const BackButtonInfo: React.FC<BackInterfaceInfo> = ({link, presName}) => {
   const navigate = useNavigate();

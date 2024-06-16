@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 // @ts-ignore
-import VomitingBlood from '../components/VomitingBlood.png'
+import VomitingBlood from '../components/imgs/VomitingBlood.png'
 import BackButtonInfo from '../components/BackButtonInfo';
-import { Question } from '../utils/question';
-import { Presentation } from '../utils/presentation';
+import { Question } from '../types/question';
+import { Presentation } from '../types/presentation';
 
 const InfoPage: React.FC = () => {
   const { buttonData } = useParams<{ buttonData: string }>();

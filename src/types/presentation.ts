@@ -1,4 +1,4 @@
-import { stringWithImage } from "../types/stringWithImage";
+import { stringWithImage } from "./stringWithImage";
 
 export abstract class Presentation {
   abstract toString(): string;

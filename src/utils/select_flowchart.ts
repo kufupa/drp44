@@ -1,7 +1,7 @@
 import { List } from "postcss/lib/list"
-import { Question } from "./question"
+import { Question } from "../types/question"
 import { CategoryEnum } from "./category.enum";
-import { Presentation } from "./presentation";
+import { Presentation } from "../types/presentation";
 import { AbdominalPainAdultsHandler } from "./flowcharts/abdominal_pain_in_adults";
 import { getPresentation } from "./gemini";
 import { BackPainHandler } from "./flowcharts/back_pain";

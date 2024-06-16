@@ -1,6 +1,6 @@
 import React from 'react';
 // @ts-ignore
-import ambulance from "../components/AmbulanceImage.png"
+import ambulance from "../components/imgs/AmbulanceImage.png"
 
 export const OneOneOnePage: React.FC = () => {
     return (

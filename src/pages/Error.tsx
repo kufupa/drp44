@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import React from 'react';
-import errorImage from "../components/Error404.jpeg"
+import errorImage from "../components/imgs/Error404.jpeg"
 
 const ErrorPage: React.FC = () => {
   return (

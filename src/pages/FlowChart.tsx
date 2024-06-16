@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { firstButton, getFromMap, nextButtons } from '../utils/select_flowchart';
-import { Question } from '../utils/question';
+import { Question } from '../types/question';
 import BackButton from '../components/BackButton';
-import { Presentation } from '../utils/presentation'; // Ensure this import is correct
+import { Presentation } from '../types/presentation'; // Ensure this import is correct
 import { CategoryEnum } from '../utils/category.enum';
 import FlowChartQuestionaire from '../components/FlowChartQuestionaire';
 import { fireEvent } from '@testing-library/react';

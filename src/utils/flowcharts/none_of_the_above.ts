@@ -1,5 +1,5 @@
 import { stringWithImage } from "../../types/stringWithImage";
-import { Presentation } from "../presentation";
+import { Presentation } from "../../types/presentation";
 
 export class NoneOfTheAbove extends Presentation {
 

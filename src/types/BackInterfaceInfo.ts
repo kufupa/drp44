@@ -1,4 +1,4 @@
-import { Question } from "../utils/question";
+import { Question } from "./question";
 
 export interface BackInterfaceInfo {
     link: Question | null;

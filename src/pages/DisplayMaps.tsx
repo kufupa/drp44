@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HospitalDiv from '../components/HospitalDiv';
-import { HospitalDetails } from '../components/HospitalDetails';
+import { HospitalDetails } from '../types/HospitalDetails';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAllHospitalDetails } from "../backend/hospitals"
 import BackButton from '../components/BackButton';

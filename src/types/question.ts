@@ -1,4 +1,4 @@
-import { CategoryEnum } from "./category.enum";
+import { CategoryEnum } from "../utils/category.enum";
 import { Presentation } from "./presentation";
 
 

@@ -3,17 +3,14 @@
 
 import React, { useState, useEffect } from 'react';
 import HospitalDiv from '../components/HospitalDiv';
-import { HospitalDetails } from '../components/HospitalDetails';
+import { HospitalDetails } from '../types/HospitalDetails';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getAllHospitalDetails } from "../backend/hospitals"
 import BackButton from '../components/BackButton';
 // @ts-ignore
-import HospitalIcon from '../components/HospitalIcon.png'
+import HospitalIcon from '../components/imgs/HospitalIcon.png'
 // @ts-ignore
-import ClipboardIcon from '../components/ClipboardIcon.png'
-
-import { addMarker, getLatLngFromPostcode, initMap } from '../components/GoogleMapsLogic';
-import DisplayMaps from './DisplayMaps';
+import ClipboardIcon from '../components/imgs/ClipboardIcon.png'
+import { getLatLngFromPostcode } from '../components/GoogleMapsLogic';
 
 const HospitalScreen: React.FC = () => {
   const hospital1: HospitalDetails = {

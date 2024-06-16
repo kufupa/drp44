@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { HospitalDetails } from './HospitalDetails';
+import { HospitalDetails } from '../types/HospitalDetails';
 // @ts-ignore
-import LocationIcon from './LocationIcon.png'
+import LocationIcon from './imgs/LocationIcon.png'
 
 const HospitalDiv: React.FC<HospitalDetails> = ({ hospitalName, waitTime, distance, directions, ticked, mapsFunc }) => {
     const [isTicked, setIsTicked] = useState(ticked);
