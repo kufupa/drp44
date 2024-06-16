@@ -178,7 +178,7 @@ Common Symptoms are:
 ·  One or More Episodes : Vomiting that has occurred recently.
 ·  Nausea : Feeling queasy or sick to your stomach before or after vomiting.
 ·  Other Symptoms : Possible abdominal pain, dizziness, or weakness.`,
-                image: ''
+                image: Persistentvomiting
             },
             {
                 text: `Recent problem-Any new or recent issue related to chest pain. You might:
