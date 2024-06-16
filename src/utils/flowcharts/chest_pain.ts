@@ -37,8 +37,8 @@ export class ChestPainHandler extends Presentation {
 ·        dizziness`,
             `Shock-Struggle to get oxygen.
 Common Symptoms are:
-·        Weakness / Disoriented
-·        Racing / Pounding Heart 
+·        Weakness or Disoriented
+·        Racing or Pounding Heart 
 ·        Cold, Clammy and Sweaty Skin
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea

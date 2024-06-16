@@ -35,8 +35,8 @@ export class BackPainHandler extends Presentation {
 ·        dizziness`,
             `Shock-Struggle to get oxygen.
 Common Symptoms are:
-·        Weakness / Disoriented
-·        Racing / Pounding Heart 
+·        Weakness or Disoriented
+·        Racing or Pounding Heart 
 ·        Cold, Clammy and Sweaty Skin
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea
@@ -52,13 +52,13 @@ Common Symptoms are:
     · High blood pressure
     · Nausea
     · Anxiety`,
-            `Issue with Nerve / Spinal Cord-Signs include:
+            `Issue with Nerve or Spinal Cord-Signs include:
     · Weakness or numbness on one side of the body
     · Trouble speaking or understanding speech
     · Loss of vision or double vision
     · Severe headache`,
             `High Temperature-Signs include:
-    · Fever / Heat exposure
+    · Fever or Heat exposure
     · Flushed skin
     · Sweating
     · Irritability
@@ -73,12 +73,12 @@ Common Symptoms are:
     
     yellow(): Array<string> {
         return [
-            `Nerve Issues / Spinal Cord-Symptoms may include:
+            `Nerve Issues or Spinal Cord-Symptoms may include:
     · Sudden weakness
     · Numbness
     · Confusion`,
             `Injury to back-Symptoms may include:
-    · Pain / Bruising
+    · Pain or Bruising
     · Difficulty moving`,
             `Unable to walk-Signs include:
     · Inability to bear weight
