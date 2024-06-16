@@ -21,7 +21,7 @@ const InfoPage: React.FC = () => {
   console.log(displayButtons)
   console.log(presName)
 
-  const imageToUse: string = image == undefined ? VomitingBlood : image;
+  const imageToUse: string = image == "" || undefined ? VomitingBlood : image;
 
   if (!buttonData) return null;
 
