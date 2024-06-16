@@ -7,6 +7,25 @@ import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
 import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
 // @ts-ignore
 import Shock from '../../components/imgs/Shock.jpg'
+// @ts-ignore
+import Severepain from '../../components/imgs/Severe pain.jpg'
+// @ts-ignore
+import Cardiacpain from '../../components/imgs/Cardiac pain.jpg'
+// @ts-ignore
+import Acutelyshortofbreath from '../../components/imgs/Acutely short of breath.jpg'
+// @ts-ignore
+import Abnormalpulse from '../../components/imgs/Abnormal pulse.png'
+// @ts-ignore
+import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
+// @ts-ignore
+import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
+// @ts-ignore
+import Shock from '../../components/imgs/Shock.jpg'
+// @ts-ignore
+import Severepain from '../../components/imgs/Severe pain.jpg'
+// @ts-ignore
+import Persistentvomiting from '../../components/imgs/Persistent vomiting.jpg'
+
 import { stringWithImage } from "../../types/stringWithImage";
 
 
@@ -71,27 +90,31 @@ Common Symptoms are:
 · Sweating
 · High blood pressure
 · Nausea
-· Anxiety`
+· Anxiety`,
+                image: Severepain
             },
             {
                 text: `Cardiac pain-Symptoms may include:
 · Pressure or tightness in the chest
 · Pain spreading to shoulders, neck, or arms
 · Shortness of breath
-· Sweating`
+· Sweating`,
+                image: Cardiacpain
             },
             {
                 text: `Acutely short of breath-Symptoms may include:
 · Rapid breathing
 · Gasping for air
 · Chest tightness
-· Anxiety`
+· Anxiety`,
+                image: Acutelyshortofbreath
             },
             {
                 text: `Abnormal pulse-Irregular heartbeats or pulse rate. Symptoms may include:
 · Fast or slow pulse
 · Palpitations
-· Dizziness`
+· Dizziness`,
+                image: Abnormalpulse
             }
         ];
     }
@@ -103,18 +126,21 @@ Common Symptoms are:
                 text: `Sharp Chest pain-Worsens with breathing or coughing:
 · Chest pain
 · Pain with deep breaths
-· Pain with coughing or sneezing`
+· Pain with coughing or sneezing`,
+image: Cardiacpain
             },
             {
                 text: `Persistent vomiting-Symptoms may include:
 · Severe nausea
 · Dehydration
-· Weakness`
+· Weakness`,
+image: Persistentvomiting
             },
             {
                 text: `Significant cardiac history-Past heart-related health issues. Symptoms may include:
 · Previous heart attacks
-· Chronic heart conditions`
+· Chronic heart conditions`,
+image: Cardiacpain
             },
             {
                 text: `Moderate pain-Symptoms may include:
@@ -130,7 +156,8 @@ Common Symptoms are:
             {
                 text: `Vomiting-Symptoms may include:
 · Nausea
-· Discomfort in the stomach`
+· Discomfort in the stomach`,
+image: Persistentvomiting
             },
             {
                 text: `Recent mild pain-Symptoms may include:
