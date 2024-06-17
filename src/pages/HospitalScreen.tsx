@@ -113,8 +113,6 @@ const HospitalScreen: React.FC = () => {
       <BackButton />
       <div className='md:text-5xl text-3xl font-black textClickBlue md:mt-10 mt-4 max-w-xl'>Hospital Recommendations</div>
       <img src={HospitalIcon} alt="" className='w-64' />
-      <input type="text" value={userPostcode} onChange={handleInputChange} placeholder="Patient's current postcode" className="border border-gray-300 p-4 rounded-full" />
-      <div className='textClickBlue'>(leave blank if you wish to use your current location)</div>
       {/* Div containing all Hospitals */}
       <div className=''>
 
