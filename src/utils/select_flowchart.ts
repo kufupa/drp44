@@ -8,11 +8,12 @@ import { BackPainHandler } from "./flowcharts/back_pain";
 import { ChestPainHandler } from "./flowcharts/chest_pain";
 import { NoneOfTheAbove } from "./flowcharts/none_of_the_above";
 import { stringWithImage } from "../types/stringWithImage";
+import { AbdominalPainChildrenHandler } from "./flowcharts/children";
 
 // mapping between string and Presentation 
 const patientProblemMap: { [key: string]: Presentation } = {
     "Abdominal Pain in Adults": AbdominalPainAdultsHandler.getInstance(),
-    "Abdominal Pain in Children": AbdominalPainAdultsHandler.getInstance(),
+    "Abdominal Pain in Children": AbdominalPainChildrenHandler.getInstance(),
     "Chest Pain": ChestPainHandler.getInstance(),
     "Back Pain": BackPainHandler.getInstance(),
     "None of the Above": NoneOfTheAbove.getInstance()
