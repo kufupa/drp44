@@ -2,7 +2,7 @@ import { Presentation } from "../../types/presentation";
 // @ts-ignore
 import BackImage from '../../components/imgs/backpain.png'
 // @ts-ignore
-import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
+import AirwayBlockage from '../../components/imgs/throat.jpeg'
 // @ts-ignore
 import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
 // @ts-ignore
@@ -12,9 +12,9 @@ import Abdominalpain from '../../components/imgs/Abdominal pain.jpg'
 // @ts-ignore
 import IssuewithNerveorSpinalCord from '../../components/imgs/Issue with Nerve or Spinal Cord.jpg'
 // @ts-ignore
-import Highbodytemperature from '../../components/imgs/High body temperature.jpg'
+import Highbodytemperature from '../../components/imgs/temp.jpeg'
 // @ts-ignore
-import Painradiatingtotheback from '../../components/imgs/Pain radiating to the back.jpg'
+import Painradiatingtotheback from '../../components/imgs/back.jpeg'
 // @ts-ignore
 import Unabletowalk from '../../components/imgs/Unable to walk.jpg'
 import { stringWithImage } from "../../types/stringWithImage";
