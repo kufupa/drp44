@@ -1,4 +1,5 @@
-import { Presentation } from "../presentation";
+import { stringWithImage } from "../../types/stringWithImage";
+import { Presentation } from "../../types/presentation";
 
 export class NoneOfTheAbove extends Presentation {
 
@@ -9,19 +10,19 @@ export class NoneOfTheAbove extends Presentation {
     toString(): string {
         return "None of the Above";
     }
-    red(): string[] {
+    red(): stringWithImage[] {
         throw new Error("Method not implemented.");
     }
-    orange(): string[] {
+    orange(): stringWithImage[] {
         throw new Error("Method not implemented.");
     }
-    yellow(): string[] {
+    yellow(): stringWithImage[] {
         throw new Error("Method not implemented.");
     }
-    green(): string[] {
+    green(): stringWithImage[] {
         throw new Error("Method not implemented.");
     }
-    black(): string[] {
+    black(): stringWithImage[] {
         throw new Error("Method not implemented.");
     }
     image(): string {

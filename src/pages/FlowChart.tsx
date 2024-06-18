@@ -1,35 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { firstButton, getFromMap, nextButtons } from '../utils/select_flowchart';
-import { Question } from '../utils/question';
+import { Question } from '../types/question';
 import BackButton from '../components/BackButton';
-import { Presentation } from '../utils/presentation'; // Ensure this import is correct
+import { Presentation } from '../types/presentation'; // Ensure this import is correct
 import { CategoryEnum } from '../utils/category.enum';
 import FlowChartQuestionaire from '../components/FlowChartQuestionaire';
 import { fireEvent } from '@testing-library/react';
+import { stringWithImage } from '../types/stringWithImage';
 
 const FlowChart: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const str = location.state?.str;
-  const diagnosis: Presentation = getFromMap(str)
+  let diagnosis: Presentation = getFromMap(str)
+  console.log(str)
 
   const question: Question | null = location.state?.question;
 
-  console.log(location.state?.question)
+  console.log(location.state?.link)
 
-  const [button, setButton] = useState(location.state?.question?.link == null ? (str != null ? firstButton(diagnosis) : null) : location.state?.question.link);
+  const presName: string | undefined = location.state.presName
+  const [button, setButton] = useState<Question | null>(location.state?.link == null ? (str != null ? firstButton(diagnosis) : null) : location.state?.link);
   const [displayButtons, setDisplayButtons] = useState(button != null ? button.symptoms : []);
   const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout | null>(null);
   const [isHeld, setIsHeld] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  console.log(button)
+  console.log(presName)
+  if (presName) {
+    console.log(getFromMap(presName))
+  }
+
+  if (button?.presentation == undefined && presName != undefined) {
+    const newButton = button!
+    newButton.presentation = getFromMap(presName)
+    setButton(newButton)
+  }
+
+  if (diagnosis == undefined && presName != undefined) {
+    diagnosis = getFromMap(presName)
+  }
+
   const handleNoneClick = () => {
     console.log("None clicked in FlowChart");
     console.log(button);
+    console.log(diagnosis)
 
     if (!diagnosis) {
       setError('Diagnosis is not available');
+      console.log("Unable to diagnose")
       return;
     }
 
@@ -61,14 +82,13 @@ const FlowChart: React.FC = () => {
     } else {
       navigate('/HospitalScreen', { state: { button } });
     }
-    // Need to submit button
-    // Add your logic here
-    // Add code to navigate to next which will display your category ... BLACK, RED, ...
-    // use navigate
   };
 
-  const handleClick = (buttonData: string) => {
-    navigate(`/unique-page/${buttonData}`, { state: { displayButtons, button } });
+  const handleClick = (buttonData: stringWithImage) => {
+    console.log(button)
+    console.log(diagnosis)
+    const presName: string = diagnosis.getClassName()
+    navigate(`/unique-page/${buttonData.text}`, { state: { displayButtons, button, diagnosis, presName, buttonData } });
   };
 
   useEffect(() => {
@@ -83,7 +103,7 @@ const FlowChart: React.FC = () => {
       <div className='text-6xl'>Do you have any of these symptoms?</div>
       <div>
         <div>
-          <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick} whenClick={handleClick}/>
+          <FlowChartQuestionaire buttonsList={displayButtons} onNoneClick={handleNoneClick} onSubmitClick={handleSubmitClick} whenClick={handleClick} />
         </div>
       </div>
     </div>

@@ -25,17 +25,17 @@ import Persistentvomiting from '../../components/imgs/Persistent vomiting.jpg'
 import { stringWithImage } from "../../types/stringWithImage";
 
 
-export class AbdominalPainAdultsHandler extends Presentation {
+export class AbdominalPainChildrenHandler extends Presentation {
     image(): string {
         return StomachImage;
     }
 
     static getInstance = () => {
-        return new AbdominalPainAdultsHandler();
+        return new AbdominalPainChildrenHandler();
     }
 
     toString(): string {
-        return "Abdominal Pain in Adults";
+        return "Abdominal Pain in Children";
     }
 
     red(): Array<stringWithImage> {

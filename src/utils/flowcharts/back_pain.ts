@@ -1,14 +1,31 @@
-import { Presentation } from "../presentation";
+import { Presentation } from "../../types/presentation";
 // @ts-ignore
 import BackImage from '../../components/imgs/backpain.png'
+// @ts-ignore
+import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
+// @ts-ignore
+import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
+// @ts-ignore
+import Shock from '../../components/imgs/Shock.jpg'
+// @ts-ignore
+import Abdominalpain from '../../components/imgs/Abdominal pain.jpg'
+// @ts-ignore
+import IssuewithNerveorSpinalCord from '../../components/imgs/Issue with Nerve or Spinal Cord.jpg'
+// @ts-ignore
+import Highbodytemperature from '../../components/imgs/High body temperature.jpg'
+// @ts-ignore
+import Painradiatingtotheback from '../../components/imgs/Pain radiating to the back.jpg'
+// @ts-ignore
+import Unabletowalk from '../../components/imgs/Unable to walk.jpg'
+import { stringWithImage } from "../../types/stringWithImage";
 
 export class BackPainHandler extends Presentation {
-        black(): string[] {
-                throw new Error("Method not implemented.");
-        }
-        image(): string {
-                return BackImage;
-        }
+    black(): stringWithImage[] {
+        throw new Error("Method not implemented.");
+    }
+    image(): string {
+        return BackImage;
+    }
 
     static getInstance = () => {
         return new BackPainHandler();
@@ -18,100 +35,142 @@ export class BackPainHandler extends Presentation {
         return "Back Pain"
     }
 
-    red(): Array<string> {
+    red(): Array<stringWithImage> {
         return [
-            `Airway Blockage-Due to objects, swelling or abnormalities. 
+            {
+                text: `Airway Blockage-Due to objects, swelling or abnormalities. 
             You might have:
 ·        difficulty breathing
 ·        wheezing or harsh, grating sound
 ·        visible swelling
 ·        difficulty swallowing`,
-            `Inadequate Breathing-You may feel:
+                image: AirwayBlockage
+            },
+            {
+                text: `Inadequate Breathing-You may feel:
 ·       out of breath
 ·        rapid + shallow breathing
 ·        tired or weak
 ·        pressure or tightness in chest
 ·        bluish lips
 ·        dizziness`,
-            `Shock-Struggle to get oxygen.
+                image: InadequateBreathing
+            },
+            {
+                text: `Shock-Struggle to get oxygen.
 Common Symptoms are:
-·        Weakness / Disoriented
-·        Racing / Pounding Heart 
+·        Weakness or Disoriented
+·        Racing or Pounding Heart 
 ·        Cold, Clammy and Sweaty Skin
 ·        Pale, Bluish skin - especially around lips and fingernails
 ·        Nausea
 ·        Low Blood Pressure`,
+                image: Shock
+            }
         ];
     }
-    
-    orange(): Array<string> {
+
+
+    orange(): Array<stringWithImage> {
         return [
-            `Severe pain-It may cause:
-    · Inability to move
-    · Sweating
-    · High blood pressure
-    · Nausea
-    · Anxiety`,
-            `Issue with Nerve / Spinal Cord-Signs include:
-    · Weakness or numbness on one side of the body
-    · Trouble speaking or understanding speech
-    · Loss of vision or double vision
-    · Severe headache`,
-            `High Temperature-Signs include:
-    · Fever / Heat exposure
-    · Flushed skin
-    · Sweating
-    · Irritability
-    · Lethargy`,
-            `Abdominal pain-Symptoms may include:
-    · Cramping
-    · Bloating
-    · Nausea
-    · Vomiting`,
+            {
+                text: `Severe pain-It may cause:
+· Inability to move
+· Sweating
+· High blood pressure
+· Nausea
+· Anxiety`
+            },
+            {
+                text: `Issue with Nerve or Spinal Cord-Signs include:
+· Weakness or numbness on one side of the body
+· Trouble speaking or understanding speech
+· Loss of vision or double vision
+· Severe headache`,
+image: IssuewithNerveorSpinalCord
+            },
+            {
+                text: `High Temperature-Signs include:
+· Fever or Heat exposure
+· Flushed skin
+· Sweating
+· Irritability
+· Lethargy`,
+image: Highbodytemperature
+            },
+            {
+                text: `Abdominal pain-Symptoms may include:
+· Cramping
+· Bloating
+· Nausea
+· Vomiting`,
+image: Abdominalpain
+            }
         ];
     }
-    
-    yellow(): Array<string> {
+
+
+    yellow(): Array<stringWithImage> {
         return [
-            `Nerve Issues / Spinal Cord-Symptoms may include:
+            {
+                text: `Nerve Issues or Spinal Cord-Symptoms may include:
     · Sudden weakness
     · Numbness
     · Confusion`,
-            `Injury to back-Symptoms may include:
-    · Pain / Bruising
+    image: IssuewithNerveorSpinalCord
+            },
+            {
+                text: `Injury to back-Symptoms may include:
+    · Pain or Bruising
     · Difficulty moving`,
-            `Unable to walk-Signs include:
+    image: Painradiatingtotheback
+            },
+            {
+                text: `Unable to walk-Signs include:
     · Inability to bear weight
     · Severe pain when moving`,
-            `Adult with high temperature-Signs include:
+    image: Unabletowalk
+            },
+            {
+                text: `Adult with high temperature-Signs include:
     · Flushed skin
     · Sweating
     · Mild confusion
     · General discomfort`,
-            `Moderate pain-Symptoms may include:
+    image: Highbodytemperature
+            },
+            {
+                text: `Moderate pain-Symptoms may include:
     · Persistent discomfort
-    · Limited movement`,
+    · Limited movement`
+            }
         ];
     }
-    
-    green(): Array<string> {
-        return [
-            `Recent mild pain-Symptoms may include:
-    · Minor discomfort
-    · No significant impact on daily activities`,
-            `Recent problem-A newly occurring issue that is not severe. Symptoms may include:
-    · Minor irritation
-    · Mild inconvenience`,
-        ];
-    }
-    
-    blue(): Array<string> {
-        return [
-            `No urgent condition-Patient does not exhibit any immediate or severe symptoms. Signs include:
-    · Stable condition
-    · No significant pain or distress`,
-        ];
-    }
-    
 
+
+    green(): Array<stringWithImage> {
+        return [
+            {
+                text: `Recent mild pain-Symptoms may include:
+    · Minor discomfort
+    · No significant impact on daily activities`
+            },
+            {
+                text: `Recent problem-A newly occurring issue that is not severe. Symptoms may include:
+    · Minor irritation
+    · Mild inconvenience`
+            }
+        ];
+    }
+
+
+    blue(): Array<stringWithImage> {
+        return [
+            {
+                text: `No urgent condition-Patient does not exhibit any immediate or severe symptoms. Signs include:
+    · Stable condition
+    · No significant pain or distress`
+            }
+        ];
+    }
 }

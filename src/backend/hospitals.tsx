@@ -2,7 +2,7 @@ import { db } from "./db";
 import {Patient, Hospital} from "./data-models";
 import { collection, addDoc, getDocs, where, query, getFirestore } from "firebase/firestore";
 import {doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
-import { HospitalDetails } from "../components/HospitalDetails";
+import { HospitalDetails } from "../types/HospitalDetails";
 
 
 export async function getNextHospitalId(): Promise<number> {

@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import { FlowChartInterface } from './FlowChartInterface';
+import { FlowChartInterface } from '../types/FlowChartInterface';
 import '../styles.css';
 // @ts-ignore
-import ClipboardIcon from '../components/ClipboardIcon.png'
+import ClipboardIcon from '../components/imgs/ClipboardIcon.png'
 
 const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNoneClick, onSubmitClick, whenClick }) => {
     const [selectedButtons, setSelectedButtons] = useState<string[]>([]);
-    const handleClick = (buttonData: string) => {
-        if (selectedButtons.includes(buttonData)) {
-            // If the button is already selected, remove it from the selectedButtons array
-            setSelectedButtons(selectedButtons.filter(btn => btn !== buttonData));
-        } else {
-            // If the button is not selected, add it to the selectedButtons array
-            setSelectedButtons([...selectedButtons, buttonData]);
-        }
-    };
 
     console.log(buttonsList)
 
@@ -27,11 +18,11 @@ const FlowChartQuestionaire: React.FC<FlowChartInterface> = ({ buttonsList, onNo
             </div>
             <div className='text-xl row-span-1'>
                 {buttonsList.map((buttonData, index) =>
-                    <div className={`${selectedButtons.includes(buttonData) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
+                    <div className={`${selectedButtons.includes(buttonData.text) ? 'bgClickBlue' : 'bgBlue'} p-4 m-6 rounded-full text-white cursor-pointer`} 
                     onClick={() => whenClick(buttonData)}
                     onMouseLeave={() => {}} // Empty to avoid any default behavior
                     onTouchCancel={() => {}} // Empty to avoid any default behavior
-                  >{buttonData.slice(0, buttonData.indexOf('-'))}</div>
+                  >{buttonData.text.slice(0, buttonData.text.indexOf('-'))}</div>
                 )}
             </div>
             <div

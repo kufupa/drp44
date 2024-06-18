@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import React from 'react';
-import ambulance from "../components/AmbulanceImage.png"
+import ambulance from "../components/imgs/AmbulanceImage.png"
 
 const RedPatients: React.FC = () => {
     return (

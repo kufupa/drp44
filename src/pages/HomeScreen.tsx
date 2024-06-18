@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import React from 'react';
-import homeScreenImage from "../components/HomeImage.jpeg"
+import homeScreenImage from "../components/imgs/HomeImage.jpeg"
 import {useNavigate} from 'react-router-dom';
 
 const HomeScreen: React.FC = () => {

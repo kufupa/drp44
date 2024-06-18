@@ -13,11 +13,13 @@ import LocationPin from '../components/LocationPin.webp'
 
 import { addMarker, displayRouteByPublicTransport, getEstimatedTime, initMap } from '../components/GoogleMapsLogic';
 
-const DisplayMaps: React.FC = () => {
+const DisplayMapsP: React.FC = () => {
     const location = useLocation();
     const hospitalName: string = location.state?.hospitalName || null;
     const directions: string = location.state?.directions || null;
     const hospitals: HospitalDetails[] = location.state?.hospitals || null;
+    const latStart: number = location.state?.lat || 0;
+    const lngStart: number = location.state?.lng || 0;
     const hospital: HospitalDetails = hospitals.find(hosp => hosp.hospitalName === hospitalName) || hospitals[0]
 
     console.log(hospitalName);
@@ -30,7 +32,8 @@ const DisplayMaps: React.FC = () => {
     useEffect(() => {
         const initializeMap = async () => {
             try {
-                const center = await getCurrentLocation();
+                const center: google.maps.LatLngLiteral = { lat: latStart, lng: lngStart }; 
+
                 await initMap('map', center);
 
                 hospitals.forEach((hosp) => {
@@ -126,4 +129,4 @@ const DisplayMaps: React.FC = () => {
     );
 };
 
-export default DisplayMaps;
+export default DisplayMapsP;

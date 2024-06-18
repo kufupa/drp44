@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { firstButton, selectFlowchart } from '../utils/select_flowchart';
-import { Question } from '../utils/question';
+import { Question } from '../types/question';
 import BackButton from '../components/BackButton';
-import { Presentation } from '../utils/presentation';
+import { Presentation } from '../types/presentation';
 import { NoneOfTheAbove } from '../utils/flowcharts/none_of_the_above';
 
 
