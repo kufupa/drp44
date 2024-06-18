@@ -62,3 +62,11 @@ background-color: red;
 border-radius: 50%;
 margin-left: 5px; /* Adjust spacing as needed */
 }
+
+
+.centeredLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }

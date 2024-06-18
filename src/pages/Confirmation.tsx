@@ -37,7 +37,9 @@ const Confirmation: React.FC = () => {
   }, [patientProblem]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="centeredLoading text-6xl textClickBlue font-bold">
+      Loading...
+    </div>;
   }
 
   if (error) {
