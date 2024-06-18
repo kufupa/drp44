@@ -41,7 +41,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
     red(): Array<stringWithImage> {
         return [
             {
-                text: `Airway Blockage-Due to objects, swelling or abnormalities. 
+                text: `Blockage in Throat-Due to objects, swelling or abnormalities. 
             You might have:
 ·        difficulty breathing
 ·        wheezing or harsh, grating sound
@@ -50,7 +50,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
                 image: AirwayBlockage
             },
             {
-                text: `Inadequate Breathing-You may feel:
+                text: `Struggling to Breathe-You may feel:
 ·       out of breath
 ·        rapid + shallow breathing
 ·        tired or weak
@@ -60,7 +60,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
                 image: InadequateBreathing
             },
             {
-                text: `Shock-Struggle to get oxygen.
+                text: `Severe Blood Shortage-Struggle to get oxygen.
 Common Symptoms are:
 ·        Weakness or Disoriented
 ·        Racing or Pounding Heart 
