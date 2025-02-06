@@ -2,7 +2,7 @@ import { Presentation } from "../../types/presentation";
 // @ts-ignore
 import StomachImage from '../../components/imgs/StomachImage.png'
 // @ts-ignore
-import AirwayBlockage from '../../components/imgs/Airway Blockage.jpg'
+import AirwayBlockage from '../../components/imgs/throat.jpeg'
 // @ts-ignore
 import InadequateBreathing from '../../components/imgs/Inadequate Breathing.jpg'
 // @ts-ignore
@@ -10,11 +10,11 @@ import Shock from '../../components/imgs/Shock.jpg'
 // @ts-ignore
 import Severepain from '../../components/imgs/Severe pain.jpg'
 // @ts-ignore
-import Highbodytemperature from '../../components/imgs/High body temperature.jpg'
+import Highbodytemperature from '../../components/imgs/temp.jpeg'
 // @ts-ignore
-import Painradiatingtotheback from '../../components/imgs/Pain radiating to the back.jpg'
+import Painradiatingtotheback from '../../components/imgs/back.jpeg'
 // @ts-ignore
-import Vomitingblood from '../../components/imgs/Vomiting blood.jpg'
+import Vomitingblood from '../../components/imgs/vomiting.jpeg'
 // @ts-ignore
 import Possiblypregnant from '../../components/imgs/Possibly pregnant.jpg'
 // @ts-ignore
@@ -41,7 +41,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
     red(): Array<stringWithImage> {
         return [
             {
-                text: `Airway Blockage-Due to objects, swelling or abnormalities. 
+                text: `Blockage in Throat-Due to objects, swelling or abnormalities. 
             You might have:
 ·        difficulty breathing
 ·        wheezing or harsh, grating sound
@@ -50,7 +50,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
                 image: AirwayBlockage
             },
             {
-                text: `Inadequate Breathing-You may feel:
+                text: `Struggling to Breathe-You may feel:
 ·       out of breath
 ·        rapid + shallow breathing
 ·        tired or weak
@@ -60,7 +60,7 @@ export class AbdominalPainAdultsHandler extends Presentation {
                 image: InadequateBreathing
             },
             {
-                text: `Shock-Struggle to get oxygen.
+                text: `Severe Blood Shortage-Struggle to get oxygen.
 Common Symptoms are:
 ·        Weakness or Disoriented
 ·        Racing or Pounding Heart 
